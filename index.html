@@ -4,278 +4,260 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Isra Brini – AI Engineer</title>
-<meta name="description" content="Isra Brini, final-year software engineering student building AI agents, RAG systems and data pipelines. Looking for a 6-month end-of-studies internship in Paris from January 2027.">
+<meta name="description" content="Isra Brini builds AI agents, RAG systems, deep learning models and real-time data pipelines. Looking for a 6-month end-of-studies internship in Paris from January 2027.">
 <meta property="og:title" content="Isra Brini – AI Engineer">
-<meta property="og:description" content="AI agents, RAG and data systems. Looking for a 6-month internship in Paris from January 2027.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2313233A'/><text x='50' y='67' font-size='52' text-anchor='middle' fill='%23F2F4F1' font-family='Arial' font-weight='700'>IB</text></svg>">
+<meta property="og:description" content="AI agents, deep learning and data systems. Looking for a 6-month internship in Paris from January 2027.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230E1B2E'/><circle cx='72' cy='30' r='9' fill='%23F2A93B'/><text x='44' y='70' font-size='48' text-anchor='middle' fill='%23F3F4F0' font-family='Arial' font-weight='800'>IB</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F2F4F1; --surface:#FFFFFF; --ink:#13233A; --muted:#566273; --line:#D6DCE1;
-  --link:#2747C9; --pulse:#E39A2D; --pulse-soft:#F7E3C2;
-  color-scheme:light;
-  box-sizing:border-box;
+  --night:#0E1B2E; --night-2:#16263D; --on-night:#F3F4F0; --on-night-muted:#A9B4C4;
+  --paper:#F3F4F0; --surface:#FFFFFF; --ink:#0E1B2E; --muted:#556275; --line:#DCE0E4;
+  --amber:#F2A93B; --cobalt:#3D5AFE; --link:#2E48D6;
+  --shadow:0 1px 2px rgba(14,27,46,.06), 0 8px 24px rgba(14,27,46,.08);
+  --font:"Bricolage Grotesque", "Helvetica Neue", Arial, system-ui, sans-serif;
+  color-scheme:light; box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-  --font:"Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --paper:#0F1826; --surface:#16213282; --ink:#E7ECF2; --muted:#9AA6B5; --line:#283548;
-    --link:#8EA8FF; --pulse:#F0B04F; --pulse-soft:#3A2E1A; color-scheme:dark;
-  }
-}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0B1524; --surface:#132136; --ink:#EEF1F5; --muted:#9AA7B8; --line:#24344B; --link:#93A8FF;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.35); color-scheme:dark; } }
 :root[data-theme="dark"]{
-  --paper:#0F1826; --surface:#16213282; --ink:#E7ECF2; --muted:#9AA6B5; --line:#283548;
-  --link:#8EA8FF; --pulse:#F0B04F; --pulse-soft:#3A2E1A; color-scheme:dark;
-}
-html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+  --paper:#0B1524; --surface:#132136; --ink:#EEF1F5; --muted:#9AA7B8; --line:#24344B; --link:#93A8FF;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.35); color-scheme:dark; }
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
 a{color:var(--link); text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--pulse); outline-offset:3px; border-radius:4px}
-.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1160px; margin:0 auto; padding:0 24px}
+h1,h2,h3{font-variation-settings:"opsz" 96}
 
-/* ---------- top bar ---------- */
-body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--paper)}
-header.bar{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--paper); border-bottom:1px solid transparent; transition:border-color .2s}
-header.bar.scrolled{border-bottom-color:var(--line)}
-.bar .wrap{display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px}
-.logo{font-weight:800; font-size:1.05rem; color:var(--ink); text-decoration:none; letter-spacing:-.01em}
-nav{display:flex; gap:22px; align-items:center}
-nav a{color:var(--muted); text-decoration:none; font-size:.95rem; font-weight:500}
-nav a:hover{color:var(--ink)}
-nav a.cv{color:var(--ink); border:1.5px solid var(--ink); padding:6px 14px; border-radius:999px; font-weight:600}
-@media (max-width:640px){ nav a:not(.cv){display:none} }
+/* ---------- nav ---------- */
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--night)}
+.bar{position:fixed; top:env(safe-area-inset-top,0px); left:0; right:0; z-index:20; transition:background .25s, box-shadow .25s}
+.bar.solid{background:var(--night); box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.bar .wrap{display:flex; align-items:center; justify-content:space-between; height:66px}
+.logo{color:var(--on-night); font-weight:800; text-decoration:none; font-size:1.08rem; display:flex; align-items:center; gap:10px}
+.logo i{width:10px; height:10px; border-radius:50%; background:var(--amber); display:inline-block}
+.bar nav{display:flex; gap:24px; align-items:center}
+.bar nav a{color:var(--on-night-muted); text-decoration:none; font-weight:500; font-size:.95rem}
+.bar nav a:hover{color:var(--on-night)}
+.bar nav a.cv{color:var(--night); background:var(--amber); padding:7px 16px; border-radius:999px; font-weight:700}
+@media (max-width:700px){ .bar nav a:not(.cv){display:none} }
 
 /* ---------- hero ---------- */
-.hero{padding:72px 0 88px}
-.hero .wrap{display:grid; grid-template-columns:1.25fr 1fr; gap:56px; align-items:center}
-@media (max-width:880px){ .hero .wrap{grid-template-columns:1fr; gap:44px} .hero{padding:40px 0 64px} }
-h1{font-size:clamp(2.3rem,5.2vw,3.9rem); line-height:1.04; letter-spacing:-.035em; font-weight:800; margin:0 0 22px; max-width:15ch}
-.intro{font-size:1.15rem; color:var(--muted); max-width:52ch; margin:0 0 30px}
-.intro strong{color:var(--ink); font-weight:600}
+.hero{position:relative; background:var(--night); color:var(--on-night); overflow:hidden; min-height:min(100svh,900px); display:flex; align-items:center; padding:104px 0 64px}
+#net{position:absolute; inset:0; width:100%; height:100%}
+.hero::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, var(--night) 0%, rgba(14,27,46,.86) 38%, rgba(14,27,46,.25) 75%, rgba(14,27,46,.1) 100%); pointer-events:none}
+@media (max-width:860px){ .hero::after{background:linear-gradient(180deg, rgba(14,27,46,.55), rgba(14,27,46,.92) 55%)} }
+.hero .wrap{position:relative; z-index:2; width:100%}
+.status{display:inline-flex; align-items:center; gap:10px; padding:7px 14px 7px 12px; border:1px solid rgba(255,255,255,.16); border-radius:999px; font-size:.9rem; color:var(--on-night-muted); background:rgba(255,255,255,.04)}
+.status b{color:var(--on-night); font-weight:600}
+.status i{width:8px; height:8px; border-radius:50%; background:#4ADE80; box-shadow:0 0 0 0 rgba(74,222,128,.6); animation:ping 2.4s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}80%,100%{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
+.hero h1{font-size:clamp(2.7rem,6.4vw,5.3rem); line-height:.97; letter-spacing:-.045em; font-weight:800; margin:24px 0 24px; max-width:13ch}
+.hero h1 span{display:block; color:var(--amber)}
+.hero .intro{font-size:clamp(1.05rem,1.6vw,1.22rem); color:var(--on-night-muted); max-width:50ch; margin:0 0 32px}
+.hero .intro strong{color:var(--on-night); font-weight:600}
 .actions{display:flex; gap:12px; flex-wrap:wrap}
-.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px; font-weight:600; font-size:.98rem; text-decoration:none; border:1.5px solid var(--ink)}
-.btn.primary{background:var(--ink); color:var(--paper)}
-.btn.ghost{color:var(--ink)}
-.avail{margin-top:26px; font-size:.95rem; color:var(--muted); display:flex; gap:10px; align-items:baseline}
-.avail::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--pulse); flex:none; transform:translateY(-1px)}
-
-/* trace: the one animated moment */
-.trace{margin:0; border:1.5px solid var(--line); border-radius:20px; padding:22px 22px 18px; background:var(--surface)}
-.trace-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px}
-.trace-title{font-weight:700; font-size:1rem}
-.replay{background:none; border:none; color:var(--link); font:inherit; font-size:.88rem; cursor:pointer; padding:0}
-.steps{list-style:none; margin:0; padding:0; position:relative}
-.steps::before{content:""; position:absolute; left:11px; top:14px; bottom:14px; width:2px; background:var(--line)}
-.steps li{position:relative; padding:7px 0 7px 38px}
-.steps li::before{content:""; position:absolute; left:4px; top:13px; width:16px; height:16px; border-radius:50%; background:var(--paper); border:2px solid var(--line); transition:background .25s, border-color .25s, box-shadow .25s}
-.steps .who{font-weight:600; font-size:.97rem; display:block}
-.steps .what{color:var(--muted); font-size:.88rem; display:block; line-height:1.45}
-.steps .quote{font-style:italic}
-.steps li.on::before{background:var(--pulse); border-color:var(--pulse); box-shadow:0 0 0 5px var(--pulse-soft)}
-.steps li.done::before{background:var(--ink); border-color:var(--ink); box-shadow:none}
-.trace-foot{margin:12px 0 0; font-size:.85rem; color:var(--muted)}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font:inherit; font-weight:700; font-size:1rem; text-decoration:none; cursor:pointer; border:1.5px solid transparent; transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.amber{background:var(--amber); color:var(--night)}
+.btn.line{border-color:rgba(255,255,255,.35); color:var(--on-night); background:transparent}
+.btn.ink{background:var(--ink); color:var(--paper)}
+.btn.outline{border-color:var(--ink); color:var(--ink); background:transparent}
+.focus{margin-top:44px}
+.focus p{margin:0 0 12px; color:var(--on-night-muted); font-size:.93rem}
+.chips{display:flex; gap:10px; flex-wrap:wrap}
+.chip{font:inherit; font-size:.92rem; font-weight:600; padding:8px 15px; border-radius:999px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06); color:var(--on-night); cursor:pointer; transition:background .15s,border-color .15s}
+.chip:hover{background:rgba(242,169,59,.16); border-color:var(--amber)}
 
 /* ---------- sections ---------- */
-section{padding:72px 0}
-section + section{border-top:1px solid var(--line)}
-h2{font-size:clamp(1.7rem,3vw,2.2rem); letter-spacing:-.025em; line-height:1.15; margin:0 0 10px; font-weight:800}
-.lede{color:var(--muted); margin:0 0 44px; max-width:60ch}
+section{padding:96px 0}
+.sec-head{display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-bottom:28px}
+h2{font-size:clamp(2rem,4vw,3rem); letter-spacing:-.035em; line-height:1.05; margin:0; font-weight:800}
+.lede{color:var(--muted); margin:10px 0 0; max-width:56ch}
 
-/* featured project */
-.feature{display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:64px}
-@media (max-width:880px){ .feature{grid-template-columns:1fr; gap:28px} }
-.feature h3{font-size:1.65rem; letter-spacing:-.02em; margin:0 0 4px; line-height:1.2}
-.when{color:var(--muted); font-size:.92rem; margin:0 0 16px}
-.feature p{margin:0 0 14px; max-width:58ch}
-.results{border-left:3px solid var(--pulse); padding:4px 0 4px 22px}
-.results h4,.side h4{font-size:.95rem; margin:0 0 12px; font-weight:700}
-.result{margin:0 0 16px}
-.result b{display:block; font-size:1.55rem; letter-spacing:-.02em; line-height:1.15}
-.result span{color:var(--muted); font-size:.92rem}
-.stack{color:var(--muted); font-size:.88rem; margin:14px 0 0}
-.links{display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-weight:600; font-size:.95rem}
-.links:empty{display:none}
+/* filters */
+.filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px}
+.filters button{font:inherit; font-size:.92rem; font-weight:600; padding:8px 16px; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
 
-/* other projects */
-.grid{display:grid; grid-template-columns:1fr 1fr; gap:56px 48px}
-@media (max-width:760px){ .grid{grid-template-columns:1fr; gap:44px} }
-.proj h3{font-size:1.25rem; letter-spacing:-.015em; margin:0 0 2px; line-height:1.25}
-.proj p{margin:0 0 10px; max-width:58ch}
-.proj ul{margin:0 0 6px; padding-left:18px}
-.proj li{margin:0 0 6px}
-.proj .outcome{font-weight:600}
-.shot[hidden]{display:none}
-.shot{display:block; width:100%; border-radius:12px; border:1px solid var(--line); margin:0 0 16px}
+/* cards */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+@media (max-width:1000px){ .cards{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .cards{grid-template-columns:1fr} }
+.card{all:unset; box-sizing:border-box; display:flex; flex-direction:column; background:var(--surface); border-radius:22px; overflow:hidden; cursor:pointer; box-shadow:var(--shadow); border:1px solid var(--line); transition:transform .2s ease, box-shadow .2s ease; text-align:left}
+.card:hover{transform:translateY(-4px); box-shadow:0 2px 4px rgba(14,27,46,.08), 0 18px 40px rgba(14,27,46,.16)}
+.card:focus-visible{outline:2px solid var(--amber); outline-offset:3px}
+.card.hide{display:none}
+.card.featured{grid-column:span 2; grid-row:span 2}
+@media (max-width:1000px){ .card.featured{grid-row:auto} }
+@media (max-width:640px){ .card.featured{grid-column:auto} }
+.art{position:relative; background:var(--c); aspect-ratio:2/1; overflow:hidden; flex:none}
+.card.featured .art{aspect-ratio:auto; flex:1; min-height:260px}
+@media (max-width:640px){ .card.featured .art{flex:none; min-height:0; aspect-ratio:2/1} }
+.art svg{position:absolute; inset:0; width:100%; height:100%}
+.art .anim{transition:transform .5s ease}
+.card:hover .art .anim{transform:translateX(-6%)}
+.card:hover .art .pop{transform:scale(1.08)}
+.art .pop{transform-origin:center; transform-box:fill-box; transition:transform .4s ease}
+.body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1}
+.card.featured .body{padding:26px 30px 28px; flex:none}
+.card h3{font-size:1.32rem; line-height:1.15; letter-spacing:-.02em; margin:0}
+.card.featured h3{font-size:clamp(1.6rem,2.6vw,2.2rem)}
+.hook{color:var(--muted); margin:0; font-size:.98rem; line-height:1.5}
+.win{margin:2px 0 0; font-weight:700; font-size:.95rem; display:flex; gap:9px; align-items:baseline}
+.win::before{content:""; width:8px; height:8px; border-radius:2px; background:var(--amber); flex:none; transform:translateY(-1px)}
+.tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; padding-top:8px}
+.tags span{font-size:.78rem; font-weight:600; padding:3px 10px; border-radius:999px; background:var(--paper); color:var(--muted); border:1px solid var(--line)}
+.mini{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px}
+@media (max-width:640px){ .mini{grid-template-columns:1fr} }
+.mini div{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:12px 14px}
+.mini b{display:block; font-size:1.25rem; letter-spacing:-.02em; line-height:1.15}
+.mini span{display:block; color:var(--muted); font-size:.82rem; line-height:1.35; margin-top:4px}
+.open{font-weight:700; font-size:.92rem; color:var(--link); margin-top:4px}
 
-/* experience timeline */
-.timeline{list-style:none; padding:0; margin:0; border-left:2px solid var(--line)}
-.timeline > li{position:relative; padding:0 0 40px 28px}
-.timeline > li:last-child{padding-bottom:0}
-.timeline > li::before{content:""; position:absolute; left:-7px; top:9px; width:12px; height:12px; border-radius:50%; background:var(--ink)}
-.timeline h3{font-size:1.2rem; margin:0; letter-spacing:-.01em}
-.timeline ul{list-style:disc; margin:10px 0 0; padding-left:18px; max-width:68ch}
-.timeline li li{margin:0 0 6px}
+/* ---------- modal ---------- */
+.modal{position:fixed; inset:0; z-index:50; display:none}
+.modal.on{display:block}
+.scrim{position:absolute; inset:0; background:rgba(8,14,26,.62); backdrop-filter:blur(4px); opacity:0; transition:opacity .25s}
+.modal.on .scrim{opacity:1}
+.sheet{position:absolute; top:calc(env(safe-area-inset-top,0px) + 24px); bottom:24px; left:50%; width:min(980px, calc(100% - 32px)); transform:translate(-50%,24px); opacity:0; transition:transform .3s ease, opacity .3s ease; background:var(--paper); border-radius:26px; overflow:auto; overscroll-behavior:contain; box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.modal.on .sheet{transform:translate(-50%,0); opacity:1}
+@media (max-width:640px){ .sheet{top:env(safe-area-inset-top,0px); bottom:0; width:100%; border-radius:0; padding-bottom:env(safe-area-inset-bottom,0px)} }
+.m-art{position:relative; background:var(--c); height:260px; color:#fff}
+.m-art svg{position:absolute; inset:0; width:100%; height:100%}
+.m-top{position:sticky; top:0; z-index:3; display:flex; justify-content:space-between; padding:14px; pointer-events:none}
+.m-top button{pointer-events:auto; font:inherit; font-weight:700; font-size:.9rem; border:none; border-radius:999px; padding:9px 16px; background:rgba(14,27,46,.75); color:#fff; cursor:pointer; backdrop-filter:blur(6px)}
+.m-body{padding:34px clamp(20px,5vw,56px) 48px; margin-top:-52px}
+.m-title{background:var(--paper); border-radius:20px 20px 0 0; position:relative; padding-top:22px}
+.m-when{color:var(--muted); font-size:.93rem; margin:0 0 6px}
+.m-body h2{font-size:clamp(1.8rem,4vw,2.7rem); margin:0 0 10px}
+.m-hook{font-size:1.15rem; color:var(--muted); margin:0 0 22px; max-width:60ch}
+.m-links{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:34px}
+.m-links:empty{display:none}
+.metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:0 0 40px}
+.metric{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px 20px}
+.metric b{display:block; font-size:clamp(1.5rem,3vw,2rem); letter-spacing:-.03em; line-height:1.1; color:var(--ink)}
+.metric span{color:var(--muted); font-size:.92rem; line-height:1.4; display:block; margin-top:6px}
+.m-cols{display:grid; grid-template-columns:1.1fr .9fr; gap:44px}
+@media (max-width:780px){ .m-cols{grid-template-columns:1fr; gap:34px} }
+.m-body h4{font-size:1.1rem; margin:0 0 12px; letter-spacing:-.01em}
+.m-body p{margin:0 0 14px; max-width:62ch}
+.m-body ul.built{margin:0 0 6px; padding-left:20px}
+.m-body ul.built li{margin:0 0 9px}
+.flow{list-style:none; counter-reset:s; margin:0; padding:0; position:relative}
+.flow::before{content:""; position:absolute; left:15px; top:16px; bottom:16px; width:2px; background:var(--line)}
+.flow li{counter-increment:s; position:relative; padding:4px 0 16px 48px}
+.flow li::before{content:counter(s); position:absolute; left:0; top:2px; width:32px; height:32px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:.9rem; background:var(--surface); border:2px solid var(--line); color:var(--muted); transition:all .3s}
+.flow li.on::before{background:var(--amber); border-color:var(--amber); color:var(--night); transform:scale(1.1)}
+.flow li.done::before{background:var(--ink); border-color:var(--ink); color:var(--paper)}
+.flow b{display:block; font-size:1rem}
+.flow span{color:var(--muted); font-size:.93rem; line-height:1.45; display:block}
+.replay{font:inherit; font-size:.88rem; font-weight:700; color:var(--link); background:none; border:none; padding:0; cursor:pointer; margin-left:8px}
+.stackchips{display:flex; gap:8px; flex-wrap:wrap; margin-top:30px}
+.stackchips span{font-size:.85rem; font-weight:600; padding:5px 12px; border-radius:999px; background:var(--surface); border:1px solid var(--line)}
+.m-nav{display:flex; justify-content:space-between; gap:12px; margin-top:44px; padding-top:24px; border-top:1px solid var(--line)}
+.m-nav button{font:inherit; background:none; border:none; cursor:pointer; color:var(--ink); text-align:left; padding:0; max-width:48%}
+.m-nav button:last-child{text-align:right; margin-left:auto}
+.m-nav small{display:block; color:var(--muted); font-size:.85rem}
+.m-nav strong{font-size:1.02rem}
 
-/* about */
-.about{display:grid; grid-template-columns:repeat(3,1fr); gap:40px}
-@media (max-width:880px){ .about{grid-template-columns:1fr; gap:32px} }
-.about h3{font-size:1.05rem; margin:0 0 12px}
-.about ul{list-style:none; padding:0; margin:0}
-.about li{margin:0 0 12px; line-height:1.45}
-.about li span{display:block; color:var(--muted); font-size:.9rem}
+/* ---------- experience ---------- */
+#experience{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.jobs{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:34px}
+@media (max-width:780px){ .jobs{grid-template-columns:1fr} }
+.job{border:1px solid var(--line); border-radius:22px; padding:26px 26px 22px; background:var(--paper); position:relative}
+.job .yr{position:absolute; top:22px; right:24px; font-weight:800; font-size:2.4rem; letter-spacing:-.04em; color:var(--line); line-height:1}
+.job h3{margin:0; font-size:1.25rem; letter-spacing:-.015em; padding-right:90px}
+.job .when{color:var(--muted); font-size:.92rem; margin:2px 0 14px}
+.job ul{margin:0; padding-left:18px}
+.job li{margin:0 0 8px}
 
-/* contact */
-.contact{padding:88px 0 96px}
-.contact h2{font-size:clamp(2rem,4.4vw,3rem); max-width:18ch}
-.contact .lede{margin-bottom:28px}
-footer{padding:28px 0 40px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line)}
+/* ---------- about ---------- */
+.about{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:34px}
+@media (max-width:900px){ .about{grid-template-columns:1fr} }
+.about > div{background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:24px 26px}
+.about h3{font-size:1.1rem; margin:0 0 14px}
+.about ul{list-style:none; margin:0; padding:0}
+.about li{margin:0 0 14px; line-height:1.4}
+.about li:last-child{margin-bottom:0}
+.about li span{display:block; color:var(--muted); font-size:.9rem; margin-top:2px}
+.langs li{display:flex; justify-content:space-between; gap:12px; align-items:baseline}
+.langs li span{margin:0}
 
-@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+/* ---------- contact ---------- */
+.contact{background:var(--night); color:var(--on-night); padding:110px 0}
+.contact h2{font-size:clamp(2.4rem,6vw,4.6rem); max-width:14ch; letter-spacing:-.045em; line-height:.98}
+.contact h2 span{color:var(--amber)}
+.contact p{color:var(--on-night-muted); max-width:52ch; margin:22px 0 32px; font-size:1.1rem}
+footer{background:var(--night); color:var(--on-night-muted); font-size:.85rem; padding:0 0 34px}
+footer .wrap{border-top:1px solid rgba(255,255,255,.08); padding-top:24px}
+
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important; animation:none!important} }
 </style>
 </head>
 <body>
 
 <header class="bar" id="bar">
   <div class="wrap">
-    <a class="logo" href="#top">Isra Brini</a>
+    <a class="logo" href="#top"><i></i>Isra Brini</a>
     <nav aria-label="Main">
-      <a href="#work">Work</a>
+      <a href="#work">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a class="cv" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>CV</a>
+      <a class="cv" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Get my CV</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 <div class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap">
-    <div>
-      <h1>I build AI agents that do real work.</h1>
-      <p class="intro">I’m a final-year software engineering student at INSAT, Tunis. In <strong>two internships at Neoxam</strong>, a financial software company, I deployed an <strong>agent-based tool</strong> that migrates entire test suites on its own, and added <strong>source citations</strong> to a RAG assistant so every answer can be checked.</p>
-      <div class="actions">
-        <a class="btn primary" href="#work">See my projects</a>
-        <a class="btn ghost" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
-      </div>
-      <p class="avail">Looking for a 6-month end-of-studies internship from January or February 2027. Open to relocating to Paris.</p>
+    <span class="status"><i></i><span><b>Open to a 6-month internship</b> from January 2027, in Paris</span></span>
+    <h1>I build AI agents <span>that do real work.</span></h1>
+    <p class="intro">I’m Isra, a final-year software engineering student at INSAT. At <strong>Neoxam</strong>, I deployed an <strong>agent-based tool</strong> that migrates entire test suites on its own, and taught a RAG assistant to <strong>cite its sources</strong>. My projects beat a hand-made schedule and a published research baseline.</p>
+    <div class="actions">
+      <a class="btn amber" href="#work">Explore my projects</a>
+      <a class="btn line" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
     </div>
-
-    <figure class="trace" aria-label="How Juriq turns a sentence into a valid schedule">
-      <div class="trace-head">
-        <figcaption class="trace-title">Inside Juriq: one request, five steps</figcaption>
-        <button class="replay" id="replay" type="button">Replay</button>
+    <div class="focus">
+      <p>Jump to what interests you</p>
+      <div class="chips">
+        <button class="chip" data-jump="agents">AI agents and LLMs</button>
+        <button class="chip" data-jump="dl">Deep learning</button>
+        <button class="chip" data-jump="cv">Computer vision</button>
+        <button class="chip" data-jump="data">Real-time data</button>
+        <button class="chip" data-jump="web">Full-stack apps</button>
       </div>
-      <ol class="steps" id="steps">
-        <li><span class="who">An administrator types a request</span><span class="what quote">“Dr. Mansour can’t attend on Tuesday morning.”</span></li>
-        <li><span class="who">Translator agent (LLM)</span><span class="what">Turns the sentence into a structured constraint.</span></li>
-        <li><span class="who">Orchestrator</span><span class="what">Decides whether to patch the schedule or re-solve it.</span></li>
-        <li><span class="who">CP-SAT solver</span><span class="what">Finds a schedule that meets every hard rule.</span></li>
-        <li><span class="who">Reflector agent</span><span class="what">Scores fairness and expertise, and flags what to improve.</span></li>
-      </ol>
-      <p class="trace-foot">Result on a real session: fairer workloads and better expertise matching than the schedule made by hand.</p>
-    </figure>
+    </div>
   </div>
 </div>
 
 <section id="work">
   <div class="wrap">
-    <h2>Selected work</h2>
-    <p class="lede">Each project started from a real problem and ends with a measured result.</p>
-
-    <article class="feature" id="juriq">
+    <div class="sec-head">
       <div>
-        <h3>Juriq: scheduling thesis-defense juries with AI agents</h3>
-        <p class="when">February to June 2026</p>
-        <img class="shot" data-img="juriq" alt="Juriq interface" hidden>
-        <p>Every year, someone builds the defense schedule by hand: 53 projects, 21 professors and 80 time slots, with unavailabilities, conflicts of interest and fairness to respect. It takes days, and it’s never quite fair.</p>
-        <p>Juriq lets administrators describe changes in plain language. An LLM agent turns them into constraints, a constraint solver guarantees the hard rules are never broken, and a reviewing agent explains what could still be better. When no schedule is possible, the system diagnoses why and proposes which rule to relax.</p>
-        <p>Rules can be switched on, off or reweighted at runtime without touching the code, and schedules export to PDF, Excel, Word and CSV.</p>
-        <p class="stack">Python, LangGraph, OR-Tools CP-SAT, FastAPI, PostgreSQL, Redis, React, Docker</p>
-        <div class="links" data-links="juriq"></div>
+        <h2>Projects</h2>
+        <p class="lede">Pick a project to see the problem, how it works and what it achieved.</p>
       </div>
-      <div class="results">
-        <h4>Compared with the schedule made by hand</h4>
-        <p class="result"><b>4.59 to 2.63</b><span>Spread of workload between professors (standard deviation)</span></p>
-        <p class="result"><b>60% to 72.7%</b><span>Juries matched to the project’s area of expertise</span></p>
-        <p class="result"><b>5 to 1</b><span>Professors over their maximum number of defenses</span></p>
-      </div>
-    </article>
-
-    <div class="grid">
-      <article class="proj" id="respiratory">
-        <img class="shot" data-img="respiratory" alt="Respiratory sound classification results" hidden>
-        <h3>Detecting lung disease from breathing sounds</h3>
-        <p class="when">April to May 2026</p>
-        <p>I reproduced a published deep-learning method that classifies breathing cycles as normal, crackle or wheeze, then set out to beat it.</p>
-        <ul>
-          <li>Adapted an Audio Spectrogram Transformer and added targeted data augmentation, raising sensitivity from 0.68 to 0.75.</li>
-          <li>Found a structural limit in the single-output design and rebuilt it in two stages: first detect anything abnormal, then name the type.</li>
-          <li class="outcome">First version to meet both clinical targets at once, outperforming the published baseline.</li>
-        </ul>
-        <p class="stack">PyTorch, Hugging Face Transformers, SpecAugment, SAM optimizer, Focal Loss</p>
-        <div class="links" data-links="respiratory"></div>
-      </article>
-
-      <article class="proj" id="plants">
-        <img class="shot" data-img="plants" alt="Plant disease detection app with a Grad-CAM heatmap" hidden>
-        <h3>Diagnosing plant diseases from a photo of a leaf</h3>
-        <p>Upload a photo of a leaf and the app names the likely disease, says how confident it is, and shows which parts of the leaf the model looked at.</p>
-        <ul>
-          <li>Fine-tuned a pretrained image classifier in two stages on the New Plant Diseases dataset.</li>
-          <li>Built two image preprocessing options: a standard one, and a stronger clean-up with median blur, CLAHE contrast enhancement and sharpening.</li>
-          <li class="outcome">Grad-CAM heatmaps show why the model made each prediction, not just what it predicted.</li>
-        </ul>
-        <p class="stack">PyTorch, Grad-CAM, Streamlit</p>
-        <div class="links" data-links="plants"></div>
-      </article>
-
-      <article class="proj" id="trends">
-        <img class="shot" data-img="trends" alt="Trend analyzer dashboard" hidden>
-        <h3>Spotting what’s trending across Twitch, YouTube and Reddit</h3>
-        <p class="when">April to June 2026</p>
-        <p>A distributed pipeline that reads three platforms at once and surfaces the topics rising everywhere, in near real time.</p>
-        <ul>
-          <li>Unified three very different data formats into one event stream with Kafka.</li>
-          <li>Detected sudden spikes and scored sentiment over 10-minute windows with Spark, against baselines built from millions of past records.</li>
-          <li class="outcome">A live dashboard comparing trends and sentiment across platforms.</li>
-        </ul>
-        <p class="stack">Kafka, Spark Structured Streaming, Hadoop HDFS, MongoDB, PostgreSQL, Docker Compose, Streamlit</p>
-        <div class="links" data-links="trends"></div>
-      </article>
-
-      <article class="proj" id="smartsight">
-        <img class="shot" data-img="smartsight" alt="SmartSight glasses prototype" hidden>
-        <h3>SmartSight: glasses that guide visually impaired people</h3>
-        <p class="when">February to June 2025</p>
-        <p>Wearable glasses that spot obstacles in real time and tell the wearer where to go, by voice or vibration.</p>
-        <ul>
-          <li>Compared several detection models for speed and accuracy, then ran YOLOv8 Nano on a Raspberry Pi with depth estimation.</li>
-          <li>Turned detections into simple instructions: stop, left, right or straight ahead.</li>
-          <li class="outcome">Validated end to end in real walking trials, with a companion mobile app.</li>
-        </ul>
-        <p class="stack">Python, OpenCV, YOLOv8, MiDaS, Raspberry Pi, MQTT, React Native</p>
-        <div class="links" data-links="smartsight"></div>
-      </article>
-
-      <article class="proj" id="mentora">
-        <img class="shot" data-img="mentora" alt="Mentora learning platform" hidden>
-        <h3>Mentora: learning web frameworks with an AI tutor</h3>
-        <p class="when">June 2025</p>
-        <p>A learning platform with progressive paths, hands-on exercises, quizzes and badges, plus an AI assistant that answers learners’ questions.</p>
-        <ul>
-          <li>Ran a fine-tuned open model locally as the tutor, with caching to keep answers fast.</li>
-          <li>Built it as independent services so each part can scale on its own.</li>
-          <li class="outcome">Roles for learners, instructors and admins, certification, and secure sign-in with two-factor authentication.</li>
-        </ul>
-        <p class="stack">React, NestJS, TypeScript, Ollama (DeepSeek R1), Redis, Docker, Azure</p>
-        <div class="links" data-links="mentora"></div>
-      </article>
     </div>
+    <div class="filters" role="group" aria-label="Filter projects" id="filters">
+      <button data-f="all" aria-pressed="true">All</button>
+      <button data-f="agents" aria-pressed="false">AI agents and LLMs</button>
+      <button data-f="dl" aria-pressed="false">Deep learning</button>
+      <button data-f="cv" aria-pressed="false">Computer vision</button>
+      <button data-f="data" aria-pressed="false">Real-time data</button>
+      <button data-f="web" aria-pressed="false">Full-stack apps</button>
+    </div>
+    <div class="cards" id="cards"></div>
   </div>
 </section>
 
@@ -283,8 +265,9 @@ footer{padding:28px 0 40px; color:var(--muted); font-size:.85rem; border-top:1px
   <div class="wrap">
     <h2>Experience</h2>
     <p class="lede">Two summers at Neoxam, a software company serving asset managers and banks.</p>
-    <ol class="timeline">
-      <li>
+    <div class="jobs">
+      <article class="job">
+        <span class="yr">2026</span>
         <h3>Software Engineering Intern, Neoxam</h3>
         <p class="when">June to August 2026, Tunis</p>
         <ul>
@@ -292,23 +275,24 @@ footer{padding:28px 0 40px; color:var(--muted); font-size:.85rem; border-top:1px
           <li>Added a persistent memory of validated migrations, so repeated work gets faster over time.</li>
           <li>Split large files across autonomous sub-agents, cutting token usage on big test suites.</li>
         </ul>
-      </li>
-      <li>
+      </article>
+      <article class="job">
+        <span class="yr">2025</span>
         <h3>Software Engineering Intern, Neoxam</h3>
         <p class="when">June to August 2025, Tunis</p>
         <ul>
           <li>Improved the company’s internal RAG assistant, which answers questions from internal knowledge.</li>
           <li>Added dynamic citations, so every answer points to the documents it came from.</li>
         </ul>
-      </li>
-    </ol>
+      </article>
+    </div>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap">
-    <h2>About</h2>
-    <p class="lede">Engineering student, organizer, and always learning a new language.</p>
+    <h2>About me</h2>
+    <p class="lede">Engineering student, event organizer, and always learning a new language.</p>
     <div class="about">
       <div>
         <h3>Education</h3>
@@ -321,14 +305,14 @@ footer{padding:28px 0 40px; color:var(--muted); font-size:.85rem; border-top:1px
       <div>
         <h3>Beyond class</h3>
         <ul>
-          <li>Vice President, Data Overflow<span>Organized an AI, machine learning and data science bootcamp, 2024 to 2025</span></li>
+          <li>Vice President, Data Overflow<span>Organized an AI and data science bootcamp, 2024 to 2025</span></li>
           <li>Participant Relations Lead, National AI Summit<span>Supported participants throughout the event, 2024</span></li>
           <li>Team Coordinator, Securinets INSAT<span>Cybersecurity club, 2023 to 2024</span></li>
         </ul>
       </div>
       <div>
         <h3>Languages</h3>
-        <ul>
+        <ul class="langs">
           <li>Arabic<span>Native</span></li>
           <li>English<span>Fluent (C2)</span></li>
           <li>French<span>Upper intermediate (B2)</span></li>
@@ -341,23 +325,27 @@ footer{padding:28px 0 40px; color:var(--muted); font-size:.85rem; border-top:1px
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2>Let’s talk about your team.</h2>
-    <p class="lede">I’m available for a 6-month internship from January or February 2027, and my school provides the internship agreement. The fastest way to reach me is by email.</p>
+    <h2>Let’s build something <span>that works.</span></h2>
+    <p>I’m available for a 6-month internship from January or February 2027, open to relocating to Paris, and my school provides the internship agreement. Email is the fastest way to reach me.</p>
     <div class="actions">
-      <a class="btn primary" href="mailto:isra.brini@gmail.com" data-track="email_click">isra.brini@gmail.com</a>
-      <a class="btn ghost" href="https://linkedin.com/in/IsraBrini" target="_blank" rel="noopener" data-track="linkedin_click">LinkedIn</a>
-      <a class="btn ghost" href="https://github.com/issrabrini" target="_blank" rel="noopener" data-track="github_click">GitHub</a>
-      <a class="btn ghost" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
+      <a class="btn amber" href="mailto:isra.brini@gmail.com" data-track="email_click">isra.brini@gmail.com</a>
+      <a class="btn line" href="https://linkedin.com/in/IsraBrini" target="_blank" rel="noopener" data-track="linkedin_click">LinkedIn</a>
+      <a class="btn line" href="https://github.com/issrabrini" target="_blank" rel="noopener" data-track="github_click">GitHub</a>
+      <a class="btn line" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
     </div>
   </div>
 </section>
 </main>
-
 <footer><div class="wrap">Isra Brini, 2026. Phone: +216 27 077 002</div></footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-title" id="sheet"></div>
+</div>
 
 <script>
 /* ==========================================================
-   1) YOUR LINKS: paste URLs here; empty ones are hidden.
+   1) YOUR LINKS: empty ones are hidden automatically.
    ========================================================== */
 const LINKS = {
   juriq:       { github: "https://github.com/SalemProjetGL4/jury_scheduling_platform", demo: "", video: "" },
@@ -367,16 +355,100 @@ const LINKS = {
   smartsight:  { github: "https://github.com/SalemProjetGL3/SmartSight-Raspberry", demo: "https://smart-sight-six.vercel.app/", video: "" },
   mentora:     { github: "https://github.com/SalemProjetGL3/Mentora", demo: "", video: "" },
 };
-/* Optional screenshots, e.g. "img/juriq.png" */
+/* Optional screenshots shown inside each project, e.g. "img/juriq.png" */
 const IMAGES = { juriq: "", respiratory: "", plants: "", trends: "", smartsight: "", mentora: "" };
 
 /* ==========================================================
    2) TRACKING: paste your Google Apps Script web app URL.
-   Send links like  https://YOU.github.io/?ref=alphaguard-adnane
+   Links look like  https://issrabrini.github.io/?ref=alphaguard-adnane
    Open the site once with ?me=1 so your own visits aren't logged.
    ========================================================== */
 const TRACK_URL = "";
 
+/* ---------- project content ---------- */
+const ART = {
+  juriq: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim" fill="none">${
+    Array.from({length:6},(_,r)=>Array.from({length:12},(_,c)=>{const on=[3,8,14,17,22,27,31,36,41,44,50,55,59,63,68].includes(r*12+c);
+      return `<rect x="${18+c*32}" y="${18+r*28}" width="26" height="20" rx="5" fill="${on?'#F2A93B':'rgba(255,255,255,.14)'}"/>`}).join('')).join('')
+  }</g><path class="pop" d="M43 28 L139 52 L235 80 L331 108" stroke="#fff" stroke-width="3" fill="none" stroke-dasharray="6 7" stroke-linecap="round"/></svg>`,
+  respiratory: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim">${
+    Array.from({length:30},(_,i)=>{const h=18+Math.abs(Math.sin(i*.55))*70+(i%7===3?38:0);return `<rect x="${i*15+4}" y="${100-h/2}" width="9" height="${h}" rx="4" fill="rgba(255,255,255,${i%7===3?'.95':'.28'})"/>`}).join('')
+  }</g><path class="pop" d="M0 150 C40 120 60 175 100 150 S160 120 200 150 S260 178 300 150 S360 122 400 150" stroke="#F2A93B" stroke-width="4" fill="none"/></svg>`,
+  plants: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="hg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF5A3C" stop-opacity=".95"/><stop offset=".45" stop-color="#F2A93B" stop-opacity=".75"/><stop offset="1" stop-color="#F2A93B" stop-opacity="0"/></radialGradient></defs><g class="anim"><path d="M70 170 C90 60 220 20 330 40 C320 140 220 190 70 170 Z" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.75)" stroke-width="3"/><path d="M70 170 C160 120 240 80 330 40" stroke="rgba(255,255,255,.75)" stroke-width="3" fill="none"/>${[[150,128],[200,104],[250,80]].map(([x,y])=>`<path d="M${x} ${y} l-28 -30 M${x} ${y} l14 38" stroke="rgba(255,255,255,.5)" stroke-width="2"/>`).join('')}</g><circle class="pop" cx="235" cy="108" r="52" fill="url(#hg)"/></svg>`,
+  trends: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim" stroke="rgba(255,255,255,.14)">${Array.from({length:9},(_,i)=>`<line x1="0" x2="440" y1="${20+i*20}" y2="${20+i*20}"/>`).join('')}</g><path class="anim" d="M0 150 L40 140 L80 146 L120 132 L160 138 L200 120 L230 126 L262 40 L290 110 L330 100 L370 112 L420 96" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><circle class="pop" cx="262" cy="40" r="11" fill="#0E1B2E" stroke="#fff" stroke-width="4"/></svg>`,
+  smartsight: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2">${[60,110,160,210].map(r=>`<path d="M${200-r} 210 A${r} ${r} 0 0 1 ${200+r} 210"/>`).join('')}</g><g class="pop"><path d="M150 52 h-22 v22 M250 52 h22 v22 M150 168 h-22 v-22 M250 168 h22 v-22" stroke="#F2A93B" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="200" cy="88" r="15" fill="rgba(255,255,255,.85)"/><path d="M178 160 v-28 a22 22 0 0 1 44 0 v28" fill="rgba(255,255,255,.85)"/></g><rect x="128" y="30" width="100" height="18" rx="5" fill="#F2A93B"/><text x="136" y="43" font-family="Arial" font-size="11" font-weight="700" fill="#0E1B2E">person 0.94</text></svg>`,
+  mentora: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><path class="anim" d="M20 170 C90 170 80 100 150 100 S230 40 300 52 S380 30 420 20" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/><g class="anim">${[[20,170],[150,100],[300,52]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="13" fill="#fff"/>`).join('')}</g><g class="pop"><circle cx="360" cy="34" r="22" fill="#F2A93B"/><path d="M350 34 l7 7 l13 -14" stroke="#0E1B2E" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg>`,
+};
+const PROJECTS = [
+ { id:"juriq", color:"#3550D8", featured:true, cats:["agents","web"],
+   title:"Juriq", sub:"Scheduling thesis-defense juries with AI agents",
+   when:"February to June 2026", win:"Fairer than the schedule made by hand",
+   hook:"Administrators describe changes in plain language. LLM agents and a constraint solver turn them into a valid schedule.",
+   tags:["Multi-agent","LLMs","Optimization","Full-stack"],
+   problem:"Every year, someone builds the defense schedule by hand: 53 projects, 21 professors and 80 time slots, with unavailabilities, conflicts of interest and fairness to respect. It takes days, and it’s never quite fair.",
+   built:["An LLM agent turns free-text requests into structured constraints.","A solver (OR-Tools CP-SAT) guarantees the hard rules are never broken, while minimizing a weighted penalty on the soft ones.","A reviewing agent scores each schedule and explains what could still be better; when no schedule is possible, it diagnoses why and suggests which rule to relax.","Rules can be switched on, off or reweighted at runtime, and schedules export to PDF, Excel, Word and CSV."],
+   metrics:[["4.59 → 2.63","Spread of workload between professors"],["60% → 72.7%","Juries matched to the project’s expertise"],["5 → 1","Professors over their defense limit"]],
+   flowTitle:"One request, five steps",
+   flow:[["An administrator types a request","“Dr. Mansour can’t attend on Tuesday morning.”"],["Translator agent (LLM)","Turns the sentence into a structured constraint."],["Orchestrator","Decides whether to patch the schedule or re-solve it."],["CP-SAT solver","Finds a schedule that meets every hard rule."],["Reflector agent","Scores fairness and expertise, and flags what to improve."]],
+   stack:["Python","LangGraph","LLMs","OR-Tools CP-SAT","FastAPI","PostgreSQL","Redis","React","Docker"] },
+ { id:"respiratory", color:"#C2416B", cats:["dl"],
+   title:"Respiratory Sound Classification", sub:"Detecting lung problems from breathing sounds",
+   when:"April to May 2026", win:"Outperformed the published baseline",
+   hook:"I reproduced a published deep-learning method on breathing recordings, then redesigned it to beat it.",
+   tags:["Deep learning","Transformers","Audio","Research"],
+   problem:"Doctors listen for crackles and wheezes to spot lung disease, but these sounds are short, subtle and easy to confuse. I started from a published model on the ICBHI 2017 dataset and set out to do better.",
+   built:["Adapted an Audio Spectrogram Transformer: richer embedding, partial fine-tuning of the last attention layers, and two-phase data augmentation.","Found a structural limit in the single-output design and rebuilt it in two stages: first detect anything abnormal, then name the type.","Trained with a warm-up phase followed by sharpness-aware optimization (SAM) and a loss focused on hard examples."],
+   metrics:[["0.68 → 0.75","Sensitivity after the first iteration"],["Both targets","First version to meet both clinical targets at once"],["0.6610","Composite score, above the published baseline"]],
+   flowTitle:"How the research went",
+   flow:[["Reproduce","Rebuilt the published baseline and its numbers."],["Adapt","Fine-tuned the transformer and added augmentation."],["Diagnose","Found why a single output head hit a ceiling."],["Redesign","Two specialized heads: detect, then classify."]],
+   stack:["Python","PyTorch","Hugging Face Transformers","SpecAugment","SAM optimizer","Focal Loss","librosa"] },
+ { id:"plants", color:"#2F8F5B", cats:["dl","cv"],
+   title:"Plant Disease Detection", sub:"Diagnosing plant diseases from a photo of a leaf",
+   when:"", win:"Shows why it made each prediction",
+   hook:"Upload a leaf photo and the app names the likely disease, says how sure it is, and highlights where it looked.",
+   tags:["Deep learning","Computer vision","Explainable AI"],
+   problem:"Catching a plant disease early can save a harvest, but telling diseases apart from a leaf takes an expert eye.",
+   built:["Fine-tuned a pretrained image classifier in two stages on the New Plant Diseases dataset.","Built two preprocessing options: a standard one, and a stronger clean-up with median blur, CLAHE contrast enhancement and sharpening.","Added Grad-CAM heatmaps in a Streamlit app, so every prediction comes with its confidence and an explanation."],
+   metrics:[["2-stage","Fine-tuning of a pretrained classifier"],["Grad-CAM","Heatmap of the leaf regions behind each prediction"],["Confidence","Shown with every diagnosis"]],
+   flowTitle:"From photo to diagnosis",
+   flow:[["Upload","A photo of a single leaf."],["Preprocess","Same resizing and normalization as in evaluation."],["Classify","The fine-tuned model predicts the disease."],["Explain","Grad-CAM highlights the regions it relied on."]],
+   stack:["Python","PyTorch","Grad-CAM","Streamlit"] },
+ { id:"trends", color:"#B7791F", cats:["data"],
+   title:"Social Media Trend Analyzer", sub:"Spotting what’s trending across Twitch, YouTube and Reddit",
+   when:"April to June 2026", win:"Live trends from three platforms in one view",
+   hook:"A distributed pipeline that watches three platforms at once and flags topics as they spike.",
+   tags:["Kafka","Spark","Streaming","Big data"],
+   problem:"A topic can explode on Twitch before anyone notices it on Reddit. Catching it early means watching every platform at once, and each one speaks a different data format.",
+   built:["A Kafka backbone with one topic per platform, unifying three very different payloads into one event format.","Spark Structured Streaming jobs that aggregate keywords over 10-minute windows, detect spikes with Z-scores and score sentiment.","Spark batch jobs that compute historical baselines over millions of records stored in HDFS, with MongoDB for raw data and PostgreSQL for results."],
+   metrics:[["3 → 1","Platforms unified into a single event format"],["10 min","Windows for spike and sentiment detection"],["Millions","Past records behind each baseline"]],
+   flowTitle:"From post to trend",
+   flow:[["Ingest","Producers pull from the Twitch, YouTube and Reddit APIs."],["Normalize","Every message becomes the same event format in Kafka."],["Stream","Spark aggregates, detects spikes and scores sentiment."],["Compare","Batch baselines tell a real spike from a normal day."],["Show","A live dashboard compares platforms side by side."]],
+   stack:["Python","Apache Kafka","PySpark","Hadoop HDFS","MongoDB","PostgreSQL","Docker Compose","Streamlit"] },
+ { id:"smartsight", color:"#0F8A8A", cats:["cv","web"],
+   title:"SmartSight", sub:"Glasses that guide visually impaired people",
+   when:"February to June 2025", win:"Validated in real walking trials",
+   hook:"Wearable glasses that spot obstacles in real time and tell the wearer where to go, by voice or vibration.",
+   tags:["Computer vision","Edge AI","IoT","Mobile"],
+   problem:"Moving around safely is hard when you can’t see what’s ahead, and assistive devices need to react instantly on small, cheap hardware.",
+   built:["Compared several detection models on speed and accuracy, then deployed YOLOv8 Nano on a Raspberry Pi.","Combined box position, box size and MiDaS depth estimation into simple instructions: stop, left, right or straight ahead.","Streamed detections over MQTT to a React Native app with voice and vibration modes and language preferences."],
+   metrics:[["Real time","Detection running on a Raspberry Pi"],["4 commands","Stop, left, right or straight ahead"],["Field-tested","Validated end to end in real walking trials"]],
+   flowTitle:"From camera to guidance",
+   flow:[["See","The camera on the glasses captures the scene."],["Detect","YOLOv8 Nano finds obstacles on the device."],["Judge distance","Box size and depth cues estimate how close they are."],["Guide","The app speaks or vibrates the right instruction."]],
+   stack:["Python","OpenCV","YOLOv8","MiDaS","Raspberry Pi","MQTT","React Native","TypeScript"] },
+ { id:"mentora", color:"#6D4CC2", cats:["agents","web"],
+   title:"Mentora", sub:"Learning web frameworks with an AI tutor",
+   when:"June 2025", win:"An AI tutor running fully on local hardware",
+   hook:"A learning platform with progressive paths, exercises, quizzes and badges, plus an AI assistant that answers learners’ questions.",
+   tags:["LLMs","Microservices","Full-stack"],
+   problem:"Learning a modern web framework from documentation alone is slow and lonely, and most learners give up before they build anything real.",
+   built:["Progressive learning paths with hands-on exercises, quizzes, points and badges.","A fine-tuned open model (DeepSeek R1 via Ollama) running locally as the tutor, with Redis caching to keep answers fast.","Independent services for users, learning paths and the tutor, with roles, certification and two-factor sign-in."],
+   metrics:[["Local AI","Tutor runs without any external API"],["3 roles","Learners, instructors and administrators"],["Microservices","Each part scales and deploys on its own"]],
+   flowTitle:"A learner’s journey",
+   flow:[["Pick a path","Start a framework at the right level."],["Practice","Exercises and quizzes after each step."],["Ask the tutor","Get help from the AI assistant anytime."],["Get certified","Earn badges and a certificate."]],
+   stack:["React","NestJS","TypeScript","Ollama (DeepSeek R1)","Redis","Docker","Azure"] },
+];
+
+/* ---------- tracking ---------- */
 (function(){
   const params = new URLSearchParams(location.search);
   let me = false, ref = "";
@@ -388,7 +460,6 @@ const TRACK_URL = "";
     ref = sessionStorage.getItem("ref") || "";
   }catch(e){ ref = params.get("ref") || ""; }
   if(params.has("ref") || params.has("me")) history.replaceState(null, "", location.pathname + location.hash);
-
   window.track = function(event, detail){
     if(!TRACK_URL || me) return;
     const body = JSON.stringify({ ref, event, detail: detail || "", referrer: document.referrer,
@@ -396,55 +467,180 @@ const TRACK_URL = "";
     try{ fetch(TRACK_URL, { method:"POST", mode:"no-cors", keepalive:true,
       headers:{ "Content-Type":"text/plain;charset=utf-8" }, body }); }catch(e){}
   };
-
   track("visit");
-  // "engaged" = page visible for 15 seconds: filters out email link scanners
   let seen = 0, sent = false;
   const tick = setInterval(()=>{ if(document.visibilityState==="visible") seen++;
     if(seen >= 15 && !sent){ sent = true; track("engaged"); clearInterval(tick); } }, 1000);
-  const sections = new Set();
+  const viewed = new Set();
   const io = new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting && !sections.has(e.target.id)){ sections.add(e.target.id); track("section_view", e.target.id); }
-  }), { threshold:.35 });
+    if(e.isIntersecting && !viewed.has(e.target.id)){ viewed.add(e.target.id); track("section_view", e.target.id); }
+  }), { threshold:.3 });
   ["work","experience","contact"].forEach(id=>{ const el=document.getElementById(id); if(el) io.observe(el); });
-
   document.addEventListener("click", e=>{
     const a = e.target.closest("[data-track]"); if(a) track(a.dataset.track, a.dataset.detail || "");
   });
 })();
 
-/* ---------- render links and screenshots ---------- */
-const LABELS = { github:"Code on GitHub", demo:"Live demo", video:"Watch the demo" };
-document.querySelectorAll("[data-links]").forEach(box=>{
-  const key = box.dataset.links, l = LINKS[key] || {};
-  Object.keys(LABELS).forEach(k=>{ if(l[k]){
-    const a = document.createElement("a"); a.href = l[k]; a.target = "_blank"; a.rel = "noopener";
-    a.textContent = LABELS[k]; a.dataset.track = "project_link"; a.dataset.detail = key + ":" + k; box.appendChild(a);
-  }});
-});
-document.querySelectorAll("[data-img]").forEach(img=>{
-  const src = IMAGES[img.dataset.img]; if(src){ img.src = src; img.hidden = false; }
+/* ---------- cards ---------- */
+const esc = s => s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cards = document.getElementById("cards");
+PROJECTS.forEach(p=>{
+  const b = document.createElement("button");
+  b.className = "card" + (p.featured ? " featured" : "");
+  b.dataset.id = p.id; b.dataset.cats = p.cats.join(" ");
+  b.setAttribute("aria-label", "Open project: " + p.title);
+  const art = p.featured ? ART[p.id].replace('xMidYMid slice','xMidYMid meet') : ART[p.id];
+  const extra = p.featured ? `<div class="mini">${p.metrics.map(m=>`<div><b>${esc(m[0])}</b><span>${esc(m[1])}</span></div>`).join("")}</div>` : "";
+  b.innerHTML = `<div class="art" style="--c:${p.color}">${art}</div>
+    <div class="body"><h3>${esc(p.title)}</h3><p class="hook"><strong>${esc(p.sub)}.</strong> ${esc(p.hook)}</p>
+    <p class="win">${esc(p.win)}</p>${extra}<div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+    <span class="open">Open project</span></div>`;
+  b.addEventListener("click", ()=>openProject(p.id, true));
+  cards.appendChild(b);
 });
 
-/* ---------- sticky bar border ---------- */
-const bar = document.getElementById("bar");
-addEventListener("scroll", ()=>bar.classList.toggle("scrolled", scrollY > 8), { passive:true });
+function setFilter(f){
+  document.querySelectorAll("#filters button").forEach(x=>x.setAttribute("aria-pressed", String(x.dataset.f===f)));
+  document.querySelectorAll(".card").forEach(c=>{
+    const show = f==="all" || c.dataset.cats.split(" ").includes(f);
+    c.classList.toggle("hide", !show);
+    c.classList.toggle("featured", show && f==="all" && c.dataset.id==="juriq");
+  });
+}
+document.querySelectorAll("#filters button").forEach(b=>b.addEventListener("click", ()=>setFilter(b.dataset.f)));
+document.querySelectorAll("[data-jump]").forEach(b=>b.addEventListener("click", ()=>{
+  setFilter(b.dataset.jump); document.getElementById("work").scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+}));
 
-/* ---------- Juriq trace: the one animation ---------- */
-const steps = [...document.querySelectorAll("#steps li")];
+/* ---------- project detail ---------- */
+const modal = document.getElementById("modal"), sheet = document.getElementById("sheet");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-let timers = [];
-function play(){
-  timers.forEach(clearTimeout); timers = [];
+let lastFocus = null, flowTimers = [];
+const LBL = { github:"Code on GitHub", demo:"Live demo", video:"Watch the demo" };
+
+function openProject(id, push){
+  const i = PROJECTS.findIndex(p=>p.id===id); if(i<0) return;
+  const p = PROJECTS[i], prev = PROJECTS[(i+PROJECTS.length-1)%PROJECTS.length], next = PROJECTS[(i+1)%PROJECTS.length];
+  const l = LINKS[id] || {};
+  const links = Object.keys(LBL).filter(k=>l[k]).map((k,j)=>`<a class="btn ${j===0?'ink':'outline'}" href="${l[k]}" target="_blank" rel="noopener" data-track="project_link" data-detail="${id}:${k}">${LBL[k]}</a>`).join("");
+  const img = IMAGES[id] ? `<img src="${IMAGES[id]}" alt="${esc(p.title)} screenshot" style="width:100%;border-radius:16px;border:1px solid var(--line);margin:0 0 36px">` : "";
+  sheet.innerHTML = `
+    <div class="m-top"><span></span><button type="button" data-close aria-label="Close project">Close</button></div>
+    <div class="m-art" style="--c:${p.color}; margin-top:-62px">${ART[id]}</div>
+    <div class="m-body"><div class="m-title">
+      ${p.when ? `<p class="m-when">${esc(p.when)}</p>` : ""}
+      <h2 id="m-title">${esc(p.title)}: ${esc(p.sub.charAt(0).toLowerCase()+p.sub.slice(1))}</h2>
+      <p class="m-hook">${esc(p.hook)}</p></div>
+      <div class="m-links">${links}</div>
+      ${img}
+      <div class="metrics">${p.metrics.map(m=>`<div class="metric"><b>${esc(m[0])}</b><span>${esc(m[1])}</span></div>`).join("")}</div>
+      <div class="m-cols">
+        <div><h4>The problem</h4><p>${esc(p.problem)}</p><h4 style="margin-top:28px">What I built</h4>
+          <ul class="built">${p.built.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+        <div><h4>${esc(p.flowTitle)}<button class="replay" type="button" id="replay">Replay</button></h4>
+          <ol class="flow" id="flow">${p.flow.map(f=>`<li><b>${esc(f[0])}</b><span>${esc(f[1])}</span></li>`).join("")}</ol></div>
+      </div>
+      <div class="stackchips">${p.stack.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+      <div class="m-nav">
+        <button type="button" data-go="${prev.id}"><small>Previous project</small><strong>${esc(prev.title)}</strong></button>
+        <button type="button" data-go="${next.id}"><small>Next project</small><strong>${esc(next.title)}</strong></button>
+      </div>
+    </div>`;
+  if(!modal.classList.contains("on")){
+    lastFocus = document.activeElement;
+    modal.style.display = "block"; requestAnimationFrame(()=>modal.classList.add("on"));
+    modal.setAttribute("aria-hidden","false"); document.body.classList.add("locked");
+  }
+  sheet.scrollTop = 0;
+  sheet.querySelector("[data-close]").focus({preventScroll:true});
+  sheet.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click", ()=>openProject(b.dataset.go, true)));
+  document.getElementById("replay").addEventListener("click", playFlow);
+  playFlow();
+  if(push){ history.pushState({p:id}, "", "#" + id); }
+  track("project_open", id);
+}
+function closeProject(fromPop){
+  if(!modal.classList.contains("on")) return;
+  modal.classList.remove("on"); modal.setAttribute("aria-hidden","true"); document.body.classList.remove("locked");
+  setTimeout(()=>{ modal.style.display = ""; }, reduce ? 0 : 260);
+  flowTimers.forEach(clearTimeout);
+  if(!fromPop) history.replaceState(null, "", location.pathname);
+  if(lastFocus) lastFocus.focus({preventScroll:true});
+}
+function playFlow(){
+  flowTimers.forEach(clearTimeout); flowTimers = [];
+  const steps = [...sheet.querySelectorAll("#flow li")];
   steps.forEach(s=>s.className="");
   if(reduce){ steps.forEach(s=>s.className="done"); return; }
-  steps.forEach((s,i)=>{
-    timers.push(setTimeout(()=>{ if(i>0) steps[i-1].className="done"; s.className="on"; }, 400 + i*700));
-  });
-  timers.push(setTimeout(()=>{ steps[steps.length-1].className="done"; }, 400 + steps.length*700));
+  steps.forEach((s,i)=>flowTimers.push(setTimeout(()=>{ if(i) steps[i-1].className="done"; s.className="on"; }, 350+i*650)));
+  flowTimers.push(setTimeout(()=>{ steps[steps.length-1].className="done"; }, 350+steps.length*650));
 }
-document.getElementById("replay").addEventListener("click", play);
-play();
+modal.addEventListener("click", e=>{ if(e.target.closest("[data-close]")) closeProject(false); });
+document.addEventListener("keydown", e=>{
+  if(!modal.classList.contains("on")) return;
+  if(e.key === "Escape") closeProject(false);
+  if(e.key === "Tab"){
+    const f = [...sheet.querySelectorAll("a,button")].filter(x=>x.offsetParent);
+    if(!f.length) return;
+    if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+    else if(!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+  }
+});
+addEventListener("popstate", ()=>{
+  const id = location.hash.slice(1);
+  if(PROJECTS.some(p=>p.id===id)) openProject(id, false); else closeProject(true);
+});
+addEventListener("load", ()=>{ const id = location.hash.slice(1); if(PROJECTS.some(p=>p.id===id)) openProject(id, false); });
+
+/* ---------- nav ---------- */
+const bar = document.getElementById("bar");
+const onScroll = ()=>bar.classList.toggle("solid", scrollY > 40);
+addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+/* ---------- hero network ---------- */
+(function(){
+  const cv = document.getElementById("net"), ctx = cv.getContext("2d");
+  let W, H, dpr, nodes = [], edges = [], packets = [], mouse = {x:-999, y:-999}, running = true, raf;
+  function build(){
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n = Math.round(Math.min(70, W*H/16000)); nodes = []; edges = [];
+    for(let i=0;i<n;i++) nodes.push({x: W*(.25 + Math.random()*.78), y: H*(.06 + Math.random()*.9), r: 2+Math.random()*2.5, vx:(Math.random()-.5)*.12, vy:(Math.random()-.5)*.12});
+    nodes.forEach((a,i)=>{ nodes.map((b,j)=>({j,d:Math.hypot(a.x-b.x,a.y-b.y)})).filter(o=>o.j!==i).sort((p,q)=>p.d-q.d).slice(0,3)
+      .forEach(o=>{ if(!edges.some(e=>(e[0]===o.j&&e[1]===i))) edges.push([i,o.j]); }); });
+    packets = Array.from({length: Math.max(6, Math.round(edges.length/9))}, newPacket);
+  }
+  function newPacket(){ const e = edges[Math.floor(Math.random()*edges.length)]; return { e, t: Math.random(), s: .004 + Math.random()*.006, rev: Math.random()<.5 }; }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    nodes.forEach(n=>{ n.x+=n.vx; n.y+=n.vy; if(n.x<W*.2||n.x>W*1.02) n.vx*=-1; if(n.y<0||n.y>H) n.vy*=-1; });
+    ctx.lineWidth = 1;
+    edges.forEach(([i,j])=>{ const a=nodes[i], b=nodes[j];
+      const near = Math.min(Math.hypot(a.x-mouse.x,a.y-mouse.y), Math.hypot(b.x-mouse.x,b.y-mouse.y)) < 140;
+      ctx.strokeStyle = near ? "rgba(242,169,59,.55)" : "rgba(169,180,196,.16)";
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); });
+    nodes.forEach(n=>{ const near = Math.hypot(n.x-mouse.x,n.y-mouse.y) < 140;
+      ctx.fillStyle = near ? "#F2A93B" : "rgba(243,244,240,.55)";
+      ctx.beginPath(); ctx.arc(n.x,n.y, near ? n.r+1.5 : n.r, 0, Math.PI*2); ctx.fill(); });
+    packets.forEach((p,k)=>{ p.t += p.s; if(p.t>=1){ packets[k] = newPacket(); packets[k].t = 0; return; }
+      const [i,j] = p.e, a = nodes[p.rev?j:i], b = nodes[p.rev?i:j];
+      const x = a.x+(b.x-a.x)*p.t, y = a.y+(b.y-a.y)*p.t;
+      ctx.fillStyle = "rgba(242,169,59,.25)"; ctx.beginPath(); ctx.arc(x,y,7,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle = "#F2A93B"; ctx.beginPath(); ctx.arc(x,y,2.6,0,Math.PI*2); ctx.fill(); });
+  }
+  function loop(){ if(running){ draw(); raf = requestAnimationFrame(loop); } }
+  build();
+  if(reduce){ draw(); }
+  else{
+    loop();
+    new IntersectionObserver(es=>{ running = es[0].isIntersecting && !document.hidden; if(running){ cancelAnimationFrame(raf); loop(); } }).observe(cv);
+    document.addEventListener("visibilitychange", ()=>{ running = !document.hidden; if(running){ cancelAnimationFrame(raf); loop(); } });
+  }
+  const hero = cv.parentElement;
+  hero.addEventListener("pointermove", e=>{ const r = cv.getBoundingClientRect(); mouse.x = e.clientX-r.left; mouse.y = e.clientY-r.top; });
+  hero.addEventListener("pointerleave", ()=>{ mouse.x = mouse.y = -999; });
+  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeout(()=>{ build(); if(reduce) draw(); }, 200); });
+})();
 </script>
 </body>
 </html>
