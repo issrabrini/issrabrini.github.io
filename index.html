@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Isra Brini – AI Engineer</title>
+<meta name="description" content="Isra Brini, final-year software engineering student building AI agents, RAG systems and data pipelines. Looking for a 6-month end-of-studies internship in Paris from January 2027.">
+<meta property="og:title" content="Isra Brini – AI Engineer">
+<meta property="og:description" content="AI agents, RAG and data systems. Looking for a 6-month internship in Paris from January 2027.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2313233A'/><text x='50' y='67' font-size='52' text-anchor='middle' fill='%23F2F4F1' font-family='Arial' font-weight='700'>IB</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F4F1; --surface:#FFFFFF; --ink:#13233A; --muted:#566273; --line:#D6DCE1;
+  --link:#2747C9; --pulse:#E39A2D; --pulse-soft:#F7E3C2;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --font:"Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1826; --surface:#16213282; --ink:#E7ECF2; --muted:#9AA6B5; --line:#283548;
+    --link:#8EA8FF; --pulse:#F0B04F; --pulse-soft:#3A2E1A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1826; --surface:#16213282; --ink:#E7ECF2; --muted:#9AA6B5; --line:#283548;
+  --link:#8EA8FF; --pulse:#F0B04F; --pulse-soft:#3A2E1A; color-scheme:dark;
+}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+a{color:var(--link); text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--pulse); outline-offset:3px; border-radius:4px}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+
+/* ---------- top bar ---------- */
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--paper)}
+header.bar{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--paper); border-bottom:1px solid transparent; transition:border-color .2s}
+header.bar.scrolled{border-bottom-color:var(--line)}
+.bar .wrap{display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px}
+.logo{font-weight:800; font-size:1.05rem; color:var(--ink); text-decoration:none; letter-spacing:-.01em}
+nav{display:flex; gap:22px; align-items:center}
+nav a{color:var(--muted); text-decoration:none; font-size:.95rem; font-weight:500}
+nav a:hover{color:var(--ink)}
+nav a.cv{color:var(--ink); border:1.5px solid var(--ink); padding:6px 14px; border-radius:999px; font-weight:600}
+@media (max-width:640px){ nav a:not(.cv){display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 88px}
+.hero .wrap{display:grid; grid-template-columns:1.25fr 1fr; gap:56px; align-items:center}
+@media (max-width:880px){ .hero .wrap{grid-template-columns:1fr; gap:44px} .hero{padding:40px 0 64px} }
+h1{font-size:clamp(2.3rem,5.2vw,3.9rem); line-height:1.04; letter-spacing:-.035em; font-weight:800; margin:0 0 22px; max-width:15ch}
+.intro{font-size:1.15rem; color:var(--muted); max-width:52ch; margin:0 0 30px}
+.intro strong{color:var(--ink); font-weight:600}
+.actions{display:flex; gap:12px; flex-wrap:wrap}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px; font-weight:600; font-size:.98rem; text-decoration:none; border:1.5px solid var(--ink)}
+.btn.primary{background:var(--ink); color:var(--paper)}
+.btn.ghost{color:var(--ink)}
+.avail{margin-top:26px; font-size:.95rem; color:var(--muted); display:flex; gap:10px; align-items:baseline}
+.avail::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--pulse); flex:none; transform:translateY(-1px)}
+
+/* trace: the one animated moment */
+.trace{margin:0; border:1.5px solid var(--line); border-radius:20px; padding:22px 22px 18px; background:var(--surface)}
+.trace-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px}
+.trace-title{font-weight:700; font-size:1rem}
+.replay{background:none; border:none; color:var(--link); font:inherit; font-size:.88rem; cursor:pointer; padding:0}
+.steps{list-style:none; margin:0; padding:0; position:relative}
+.steps::before{content:""; position:absolute; left:11px; top:14px; bottom:14px; width:2px; background:var(--line)}
+.steps li{position:relative; padding:7px 0 7px 38px}
+.steps li::before{content:""; position:absolute; left:4px; top:13px; width:16px; height:16px; border-radius:50%; background:var(--paper); border:2px solid var(--line); transition:background .25s, border-color .25s, box-shadow .25s}
+.steps .who{font-weight:600; font-size:.97rem; display:block}
+.steps .what{color:var(--muted); font-size:.88rem; display:block; line-height:1.45}
+.steps .quote{font-style:italic}
+.steps li.on::before{background:var(--pulse); border-color:var(--pulse); box-shadow:0 0 0 5px var(--pulse-soft)}
+.steps li.done::before{background:var(--ink); border-color:var(--ink); box-shadow:none}
+.trace-foot{margin:12px 0 0; font-size:.85rem; color:var(--muted)}
+
+/* ---------- sections ---------- */
+section{padding:72px 0}
+section + section{border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,3vw,2.2rem); letter-spacing:-.025em; line-height:1.15; margin:0 0 10px; font-weight:800}
+.lede{color:var(--muted); margin:0 0 44px; max-width:60ch}
+
+/* featured project */
+.feature{display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:64px}
+@media (max-width:880px){ .feature{grid-template-columns:1fr; gap:28px} }
+.feature h3{font-size:1.65rem; letter-spacing:-.02em; margin:0 0 4px; line-height:1.2}
+.when{color:var(--muted); font-size:.92rem; margin:0 0 16px}
+.feature p{margin:0 0 14px; max-width:58ch}
+.results{border-left:3px solid var(--pulse); padding:4px 0 4px 22px}
+.results h4,.side h4{font-size:.95rem; margin:0 0 12px; font-weight:700}
+.result{margin:0 0 16px}
+.result b{display:block; font-size:1.55rem; letter-spacing:-.02em; line-height:1.15}
+.result span{color:var(--muted); font-size:.92rem}
+.stack{color:var(--muted); font-size:.88rem; margin:14px 0 0}
+.links{display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-weight:600; font-size:.95rem}
+.links:empty{display:none}
+
+/* other projects */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:56px 48px}
+@media (max-width:760px){ .grid{grid-template-columns:1fr; gap:44px} }
+.proj h3{font-size:1.25rem; letter-spacing:-.015em; margin:0 0 2px; line-height:1.25}
+.proj p{margin:0 0 10px; max-width:58ch}
+.proj ul{margin:0 0 6px; padding-left:18px}
+.proj li{margin:0 0 6px}
+.proj .outcome{font-weight:600}
+.shot[hidden]{display:none}
+.shot{display:block; width:100%; border-radius:12px; border:1px solid var(--line); margin:0 0 16px}
+
+/* experience timeline */
+.timeline{list-style:none; padding:0; margin:0; border-left:2px solid var(--line)}
+.timeline > li{position:relative; padding:0 0 40px 28px}
+.timeline > li:last-child{padding-bottom:0}
+.timeline > li::before{content:""; position:absolute; left:-7px; top:9px; width:12px; height:12px; border-radius:50%; background:var(--ink)}
+.timeline h3{font-size:1.2rem; margin:0; letter-spacing:-.01em}
+.timeline ul{list-style:disc; margin:10px 0 0; padding-left:18px; max-width:68ch}
+.timeline li li{margin:0 0 6px}
+
+/* about */
+.about{display:grid; grid-template-columns:repeat(3,1fr); gap:40px}
+@media (max-width:880px){ .about{grid-template-columns:1fr; gap:32px} }
+.about h3{font-size:1.05rem; margin:0 0 12px}
+.about ul{list-style:none; padding:0; margin:0}
+.about li{margin:0 0 12px; line-height:1.45}
+.about li span{display:block; color:var(--muted); font-size:.9rem}
+
+/* contact */
+.contact{padding:88px 0 96px}
+.contact h2{font-size:clamp(2rem,4.4vw,3rem); max-width:18ch}
+.contact .lede{margin-bottom:28px}
+footer{padding:28px 0 40px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">Isra Brini</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="cv" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>I build AI agents that do real work.</h1>
+      <p class="intro">I’m a final-year software engineering student at INSAT, Tunis. In <strong>two internships at Neoxam</strong>, a financial software company, I deployed an <strong>agent-based tool</strong> that migrates entire test suites on its own, and added <strong>source citations</strong> to a RAG assistant so every answer can be checked.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">See my projects</a>
+        <a class="btn ghost" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
+      </div>
+      <p class="avail">Looking for a 6-month end-of-studies internship from January or February 2027. Open to relocating to Paris.</p>
+    </div>
+
+    <figure class="trace" aria-label="How Juriq turns a sentence into a valid schedule">
+      <div class="trace-head">
+        <figcaption class="trace-title">Inside Juriq: one request, five steps</figcaption>
+        <button class="replay" id="replay" type="button">Replay</button>
+      </div>
+      <ol class="steps" id="steps">
+        <li><span class="who">An administrator types a request</span><span class="what quote">“Dr. Mansour can’t attend on Tuesday morning.”</span></li>
+        <li><span class="who">Translator agent (LLM)</span><span class="what">Turns the sentence into a structured constraint.</span></li>
+        <li><span class="who">Orchestrator</span><span class="what">Decides whether to patch the schedule or re-solve it.</span></li>
+        <li><span class="who">CP-SAT solver</span><span class="what">Finds a schedule that meets every hard rule.</span></li>
+        <li><span class="who">Reflector agent</span><span class="what">Scores fairness and expertise, and flags what to improve.</span></li>
+      </ol>
+      <p class="trace-foot">Result on a real session: fairer workloads and better expertise matching than the schedule made by hand.</p>
+    </figure>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected work</h2>
+    <p class="lede">Each project started from a real problem and ends with a measured result.</p>
+
+    <article class="feature" id="juriq">
+      <div>
+        <h3>Juriq: scheduling thesis-defense juries with AI agents</h3>
+        <p class="when">February to June 2026</p>
+        <img class="shot" data-img="juriq" alt="Juriq interface" hidden>
+        <p>Every year, someone builds the defense schedule by hand: 53 projects, 21 professors and 80 time slots, with unavailabilities, conflicts of interest and fairness to respect. It takes days, and it’s never quite fair.</p>
+        <p>Juriq lets administrators describe changes in plain language. An LLM agent turns them into constraints, a constraint solver guarantees the hard rules are never broken, and a reviewing agent explains what could still be better. When no schedule is possible, the system diagnoses why and proposes which rule to relax.</p>
+        <p>Rules can be switched on, off or reweighted at runtime without touching the code, and schedules export to PDF, Excel, Word and CSV.</p>
+        <p class="stack">Python, LangGraph, OR-Tools CP-SAT, FastAPI, PostgreSQL, Redis, React, Docker</p>
+        <div class="links" data-links="juriq"></div>
+      </div>
+      <div class="results">
+        <h4>Compared with the schedule made by hand</h4>
+        <p class="result"><b>4.59 to 2.63</b><span>Spread of workload between professors (standard deviation)</span></p>
+        <p class="result"><b>60% to 72.7%</b><span>Juries matched to the project’s area of expertise</span></p>
+        <p class="result"><b>5 to 1</b><span>Professors over their maximum number of defenses</span></p>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="proj" id="respiratory">
+        <img class="shot" data-img="respiratory" alt="Respiratory sound classification results" hidden>
+        <h3>Detecting lung disease from breathing sounds</h3>
+        <p class="when">April to May 2026</p>
+        <p>I reproduced a published deep-learning method that classifies breathing cycles as normal, crackle or wheeze, then set out to beat it.</p>
+        <ul>
+          <li>Adapted an Audio Spectrogram Transformer and added targeted data augmentation, raising sensitivity from 0.68 to 0.75.</li>
+          <li>Found a structural limit in the single-output design and rebuilt it in two stages: first detect anything abnormal, then name the type.</li>
+          <li class="outcome">First version to meet both clinical targets at once, outperforming the published baseline.</li>
+        </ul>
+        <p class="stack">PyTorch, Hugging Face Transformers, SpecAugment, SAM optimizer, Focal Loss</p>
+        <div class="links" data-links="respiratory"></div>
+      </article>
+
+      <article class="proj" id="plants">
+        <img class="shot" data-img="plants" alt="Plant disease detection app with a Grad-CAM heatmap" hidden>
+        <h3>Diagnosing plant diseases from a photo of a leaf</h3>
+        <p>Upload a photo of a leaf and the app names the likely disease, says how confident it is, and shows which parts of the leaf the model looked at.</p>
+        <ul>
+          <li>Fine-tuned a pretrained image classifier in two stages on the New Plant Diseases dataset.</li>
+          <li>Built two image preprocessing options: a standard one, and a stronger clean-up with median blur, CLAHE contrast enhancement and sharpening.</li>
+          <li class="outcome">Grad-CAM heatmaps show why the model made each prediction, not just what it predicted.</li>
+        </ul>
+        <p class="stack">PyTorch, Grad-CAM, Streamlit</p>
+        <div class="links" data-links="plants"></div>
+      </article>
+
+      <article class="proj" id="trends">
+        <img class="shot" data-img="trends" alt="Trend analyzer dashboard" hidden>
+        <h3>Spotting what’s trending across Twitch, YouTube and Reddit</h3>
+        <p class="when">April to June 2026</p>
+        <p>A distributed pipeline that reads three platforms at once and surfaces the topics rising everywhere, in near real time.</p>
+        <ul>
+          <li>Unified three very different data formats into one event stream with Kafka.</li>
+          <li>Detected sudden spikes and scored sentiment over 10-minute windows with Spark, against baselines built from millions of past records.</li>
+          <li class="outcome">A live dashboard comparing trends and sentiment across platforms.</li>
+        </ul>
+        <p class="stack">Kafka, Spark Structured Streaming, Hadoop HDFS, MongoDB, PostgreSQL, Docker Compose, Streamlit</p>
+        <div class="links" data-links="trends"></div>
+      </article>
+
+      <article class="proj" id="smartsight">
+        <img class="shot" data-img="smartsight" alt="SmartSight glasses prototype" hidden>
+        <h3>SmartSight: glasses that guide visually impaired people</h3>
+        <p class="when">February to June 2025</p>
+        <p>Wearable glasses that spot obstacles in real time and tell the wearer where to go, by voice or vibration.</p>
+        <ul>
+          <li>Compared several detection models for speed and accuracy, then ran YOLOv8 Nano on a Raspberry Pi with depth estimation.</li>
+          <li>Turned detections into simple instructions: stop, left, right or straight ahead.</li>
+          <li class="outcome">Validated end to end in real walking trials, with a companion mobile app.</li>
+        </ul>
+        <p class="stack">Python, OpenCV, YOLOv8, MiDaS, Raspberry Pi, MQTT, React Native</p>
+        <div class="links" data-links="smartsight"></div>
+      </article>
+
+      <article class="proj" id="mentora">
+        <img class="shot" data-img="mentora" alt="Mentora learning platform" hidden>
+        <h3>Mentora: learning web frameworks with an AI tutor</h3>
+        <p class="when">June 2025</p>
+        <p>A learning platform with progressive paths, hands-on exercises, quizzes and badges, plus an AI assistant that answers learners’ questions.</p>
+        <ul>
+          <li>Ran a fine-tuned open model locally as the tutor, with caching to keep answers fast.</li>
+          <li>Built it as independent services so each part can scale on its own.</li>
+          <li class="outcome">Roles for learners, instructors and admins, certification, and secure sign-in with two-factor authentication.</li>
+        </ul>
+        <p class="stack">React, NestJS, TypeScript, Ollama (DeepSeek R1), Redis, Docker, Azure</p>
+        <div class="links" data-links="mentora"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="lede">Two summers at Neoxam, a software company serving asset managers and banks.</p>
+    <ol class="timeline">
+      <li>
+        <h3>Software Engineering Intern, Neoxam</h3>
+        <p class="when">June to August 2026, Tunis</p>
+        <ul>
+          <li>Built and deployed an AI skill that migrates automated test suites from Puppeteer to Cucumber and Playwright.</li>
+          <li>Added a persistent memory of validated migrations, so repeated work gets faster over time.</li>
+          <li>Split large files across autonomous sub-agents, cutting token usage on big test suites.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Software Engineering Intern, Neoxam</h3>
+        <p class="when">June to August 2025, Tunis</p>
+        <ul>
+          <li>Improved the company’s internal RAG assistant, which answers questions from internal knowledge.</li>
+          <li>Added dynamic citations, so every answer points to the documents it came from.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p class="lede">Engineering student, organizer, and always learning a new language.</p>
+    <div class="about">
+      <div>
+        <h3>Education</h3>
+        <ul>
+          <li>Engineering degree, Software Engineering<span>INSAT, Tunis, 2024 to 2027</span></li>
+          <li>Integrated preparatory cycle, Mathematics, Physics and Computer Science<span>INSAT, Tunis, 2022 to 2024</span></li>
+          <li>Computer Vision for Industrial Inspection<span>NVIDIA certification</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Beyond class</h3>
+        <ul>
+          <li>Vice President, Data Overflow<span>Organized an AI, machine learning and data science bootcamp, 2024 to 2025</span></li>
+          <li>Participant Relations Lead, National AI Summit<span>Supported participants throughout the event, 2024</span></li>
+          <li>Team Coordinator, Securinets INSAT<span>Cybersecurity club, 2023 to 2024</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Languages</h3>
+        <ul>
+          <li>Arabic<span>Native</span></li>
+          <li>English<span>Fluent (C2)</span></li>
+          <li>French<span>Upper intermediate (B2)</span></li>
+          <li>Korean<span>Elementary (A2)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let’s talk about your team.</h2>
+    <p class="lede">I’m available for a 6-month internship from January or February 2027, and my school provides the internship agreement. The fastest way to reach me is by email.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:isra.brini@gmail.com" data-track="email_click">isra.brini@gmail.com</a>
+      <a class="btn ghost" href="https://linkedin.com/in/IsraBrini" target="_blank" rel="noopener" data-track="linkedin_click">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/issrabrini" target="_blank" rel="noopener" data-track="github_click">GitHub</a>
+      <a class="btn ghost" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Isra Brini, 2026. Phone: +216 27 077 002</div></footer>
+
+<script>
+/* ==========================================================
+   1) YOUR LINKS: paste URLs here; empty ones are hidden.
+   ========================================================== */
+const LINKS = {
+  juriq:       { github: "https://github.com/SalemProjetGL4/jury_scheduling_platform", demo: "", video: "" },
+  respiratory: { github: "https://github.com/issrabrini/ProjetDL", demo: "", video: "" },
+  plants:      { github: "https://github.com/SalemProjetGL4/Plant-Disease-Detection", demo: "", video: "" },
+  trends:      { github: "https://github.com/SalemProjetGL4/big-data", demo: "", video: "" },
+  smartsight:  { github: "https://github.com/SalemProjetGL3/SmartSight-Raspberry", demo: "https://smart-sight-six.vercel.app/", video: "" },
+  mentora:     { github: "https://github.com/SalemProjetGL3/Mentora", demo: "", video: "" },
+};
+/* Optional screenshots, e.g. "img/juriq.png" */
+const IMAGES = { juriq: "", respiratory: "", plants: "", trends: "", smartsight: "", mentora: "" };
+
+/* ==========================================================
+   2) TRACKING: paste your Google Apps Script web app URL.
+   Send links like  https://YOU.github.io/?ref=alphaguard-adnane
+   Open the site once with ?me=1 so your own visits aren't logged.
+   ========================================================== */
+const TRACK_URL = "";
+
+(function(){
+  const params = new URLSearchParams(location.search);
+  let me = false, ref = "";
+  try{
+    if(params.get("me") === "1") localStorage.setItem("owner","1");
+    if(params.get("me") === "0") localStorage.removeItem("owner");
+    me = localStorage.getItem("owner") === "1";
+    if(params.get("ref")) sessionStorage.setItem("ref", params.get("ref"));
+    ref = sessionStorage.getItem("ref") || "";
+  }catch(e){ ref = params.get("ref") || ""; }
+  if(params.has("ref") || params.has("me")) history.replaceState(null, "", location.pathname + location.hash);
+
+  window.track = function(event, detail){
+    if(!TRACK_URL || me) return;
+    const body = JSON.stringify({ ref, event, detail: detail || "", referrer: document.referrer,
+      lang: navigator.language, ua: navigator.userAgent, page: location.pathname });
+    try{ fetch(TRACK_URL, { method:"POST", mode:"no-cors", keepalive:true,
+      headers:{ "Content-Type":"text/plain;charset=utf-8" }, body }); }catch(e){}
+  };
+
+  track("visit");
+  // "engaged" = page visible for 15 seconds: filters out email link scanners
+  let seen = 0, sent = false;
+  const tick = setInterval(()=>{ if(document.visibilityState==="visible") seen++;
+    if(seen >= 15 && !sent){ sent = true; track("engaged"); clearInterval(tick); } }, 1000);
+  const sections = new Set();
+  const io = new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting && !sections.has(e.target.id)){ sections.add(e.target.id); track("section_view", e.target.id); }
+  }), { threshold:.35 });
+  ["work","experience","contact"].forEach(id=>{ const el=document.getElementById(id); if(el) io.observe(el); });
+
+  document.addEventListener("click", e=>{
+    const a = e.target.closest("[data-track]"); if(a) track(a.dataset.track, a.dataset.detail || "");
+  });
+})();
+
+/* ---------- render links and screenshots ---------- */
+const LABELS = { github:"Code on GitHub", demo:"Live demo", video:"Watch the demo" };
+document.querySelectorAll("[data-links]").forEach(box=>{
+  const key = box.dataset.links, l = LINKS[key] || {};
+  Object.keys(LABELS).forEach(k=>{ if(l[k]){
+    const a = document.createElement("a"); a.href = l[k]; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = LABELS[k]; a.dataset.track = "project_link"; a.dataset.detail = key + ":" + k; box.appendChild(a);
+  }});
+});
+document.querySelectorAll("[data-img]").forEach(img=>{
+  const src = IMAGES[img.dataset.img]; if(src){ img.src = src; img.hidden = false; }
+});
+
+/* ---------- sticky bar border ---------- */
+const bar = document.getElementById("bar");
+addEventListener("scroll", ()=>bar.classList.toggle("scrolled", scrollY > 8), { passive:true });
+
+/* ---------- Juriq trace: the one animation ---------- */
+const steps = [...document.querySelectorAll("#steps li")];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let timers = [];
+function play(){
+  timers.forEach(clearTimeout); timers = [];
+  steps.forEach(s=>s.className="");
+  if(reduce){ steps.forEach(s=>s.className="done"); return; }
+  steps.forEach((s,i)=>{
+    timers.push(setTimeout(()=>{ if(i>0) steps[i-1].className="done"; s.className="on"; }, 400 + i*700));
+  });
+  timers.push(setTimeout(()=>{ steps[steps.length-1].className="done"; }, 400 + steps.length*700));
+}
+document.getElementById("replay").addEventListener("click", play);
+play();
+</script>
+</body>
+</html>
