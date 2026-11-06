@@ -7,93 +7,83 @@
 <meta name="description" content="Isra Brini builds AI agents, RAG systems, deep learning models and real-time data pipelines. Looking for a 6-month end-of-studies internship in Paris from January 2027.">
 <meta property="og:title" content="Isra Brini – AI Engineer">
 <meta property="og:description" content="AI agents, deep learning and data systems. Looking for a 6-month internship in Paris from January 2027.">
-<meta name="theme-color" content="#0A1322">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230E1B2E'/><circle cx='72' cy='30' r='9' fill='%23F2A93B'/><text x='44' y='70' font-size='48' text-anchor='middle' fill='%23F3F4F0' font-family='Arial' font-weight='800'>IB</text></svg>">
+<meta name="theme-color" content="#F7F2E8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232F4A3A'/><circle cx='72' cy='30' r='9' fill='%23C47A58'/><text x='44' y='70' font-size='48' text-anchor='middle' fill='%23D3E0C9' font-family='Arial' font-weight='800'>IB</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0A1322; --tile:#111D31; --tile-2:#162540; --edge:rgba(255,255,255,.07); --edge-2:rgba(255,255,255,.16);
-  --ink:#EEF1F5; --muted:#97A3B6; --amber:#F2A93B; --green:#4ADE80; --night:#0E1B2E;
+  --charcoal:#5E5A52; --berry:#2F4A3A; --icy:#D3E0C9; --sky:#E4DCCB; --taupe:#C47A58;
+  --bg:#F7F2E8; --tile:#FDFBF6; --edge:rgba(47,74,58,.12); --edge-2:rgba(47,74,58,.28);
+  --ink:#2F2D2A; --muted:var(--charcoal); --on:#FDFBF6;
   /* modal tokens */
-  --paper:#0F1A2C; --surface:#15233A; --line:#24344B; --link:#9DB0FF;
+  --paper:#FDFBF6; --surface:#F3ECDD; --line:#E4DAC6; --link:var(--berry);
   --font:"Bricolage Grotesque","Helvetica Neue",Arial,system-ui,sans-serif;
-  color-scheme:dark; box-sizing:border-box;
+  color-scheme:light; box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit}
 html,body{height:100%}
-body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(1100px 600px at 12% -10%, rgba(61,90,254,.16), transparent 60%), radial-gradient(900px 500px at 100% 110%, rgba(242,169,59,.08), transparent 60%)}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:8px}
+:focus-visible{outline:2px solid var(--berry); outline-offset:3px; border-radius:8px}
 
 /* ---------- bento grid: one screen on desktop ---------- */
 .bento{display:grid; grid-template-columns:repeat(12,1fr); grid-template-rows:repeat(4,minmax(150px,1fr));
   gap:12px; padding:14px; height:100vh; height:100dvh; min-height:700px; max-width:1500px; margin:0 auto}
-.t{position:relative; background:var(--tile); border:1px solid var(--edge); border-radius:22px; overflow:hidden; min-width:0; min-height:0}
+.t{position:relative; background:var(--tile); border:1px solid var(--edge); box-shadow:0 1px 2px rgba(94,90,82,.07), 0 6px 18px rgba(94,90,82,.06); border-radius:24px; overflow:hidden; min-width:0; min-height:0}
 .pad{padding:20px 22px}
 .label{display:flex; justify-content:space-between; align-items:center; gap:10px; margin:0 0 12px; font-size:.86rem; color:var(--muted); font-weight:600}
 .label a{color:var(--muted); text-decoration:none}
-.label a:hover{color:var(--ink)}
+.label a:hover{color:var(--berry)}
 
-.intro{grid-column:1/6; grid-row:1/4; display:flex; flex-direction:column; justify-content:space-between; padding:26px 28px}
-#net{position:absolute!important; inset:0; width:100%; height:100%; z-index:0!important}
-.intro::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(17,29,49,.15) 0%, rgba(17,29,49,.88) 42%, rgba(17,29,49,.96) 100%); pointer-events:none; z-index:1}
-.intro > *{position:relative; z-index:2}
+.intro{grid-column:1/6; grid-row:1/4; display:flex; flex-direction:column; justify-content:space-between; padding:26px 28px; background:#EFE6D3; border-color:transparent}
 .who{display:flex; align-items:center; gap:14px}
-.avatar{width:52px; height:52px; border-radius:16px; background:var(--amber); color:var(--night); display:grid; place-items:center; font-weight:800; font-size:1.25rem; flex:none}
-.who b{display:block; font-size:1.12rem}
-.who span{color:var(--muted); font-size:.92rem}
-.status{display:inline-flex; align-items:center; gap:9px; padding:6px 13px 6px 11px; border:1px solid var(--edge-2); border-radius:999px; font-size:.85rem; color:var(--muted); background:rgba(255,255,255,.04); margin-top:18px; width:fit-content}
-.status b{color:var(--ink); font-weight:600}
-.status i{width:8px; height:8px; border-radius:50%; background:var(--green); animation:ping 2.4s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}80%,100%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
-.intro h1{font-size:clamp(2.2rem,3.9vw,3.7rem); line-height:.98; letter-spacing:-.045em; margin:0 0 14px; font-weight:800; font-variation-settings:"opsz" 96}
-.intro h1 span{color:var(--amber)}
-.intro p{color:var(--muted); margin:0; max-width:46ch; font-size:1rem}
-.intro p strong{color:var(--ink); font-weight:600}
-.actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+.avatar{width:52px; height:52px; border-radius:16px; background:var(--berry); color:var(--icy); display:grid; place-items:center; font-weight:800; font-size:1.25rem; flex:none}
+.who b{display:block; font-size:1.12rem; color:var(--berry)}
+.who span{color:var(--charcoal); font-size:.92rem}
+.status{display:inline-flex; align-items:center; gap:9px; padding:6px 13px 6px 11px; border:1px solid rgba(47,74,58,.25); border-radius:999px; font-size:.85rem; color:var(--charcoal); background:rgba(255,255,255,.6); margin-top:18px; width:fit-content}
+.status b{color:var(--berry); font-weight:600}
+.status i{width:8px; height:8px; border-radius:50%; background:var(--berry); animation:ping 2.4s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(47,74,58,.5)}80%,100%{box-shadow:0 0 0 8px rgba(47,74,58,0)}}
+.intro h1{font-size:clamp(2.2rem,3.9vw,3.7rem); line-height:.98; letter-spacing:-.045em; margin:0 0 14px; font-weight:800; font-variation-settings:"opsz" 96; color:var(--ink)}
+.intro h1 span{color:var(--berry)}
+.intro p{color:var(--ink); margin:0; max-width:46ch; font-size:1rem}
+.intro p strong{color:var(--berry); font-weight:700}
+.actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px}
 .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:999px; font:inherit; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; border:1.5px solid transparent; transition:transform .15s, background .15s}
 .btn:active{transform:scale(.97)}
-.btn.amber{background:var(--amber); color:var(--night)}
-.btn.line{border-color:var(--edge-2); color:var(--ink)}
-.btn.line:hover{background:rgba(255,255,255,.06)}
-.btn.ink{background:var(--ink); color:var(--night)}
-.btn.outline{border-color:var(--edge-2); color:var(--ink)}
-.stack{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px}
-.stack span{font-size:.78rem; font-weight:600; padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--edge); color:#C9D2DF}
+.btn.primary,.btn.ink{background:var(--berry); color:var(--on)}
+.btn.primary:hover,.btn.ink:hover{background:#223829}
+.btn.line,.btn.outline{border-color:var(--berry); color:var(--berry)}
+.btn.line:hover,.btn.outline:hover{background:rgba(47,74,58,.08)}
 
 /* project tiles */
-.p{all:unset; box-sizing:border-box; position:relative; overflow:hidden; background:var(--tile); border:1px solid var(--edge); border-radius:22px; min-width:0; min-height:0; cursor:pointer; display:flex; flex-direction:column; transition:transform .2s ease, border-color .2s ease}
-.p:hover{transform:translateY(-3px); border-color:var(--edge-2)}
-.p:focus-visible{outline:2px solid var(--amber); outline-offset:3px}
-.band{position:relative; background:var(--c); flex:1; min-height:46px}
-.band svg{position:absolute; inset:0; width:100%; height:100%}
-.band .anim{transition:transform .5s ease}
-.p:hover .band .anim{transform:translateX(-6%)}
-.band .pop{transform-origin:center; transform-box:fill-box; transition:transform .4s ease}
-.p:hover .band .pop{transform:scale(1.08)}
-.pb{padding:12px 15px 13px; flex:none}
-.pb h3{margin:0; font-size:1rem; line-height:1.2; letter-spacing:-.01em}
-.pb .win{margin:4px 0 0; color:var(--muted); font-size:.82rem; line-height:1.35}
-.arrow{position:absolute; top:10px; right:10px; width:30px; height:30px; border-radius:50%; background:rgba(10,19,34,.55); display:grid; place-items:center; z-index:2; transition:background .2s, transform .2s}
+.p{all:unset; box-sizing:border-box; position:relative; overflow:hidden; background:var(--tile); border:1px solid var(--edge); box-shadow:0 1px 2px rgba(94,90,82,.07), 0 6px 18px rgba(94,90,82,.06); border-radius:24px; min-width:0; min-height:0; cursor:pointer; display:flex; flex-direction:column; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease}
+.p::before{content:""; position:absolute; top:0; left:0; right:0; height:5px; background:var(--c, var(--berry))}
+.p:hover{transform:translateY(-3px); border-color:var(--edge-2); box-shadow:0 12px 28px rgba(47,74,58,.16)}
+.p:focus-visible{outline:2px solid var(--berry); outline-offset:3px}
+.kind{display:block; padding:22px 60px 0 18px; font-size:.78rem; font-weight:700; letter-spacing:.02em; color:var(--muted)}
+.pb{padding:12px 18px 16px; flex:none; margin-top:auto}
+.pb h3{margin:0; font-size:1.05rem; line-height:1.2; letter-spacing:-.01em; color:var(--berry)}
+.pb .win{margin:4px 0 0; color:var(--muted); font-size:.85rem; line-height:1.35}
+.arrow{position:absolute; top:14px; right:14px; width:30px; height:30px; border-radius:50%; background:rgba(47,74,58,.1); display:grid; place-items:center; z-index:2; transition:background .2s, transform .2s}
 .arrow svg{width:14px; height:14px}
-.p:hover .arrow{background:var(--amber); transform:rotate(-45deg)}
-.p:hover .arrow path{stroke:var(--night)}
+.arrow path{stroke:var(--berry)}
+.p:hover .arrow{background:var(--berry); transform:rotate(-45deg)}
+.p:hover .arrow path{stroke:var(--on)}
 
 .juriq{grid-column:6/10; grid-row:1/3}
-.juriq .band{flex:1}
-.juriq .pb{padding:16px 20px 18px}
-.juriq h3{font-size:1.4rem}
-.juriq .tagline{color:var(--muted); margin:4px 0 12px; font-size:.92rem}
+.juriq .pb{padding:16px 22px 22px}
+.juriq h3{font-size:1.6rem; letter-spacing:-.02em}
+.juriq .tagline{color:var(--muted); margin:6px 0 16px; font-size:.95rem; max-width:40ch}
 .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
-.kpis div{background:rgba(255,255,255,.05); border:1px solid var(--edge); border-radius:12px; padding:8px 10px}
-.kpis b{display:block; font-size:1.08rem; letter-spacing:-.02em}
+.kpis div{background:rgba(211,224,201,.35); border:1px solid var(--edge); border-radius:12px; padding:9px 11px}
+.kpis b{display:block; font-size:1.08rem; letter-spacing:-.02em; color:var(--berry)}
 .kpis span{display:block; color:var(--muted); font-size:.74rem; line-height:1.3}
-.feat{position:absolute; top:12px; left:12px; z-index:2; font-size:.76rem; font-weight:700; background:var(--amber); color:var(--night); padding:4px 10px; border-radius:999px}
+.feat{position:absolute; top:20px; left:22px; z-index:2; font-size:.76rem; font-weight:700; background:var(--berry); color:var(--on); padding:4px 11px; border-radius:999px}
 
 .p-resp{grid-column:6/8; grid-row:3}
 .p-plant{grid-column:8/10; grid-row:3}
@@ -105,31 +95,32 @@ a{color:inherit}
 .exp{grid-column:10/13; grid-row:1/3; display:flex; flex-direction:column}
 .jobs{list-style:none; margin:0 0 14px; padding:0 0 0 16px; border-left:2px solid var(--edge-2); display:flex; flex-direction:column; gap:14px; overflow:auto}
 .jobs li{position:relative}
-.jobs li::before{content:""; position:absolute; left:-22px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--amber)}
-.jobs li:last-child::before{background:var(--muted)}
-.jobs b{display:block; font-size:.98rem}
+.jobs li::before{content:""; position:absolute; left:-22px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--berry)}
+.jobs li:last-child::before{background:var(--taupe)}
+.jobs b{display:block; font-size:.98rem; color:var(--berry)}
 .jobs small{color:var(--muted); font-size:.8rem; display:block; margin-bottom:4px}
-.jobs p{margin:0; color:#C9D2DF; font-size:.86rem; line-height:1.45}
-.seek{display:none; margin-top:auto; padding:12px 14px; border-radius:14px; background:rgba(242,169,59,.1); border:1px solid rgba(242,169,59,.3); font-size:.86rem; line-height:1.45; color:#E9DCC6}
-.seek b{color:var(--amber)}
+.jobs p{margin:0; color:var(--ink); font-size:.86rem; line-height:1.45}
+.seek{display:none; margin-top:auto; padding:12px 14px; border-radius:14px; background:rgba(196,122,88,.22); border:1px solid rgba(196,122,88,.7); font-size:.86rem; line-height:1.45; color:var(--ink)}
+.seek b{color:var(--berry)}
 
 /* about */
 .about{grid-column:10/13; grid-row:3/5; display:flex; flex-direction:column; gap:12px; overflow:auto}
-.about h4{margin:0 0 6px; font-size:.86rem; color:var(--muted); font-weight:600}
+.about h4{margin:0 0 6px; font-size:.86rem; color:var(--berry); font-weight:700}
 .about ul{list-style:none; margin:0; padding:0}
 .about li{font-size:.86rem; line-height:1.35; margin:0 0 6px}
 .about li span{color:var(--muted)}
 .langs{display:flex; flex-wrap:wrap; gap:6px}
-.langs span{font-size:.78rem; padding:3px 10px; border-radius:999px; border:1px solid var(--edge); background:rgba(255,255,255,.04)}
+.langs span{font-size:.78rem; padding:3px 10px; border-radius:999px; border:1px solid var(--edge-2); background:rgba(211,224,201,.35)}
 .langs span em{font-style:normal; color:var(--muted)}
 
 /* contact */
-.contact{grid-column:1/4; grid-row:4; display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(135deg, #F2A93B, #E58E2B); color:var(--night); border:none}
-.contact .label{color:rgba(14,27,46,.7)}
+.contact{grid-column:1/4; grid-row:4; display:flex; flex-direction:column; justify-content:space-between; background:var(--berry); color:var(--on); border:none}
+.contact .label{color:rgba(253,251,246,.7)}
 .contact h2{margin:0; font-size:clamp(1.25rem,1.7vw,1.6rem); letter-spacing:-.025em; line-height:1.1}
 .socials{display:flex; gap:8px; flex-wrap:wrap}
-.socials a{display:inline-flex; align-items:center; gap:7px; text-decoration:none; font-weight:700; font-size:.86rem; padding:8px 12px; border-radius:999px; background:var(--night); color:var(--ink)}
-.socials a.ghost{background:rgba(14,27,46,.12); color:var(--night)}
+.socials a{display:inline-flex; align-items:center; gap:7px; text-decoration:none; font-weight:700; font-size:.86rem; padding:8px 12px; border-radius:999px; background:var(--icy); color:var(--berry); transition:background .15s}
+.socials a:hover{background:var(--on)}
+.socials a.ghost{background:rgba(253,251,246,.14); color:var(--on)}
 .socials svg{width:15px; height:15px}
 
 @media (min-width:1101px) and (min-height:1000px){ .seek{display:block} }
@@ -152,20 +143,20 @@ a{color:inherit}
   .intro{padding:22px 24px}
   .intro h1{font-size:clamp(2rem,3.5vw,3.2rem)}
   .intro p{font-size:.95rem}
-  .stack span{font-size:.74rem; padding:3px 9px}
-  .juriq .pb{padding:12px 18px 14px}
-  .juriq .tagline{margin-bottom:8px}
-  .pb{padding:10px 14px 11px}
+  .juriq .pb{padding:12px 20px 18px}
+  .juriq .tagline{margin-bottom:10px}
+  .pb{padding:10px 16px 13px}
+  .kind{padding-top:20px}
 }
 /* ---------- smaller screens: scrollable stacked bento ---------- */
 @media (max-width:1100px), (max-height:640px){
   .seek{display:block}
   .bento{height:auto; min-height:0; grid-template-columns:repeat(6,1fr); grid-template-rows:none; grid-auto-rows:minmax(170px,auto)}
-  .intro{grid-column:1/-1; grid-row:auto; min-height:470px}
-  .juriq{grid-column:1/-1; grid-row:auto; min-height:400px}
+  .intro{grid-column:1/-1; grid-row:auto; min-height:430px}
+  .juriq{grid-column:1/-1; grid-row:auto; min-height:300px}
   .exp{grid-column:1/4; grid-row:auto}
   .about{grid-column:4/7; grid-row:auto}
-  .p-resp,.p-plant,.p-trends,.p-smart,.p-mentora{grid-column:span 3; grid-row:auto; min-height:210px}
+  .p-resp,.p-plant,.p-trends,.p-smart,.p-mentora{grid-column:span 3; grid-row:auto; min-height:170px}
   .p-mentora{grid-column:1/-1}
   .contact{grid-column:1/-1; grid-row:auto; min-height:180px; gap:16px}
   .intro{order:1} .juriq{order:2} .p-resp{order:3} .p-plant{order:4} .p-trends{order:5} .p-smart{order:6} .p-mentora{order:7}
@@ -184,29 +175,27 @@ a{color:inherit}
 /* ---------- modal (project page) ---------- */
 .modal{position:fixed; inset:0; z-index:50; display:none}
 .modal.on{display:block}
-.scrim{position:absolute; inset:0; background:rgba(4,8,16,.7); backdrop-filter:blur(5px); opacity:0; transition:opacity .25s}
+.scrim{position:absolute; inset:0; background:rgba(47,45,42,.45); backdrop-filter:blur(5px); opacity:0; transition:opacity .25s}
 .modal.on .scrim{opacity:1}
-.sheet{position:absolute; top:calc(env(safe-area-inset-top,0px) + 24px); bottom:24px; left:50%; width:min(980px, calc(100% - 32px)); transform:translate(-50%,24px); opacity:0; transition:transform .3s ease, opacity .3s ease; background:var(--paper); border:1px solid var(--edge); border-radius:26px; overflow:auto; overscroll-behavior:contain; box-shadow:0 30px 80px rgba(0,0,0,.5); font-size:16.5px; line-height:1.6}
+.sheet{position:absolute; top:calc(env(safe-area-inset-top,0px) + 24px); bottom:24px; left:50%; width:min(980px, calc(100% - 32px)); transform:translate(-50%,24px); opacity:0; transition:transform .3s ease, opacity .3s ease; background:var(--paper); border:1px solid var(--edge); border-radius:26px; overflow:auto; overscroll-behavior:contain; box-shadow:0 30px 80px rgba(47,45,42,.35); font-size:16.5px; line-height:1.6}
 .modal.on .sheet{transform:translate(-50%,0); opacity:1}
 @media (max-width:640px){ .sheet{top:env(safe-area-inset-top,0px); bottom:0; width:100%; border-radius:0; padding-bottom:env(safe-area-inset-bottom,0px)} }
-.m-art{position:relative; background:var(--c); height:240px}
-.m-art svg{position:absolute; inset:0; width:100%; height:100%}
-.m-top{position:sticky; top:0; z-index:3; display:flex; justify-content:space-between; padding:14px; pointer-events:none}
-.m-top button{pointer-events:auto; font:inherit; font-weight:700; font-size:.9rem; border:none; border-radius:999px; padding:9px 16px; background:rgba(10,19,34,.8); color:#fff; cursor:pointer; backdrop-filter:blur(6px)}
-.m-body{padding:34px clamp(20px,5vw,56px) 48px; margin-top:-52px}
-.m-title{background:var(--paper); border-radius:20px 20px 0 0; position:relative; padding-top:22px}
+.m-top{position:sticky; top:0; z-index:3; height:0; pointer-events:none}
+.m-top button{position:absolute; top:14px; right:14px; pointer-events:auto; font:inherit; font-weight:700; font-size:.9rem; border:none; border-radius:999px; padding:9px 16px; background:var(--berry); color:var(--on); cursor:pointer}
+.m-bar{height:8px; background:var(--c)}
+.m-body{padding:44px clamp(20px,5vw,56px) 48px}
 .m-when{color:var(--muted); font-size:.93rem; margin:0 0 6px}
-.m-body h2{font-size:clamp(1.7rem,3.6vw,2.5rem); margin:0 0 10px; letter-spacing:-.03em; line-height:1.08}
+.m-body h2{font-size:clamp(1.7rem,3.6vw,2.5rem); margin:0 0 10px; letter-spacing:-.03em; line-height:1.08; color:var(--berry)}
 .m-hook{font-size:1.1rem; color:var(--muted); margin:0 0 22px; max-width:60ch}
 .m-links{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px}
 .m-links:empty{display:none}
 .metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:0 0 38px}
 .metric{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px 18px}
-.metric b{display:block; font-size:clamp(1.4rem,2.8vw,1.9rem); letter-spacing:-.03em; line-height:1.1}
+.metric b{display:block; font-size:clamp(1.4rem,2.8vw,1.9rem); letter-spacing:-.03em; line-height:1.1; color:var(--berry)}
 .metric span{color:var(--muted); font-size:.9rem; line-height:1.4; display:block; margin-top:6px}
 .m-cols{display:grid; grid-template-columns:1.1fr .9fr; gap:44px}
 @media (max-width:780px){ .m-cols{grid-template-columns:1fr; gap:32px} }
-.m-body h4{font-size:1.08rem; margin:0 0 12px}
+.m-body h4{font-size:1.08rem; margin:0 0 12px; color:var(--berry)}
 .m-body p{margin:0 0 14px; max-width:62ch}
 .m-body ul.built{margin:0; padding-left:20px}
 .m-body ul.built li{margin:0 0 9px}
@@ -214,8 +203,8 @@ a{color:inherit}
 .flow::before{content:""; position:absolute; left:15px; top:16px; bottom:16px; width:2px; background:var(--line)}
 .flow li{counter-increment:s; position:relative; padding:4px 0 16px 48px}
 .flow li::before{content:counter(s); position:absolute; left:0; top:2px; width:32px; height:32px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:.9rem; background:var(--surface); border:2px solid var(--line); color:var(--muted); transition:all .3s}
-.flow li.on::before{background:var(--amber); border-color:var(--amber); color:var(--night); transform:scale(1.1)}
-.flow li.done::before{background:var(--ink); border-color:var(--ink); color:var(--night)}
+.flow li.on::before{background:var(--berry); border-color:var(--berry); color:var(--on); transform:scale(1.1)}
+.flow li.done::before{background:var(--charcoal); border-color:var(--charcoal); color:var(--on)}
 .flow b{display:block}
 .flow span{color:var(--muted); font-size:.93rem; line-height:1.45; display:block}
 .replay{font:inherit; font-size:.88rem; font-weight:700; color:var(--link); background:none; border:none; padding:0; cursor:pointer; margin-left:8px}
@@ -233,7 +222,6 @@ a{color:inherit}
 <main class="bento">
 
   <section class="t intro" aria-label="About Isra">
-    <canvas id="net" aria-hidden="true"></canvas>
     <div>
       <div class="who"><div class="avatar" aria-hidden="true">IB</div><div><b>Isra Brini</b><span>AI Engineer, INSAT Tunis</span></div></div>
       <span class="status"><i></i><span><b>Open to a 6-month internship</b> from January 2027, in Paris</span></span>
@@ -242,19 +230,15 @@ a{color:inherit}
       <h1>I build AI agents <span>that do real work.</span></h1>
       <p>At <strong>Neoxam</strong>, I deployed an <strong>agent-based tool</strong> that migrates entire test suites on its own, and taught a RAG assistant to <strong>cite its sources</strong>. My projects beat a hand-made schedule and a published research baseline.</p>
       <div class="actions">
-        <a class="btn amber" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
+        <a class="btn primary" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
         <a class="btn line" href="mailto:isra.brini@gmail.com" data-track="email_click">Email me</a>
-      </div>
-      <div class="stack" aria-label="Main tools">
-        <span>Python</span><span>LangGraph</span><span>LLMs and RAG</span><span>PyTorch</span><span>OR-Tools</span><span>Kafka</span><span>Spark</span><span>FastAPI</span><span>React</span><span>Docker</span>
       </div>
     </div>
   </section>
 
-  <button class="t p juriq" data-open="juriq" aria-label="Open project: Juriq">
+  <button class="t p juriq" data-open="juriq" style="--c:#2F4A3A" aria-label="Open project: Juriq">
     <span class="feat">Featured project</span>
     <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="band" style="--c:#3550D8" data-art="juriq"></div>
     <div class="pb">
       <h3>Juriq</h3>
       <p class="tagline">AI agents and a constraint solver that schedule thesis defenses, fairer than by hand.</p>
@@ -277,15 +261,15 @@ a{color:inherit}
     <p class="seek"><b>Looking for</b> an AI or ML Engineer internship, 6 months from January or February 2027, in Paris. My school provides the internship agreement.</p>
   </section>
 
-  <button class="t p p-resp" data-open="respiratory" aria-label="Open project: Respiratory Sound Classification">
+  <button class="t p p-resp" data-open="respiratory" style="--c:#5E5A52" aria-label="Open project: Respiratory Sound Classification">
     <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="band" style="--c:#C2416B" data-art="respiratory"></div>
+    <span class="kind">Deep learning</span>
     <div class="pb"><h3>Respiratory sounds</h3><p class="win">Beat a published deep-learning baseline</p></div>
   </button>
 
-  <button class="t p p-plant" data-open="plants" aria-label="Open project: Plant Disease Detection">
+  <button class="t p p-plant" data-open="plants" style="--c:#C47A58" aria-label="Open project: Plant Disease Detection">
     <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="band" style="--c:#2F8F5B" data-art="plants"></div>
+    <span class="kind">Computer vision</span>
     <div class="pb"><h3>Plant disease detection</h3><p class="win">Diagnoses a leaf and shows why</p></div>
   </button>
 
@@ -302,7 +286,7 @@ a{color:inherit}
   </section>
 
   <section class="t pad contact" aria-label="Contact">
-    <div><p class="label">Contact</p><h2>Let’s talk about your team.</h2></div>
+    <div><p class="label">Contact</p><h2>Got something to build? Say hi.</h2></div>
     <div class="socials">
       <a href="mailto:isra.brini@gmail.com" data-track="email_click"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
       <a href="https://linkedin.com/in/IsraBrini" target="_blank" rel="noopener" data-track="linkedin_click"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"/></svg>LinkedIn</a>
@@ -311,21 +295,21 @@ a{color:inherit}
     </div>
   </section>
 
-  <button class="t p p-mentora" data-open="mentora" aria-label="Open project: Mentora">
+  <button class="t p p-mentora" data-open="mentora" style="--c:#2F4A3A" aria-label="Open project: Mentora">
     <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="band" style="--c:#6D4CC2" data-art="mentora"></div>
+    <span class="kind">Full-stack and LLMs</span>
     <div class="pb"><h3>Mentora</h3><p class="win">A learning platform with a local AI tutor</p></div>
   </button>
 
-  <button class="t p p-trends" data-open="trends" aria-label="Open project: Social Media Trend Analyzer">
+  <button class="t p p-trends" data-open="trends" style="--c:#5E5A52" aria-label="Open project: Social Media Trend Analyzer">
     <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="band" style="--c:#B7791F" data-art="trends"></div>
+    <span class="kind">Big data</span>
     <div class="pb"><h3>Trend analyzer</h3><p class="win">Live trends across Twitch, YouTube and Reddit</p></div>
   </button>
 
-  <button class="t p p-smart" data-open="smartsight" aria-label="Open project: SmartSight">
+  <button class="t p p-smart" data-open="smartsight" style="--c:#C47A58" aria-label="Open project: SmartSight">
     <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="band" style="--c:#0F8A8A" data-art="smartsight"></div>
+    <span class="kind">Edge AI</span>
     <div class="pb"><h3>SmartSight</h3><p class="win">Glasses that guide visually impaired people</p></div>
   </button>
 
@@ -359,21 +343,8 @@ const IMAGES = { juriq: "", respiratory: "", plants: "", trends: "", smartsight:
 const TRACK_URL = "";
 
 /* ---------- project content ---------- */
-const ART = {
-  juriq: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim" fill="none">${
-    Array.from({length:6},(_,r)=>Array.from({length:12},(_,c)=>{const on=[3,8,14,17,22,27,31,36,41,44,50,55,59,63,68].includes(r*12+c);
-      return `<rect x="${18+c*32}" y="${18+r*28}" width="26" height="20" rx="5" fill="${on?'#F2A93B':'rgba(255,255,255,.14)'}"/>`}).join('')).join('')
-  }</g><path class="pop" d="M43 28 L139 52 L235 80 L331 108" stroke="#fff" stroke-width="3" fill="none" stroke-dasharray="6 7" stroke-linecap="round"/></svg>`,
-  respiratory: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim">${
-    Array.from({length:30},(_,i)=>{const h=18+Math.abs(Math.sin(i*.55))*70+(i%7===3?38:0);return `<rect x="${i*15+4}" y="${100-h/2}" width="9" height="${h}" rx="4" fill="rgba(255,255,255,${i%7===3?'.95':'.28'})"/>`}).join('')
-  }</g><path class="pop" d="M0 150 C40 120 60 175 100 150 S160 120 200 150 S260 178 300 150 S360 122 400 150" stroke="#F2A93B" stroke-width="4" fill="none"/></svg>`,
-  plants: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="hg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF5A3C" stop-opacity=".95"/><stop offset=".45" stop-color="#F2A93B" stop-opacity=".75"/><stop offset="1" stop-color="#F2A93B" stop-opacity="0"/></radialGradient></defs><g class="anim"><path d="M70 170 C90 60 220 20 330 40 C320 140 220 190 70 170 Z" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.75)" stroke-width="3"/><path d="M70 170 C160 120 240 80 330 40" stroke="rgba(255,255,255,.75)" stroke-width="3" fill="none"/>${[[150,128],[200,104],[250,80]].map(([x,y])=>`<path d="M${x} ${y} l-28 -30 M${x} ${y} l14 38" stroke="rgba(255,255,255,.5)" stroke-width="2"/>`).join('')}</g><circle class="pop" cx="235" cy="108" r="52" fill="url(#hg)"/></svg>`,
-  trends: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim" stroke="rgba(255,255,255,.14)">${Array.from({length:9},(_,i)=>`<line x1="0" x2="440" y1="${20+i*20}" y2="${20+i*20}"/>`).join('')}</g><path class="anim" d="M0 150 L40 140 L80 146 L120 132 L160 138 L200 120 L230 126 L262 40 L290 110 L330 100 L370 112 L420 96" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><circle class="pop" cx="262" cy="40" r="11" fill="#0E1B2E" stroke="#fff" stroke-width="4"/></svg>`,
-  smartsight: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g class="anim" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2">${[60,110,160,210].map(r=>`<path d="M${200-r} 210 A${r} ${r} 0 0 1 ${200+r} 210"/>`).join('')}</g><g class="pop"><path d="M150 52 h-22 v22 M250 52 h22 v22 M150 168 h-22 v-22 M250 168 h22 v-22" stroke="#F2A93B" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="200" cy="88" r="15" fill="rgba(255,255,255,.85)"/><path d="M178 160 v-28 a22 22 0 0 1 44 0 v28" fill="rgba(255,255,255,.85)"/></g><rect x="128" y="30" width="100" height="18" rx="5" fill="#F2A93B"/><text x="136" y="43" font-family="Arial" font-size="11" font-weight="700" fill="#0E1B2E">person 0.94</text></svg>`,
-  mentora: `<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><path class="anim" d="M20 170 C90 170 80 100 150 100 S230 40 300 52 S380 30 420 20" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/><g class="anim">${[[20,170],[150,100],[300,52]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="13" fill="#fff"/>`).join('')}</g><g class="pop"><circle cx="360" cy="34" r="22" fill="#F2A93B"/><path d="M350 34 l7 7 l13 -14" stroke="#0E1B2E" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg>`,
-};
 const PROJECTS = [
- { id:"juriq", color:"#3550D8", featured:true, cats:["agents","web"],
+ { id:"juriq", color:"#2F4A3A", featured:true, cats:["agents","web"],
    title:"Juriq", sub:"Scheduling thesis-defense juries with AI agents",
    when:"February to June 2026", win:"Fairer than the schedule made by hand",
    hook:"Administrators describe changes in plain language. LLM agents and a constraint solver turn them into a valid schedule.",
@@ -384,7 +355,7 @@ const PROJECTS = [
    flowTitle:"One request, five steps",
    flow:[["An administrator types a request","“Dr. Mansour can’t attend on Tuesday morning.”"],["Translator agent (LLM)","Turns the sentence into a structured constraint."],["Orchestrator","Decides whether to patch the schedule or re-solve it."],["CP-SAT solver","Finds a schedule that meets every hard rule."],["Reflector agent","Scores fairness and expertise, and flags what to improve."]],
    stack:["Python","LangGraph","LLMs","OR-Tools CP-SAT","FastAPI","PostgreSQL","Redis","React","Docker"] },
- { id:"respiratory", color:"#C2416B", cats:["dl"],
+ { id:"respiratory", color:"#5E5A52", cats:["dl"],
    title:"Respiratory Sound Classification", sub:"Detecting lung problems from breathing sounds",
    when:"April to May 2026", win:"Outperformed the published baseline",
    hook:"I reproduced a published deep-learning method on breathing recordings, then redesigned it to beat it.",
@@ -395,7 +366,7 @@ const PROJECTS = [
    flowTitle:"How the research went",
    flow:[["Reproduce","Rebuilt the published baseline and its numbers."],["Adapt","Fine-tuned the transformer and added augmentation."],["Diagnose","Found why a single output head hit a ceiling."],["Redesign","Two specialized heads: detect, then classify."]],
    stack:["Python","PyTorch","Hugging Face Transformers","SpecAugment","SAM optimizer","Focal Loss","librosa"] },
- { id:"plants", color:"#2F8F5B", cats:["dl","cv"],
+ { id:"plants", color:"#C47A58", cats:["dl","cv"],
    title:"Plant Disease Detection", sub:"Diagnosing plant diseases from a photo of a leaf",
    when:"", win:"Shows why it made each prediction",
    hook:"Upload a leaf photo and the app names the likely disease, says how sure it is, and highlights where it looked.",
@@ -406,7 +377,7 @@ const PROJECTS = [
    flowTitle:"From photo to diagnosis",
    flow:[["Upload","A photo of a single leaf."],["Preprocess","Same resizing and normalization as in evaluation."],["Classify","The fine-tuned model predicts the disease."],["Explain","Grad-CAM highlights the regions it relied on."]],
    stack:["Python","PyTorch","Grad-CAM","Streamlit"] },
- { id:"trends", color:"#B7791F", cats:["data"],
+ { id:"trends", color:"#5E5A52", cats:["data"],
    title:"Social Media Trend Analyzer", sub:"Spotting what’s trending across Twitch, YouTube and Reddit",
    when:"April to June 2026", win:"Live trends from three platforms in one view",
    hook:"A distributed pipeline that watches three platforms at once and flags topics as they spike.",
@@ -417,7 +388,7 @@ const PROJECTS = [
    flowTitle:"From post to trend",
    flow:[["Ingest","Producers pull from the Twitch, YouTube and Reddit APIs."],["Normalize","Every message becomes the same event format in Kafka."],["Stream","Spark aggregates, detects spikes and scores sentiment."],["Compare","Batch baselines tell a real spike from a normal day."],["Show","A live dashboard compares platforms side by side."]],
    stack:["Python","Apache Kafka","PySpark","Hadoop HDFS","MongoDB","PostgreSQL","Docker Compose","Streamlit"] },
- { id:"smartsight", color:"#0F8A8A", cats:["cv","web"],
+ { id:"smartsight", color:"#C47A58", cats:["cv","web"],
    title:"SmartSight", sub:"Glasses that guide visually impaired people",
    when:"February to June 2025", win:"Validated in real walking trials",
    hook:"Wearable glasses that spot obstacles in real time and tell the wearer where to go, by voice or vibration.",
@@ -428,7 +399,7 @@ const PROJECTS = [
    flowTitle:"From camera to guidance",
    flow:[["See","The camera on the glasses captures the scene."],["Detect","YOLOv8 Nano finds obstacles on the device."],["Judge distance","Box size and depth cues estimate how close they are."],["Guide","The app speaks or vibrates the right instruction."]],
    stack:["Python","OpenCV","YOLOv8","MiDaS","Raspberry Pi","MQTT","React Native","TypeScript"] },
- { id:"mentora", color:"#6D4CC2", cats:["agents","web"],
+ { id:"mentora", color:"#2F4A3A", cats:["agents","web"],
    title:"Mentora", sub:"Learning web frameworks with an AI tutor",
    when:"June 2025", win:"An AI tutor running fully on local hardware",
    hook:"A learning platform with progressive paths, exercises, quizzes and badges, plus an AI assistant that answers learners’ questions.",
@@ -477,7 +448,6 @@ const PROJECTS = [
 
 /* ---------- tiles ---------- */
 const esc = s => s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-document.querySelectorAll("[data-art]").forEach(el=>{ el.innerHTML = ART[el.dataset.art]; });
 document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click", ()=>openProject(b.dataset.open, true)));
 /* ---------- project detail ---------- */
 const modal = document.getElementById("modal"), sheet = document.getElementById("sheet");
@@ -493,7 +463,7 @@ function openProject(id, push){
   const img = IMAGES[id] ? `<img src="${IMAGES[id]}" alt="${esc(p.title)} screenshot" style="width:100%;border-radius:16px;border:1px solid var(--line);margin:0 0 36px">` : "";
   sheet.innerHTML = `
     <div class="m-top"><span></span><button type="button" data-close aria-label="Close project">Close</button></div>
-    <div class="m-art" style="--c:${p.color}; margin-top:-62px">${ART[id]}</div>
+    <div class="m-bar" style="--c:${p.color}"></div>
     <div class="m-body"><div class="m-title">
       ${p.when ? `<p class="m-when">${esc(p.when)}</p>` : ""}
       <h2 id="m-title">${esc(p.title)}: ${esc(p.sub.charAt(0).toLowerCase()+p.sub.slice(1))}</h2>
@@ -559,50 +529,6 @@ addEventListener("popstate", ()=>{
 });
 addEventListener("load", ()=>{ const id = location.hash.slice(1); if(PROJECTS.some(p=>p.id===id)) openProject(id, false); });
 
-/* ---------- hero network ---------- */
-(function(){
-  const cv = document.getElementById("net"), ctx = cv.getContext("2d");
-  let W, H, dpr, nodes = [], edges = [], packets = [], mouse = {x:-999, y:-999}, running = true, raf;
-  function build(){
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-    const n = Math.round(Math.min(46, W*H/9000)); nodes = []; edges = [];
-    for(let i=0;i<n;i++) nodes.push({x: W*Math.random(), y: H*Math.random(), r: 2+Math.random()*2.5, vx:(Math.random()-.5)*.12, vy:(Math.random()-.5)*.12});
-    nodes.forEach((a,i)=>{ nodes.map((b,j)=>({j,d:Math.hypot(a.x-b.x,a.y-b.y)})).filter(o=>o.j!==i).sort((p,q)=>p.d-q.d).slice(0,3)
-      .forEach(o=>{ if(!edges.some(e=>(e[0]===o.j&&e[1]===i))) edges.push([i,o.j]); }); });
-    packets = Array.from({length: Math.max(6, Math.round(edges.length/9))}, newPacket);
-  }
-  function newPacket(){ const e = edges[Math.floor(Math.random()*edges.length)]; return { e, t: Math.random(), s: .004 + Math.random()*.006, rev: Math.random()<.5 }; }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    nodes.forEach(n=>{ n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>W) n.vx*=-1; if(n.y<0||n.y>H) n.vy*=-1; });
-    ctx.lineWidth = 1;
-    edges.forEach(([i,j])=>{ const a=nodes[i], b=nodes[j];
-      const near = Math.min(Math.hypot(a.x-mouse.x,a.y-mouse.y), Math.hypot(b.x-mouse.x,b.y-mouse.y)) < 140;
-      ctx.strokeStyle = near ? "rgba(242,169,59,.55)" : "rgba(169,180,196,.10)";
-      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); });
-    nodes.forEach(n=>{ const near = Math.hypot(n.x-mouse.x,n.y-mouse.y) < 140;
-      ctx.fillStyle = near ? "#F2A93B" : "rgba(243,244,240,.32)";
-      ctx.beginPath(); ctx.arc(n.x,n.y, near ? n.r+1.5 : n.r, 0, Math.PI*2); ctx.fill(); });
-    packets.forEach((p,k)=>{ p.t += p.s; if(p.t>=1){ packets[k] = newPacket(); packets[k].t = 0; return; }
-      const [i,j] = p.e, a = nodes[p.rev?j:i], b = nodes[p.rev?i:j];
-      const x = a.x+(b.x-a.x)*p.t, y = a.y+(b.y-a.y)*p.t;
-      ctx.fillStyle = "rgba(242,169,59,.25)"; ctx.beginPath(); ctx.arc(x,y,7,0,Math.PI*2); ctx.fill();
-      ctx.fillStyle = "#F2A93B"; ctx.beginPath(); ctx.arc(x,y,2.6,0,Math.PI*2); ctx.fill(); });
-  }
-  function loop(){ if(running){ draw(); raf = requestAnimationFrame(loop); } }
-  build();
-  if(reduce){ draw(); }
-  else{
-    loop();
-    new IntersectionObserver(es=>{ running = es[0].isIntersecting && !document.hidden; if(running){ cancelAnimationFrame(raf); loop(); } }).observe(cv);
-    document.addEventListener("visibilitychange", ()=>{ running = !document.hidden; if(running){ cancelAnimationFrame(raf); loop(); } });
-  }
-  const hero = cv.parentElement;
-  hero.addEventListener("pointermove", e=>{ const r = cv.getBoundingClientRect(); mouse.x = e.clientX-r.left; mouse.y = e.clientY-r.top; });
-  hero.addEventListener("pointerleave", ()=>{ mouse.x = mouse.y = -999; });
-  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeout(()=>{ build(); if(reduce) draw(); }, 200); });
-})();
 
 </script>
 </body>
