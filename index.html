@@ -7,318 +7,409 @@
 <meta name="description" content="Isra Brini builds AI agents, RAG systems, deep learning models and real-time data pipelines. Looking for a 6-month end-of-studies internship in Paris from January 2027.">
 <meta property="og:title" content="Isra Brini – AI Engineer">
 <meta property="og:description" content="AI agents, deep learning and data systems. Looking for a 6-month internship in Paris from January 2027.">
-<meta name="theme-color" content="#F7F2E8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232F4A3A'/><circle cx='72' cy='30' r='9' fill='%23C47A58'/><text x='44' y='70' font-size='48' text-anchor='middle' fill='%23D3E0C9' font-family='Arial' font-weight='800'>IB</text></svg>">
+<meta name="theme-color" content="#1B2452">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231B2452'/><circle cx='50' cy='50' r='34' fill='%23FFCD00'/><text x='50' y='63' font-size='34' text-anchor='middle' fill='%231B2452' font-family='Arial' font-weight='800'>IB</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
 <style>
 :root{
-  --charcoal:#5E5A52; --berry:#2F4A3A; --icy:#D3E0C9; --sky:#E4DCCB; --taupe:#C47A58;
-  --bg:#F7F2E8; --tile:#FDFBF6; --edge:rgba(47,74,58,.12); --edge-2:rgba(47,74,58,.28);
-  --ink:#2F2D2A; --muted:var(--charcoal); --on:#FDFBF6;
-  /* modal tokens */
-  --paper:#FDFBF6; --surface:#F3ECDD; --line:#E4DAC6; --link:var(--berry);
-  --font:"Bricolage Grotesque","Helvetica Neue",Arial,system-ui,sans-serif;
-  color-scheme:light; box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --ground:#F4F5F1; --grout:#D9DCD4; --white:#FFFFFF;
+  --ink:#1B2452; --muted:#4B5578;
+  /* six lines: re-tuned enamel colours, each paired with the text colour that passes on it */
+  --c1:#FFCD00; --c2:#1F66B3; --c3:#247A4D; --c4:#C04191; --c5:#F0801F; --c6:#7B54C2;
+  --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
+  --wrap:1280px; --gut:clamp(16px,3.4vw,32px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
 }
-*,*::before,*::after{box-sizing:inherit}
-html,body{height:100%}
-body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:76px; scrollbar-color:var(--ink) var(--ground)}
+body{margin:0; color:var(--ink); font-family:var(--font); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  /* bevelled running-bond ceramic tile, faint enough to sit behind text */
+  background-color:var(--ground);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cpath d='M0 .5H72M0 36.5H72M.5 0V36M36.5 36V72' stroke='%23D9DCD4' fill='none'/%3E%3Cpath d='M0 1.5H72M0 37.5H72M1.5 1V36M37.5 37V72' stroke='%23fff' stroke-opacity='.85' fill='none'/%3E%3C/svg%3E")}
 body.locked{overflow:hidden}
+::selection{background:var(--c1); color:var(--ink)}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--berry); outline-offset:3px; border-radius:8px}
+:focus-visible{outline:3px solid var(--ink); outline-offset:3px; border-radius:6px}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 var(--gut)}
+h1,h2,h3{font-stretch:108%}
 
-/* ---------- bento grid: one screen on desktop ---------- */
-.bento{display:grid; grid-template-columns:repeat(12,1fr); grid-template-rows:repeat(4,minmax(150px,1fr));
-  gap:12px; padding:14px; height:100vh; height:100dvh; min-height:700px; max-width:1500px; margin:0 auto}
-.t{position:relative; background:var(--tile); border:1px solid var(--edge); box-shadow:0 1px 2px rgba(94,90,82,.07), 0 6px 18px rgba(94,90,82,.06); border-radius:24px; overflow:hidden; min-width:0; min-height:0}
-.pad{padding:20px 22px}
-.label{display:flex; justify-content:space-between; align-items:center; gap:10px; margin:0 0 12px; font-size:.86rem; color:var(--muted); font-weight:600}
-.label a{color:var(--muted); text-decoration:none}
-.label a:hover{color:var(--berry)}
+/* buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:0 22px; border-radius:10px; font:inherit; font-weight:700; font-size:1rem; text-decoration:none; cursor:pointer; border:2px solid transparent; transition:background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease)}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn.primary{background:var(--ink); color:#fff}
+.btn.primary:hover{background:#2C3A7E}
+.btn.ghost{border-color:var(--ink); color:var(--ink); background:rgba(255,255,255,.7)}
+.btn.ghost:hover{background:var(--ink); color:#fff}
+.btn.sm{min-height:40px; padding:0 16px; font-size:.95rem}
+.btn svg{width:18px; height:18px; flex:none}
 
-.intro{grid-column:1/6; grid-row:1/4; display:flex; flex-direction:column; justify-content:space-between; padding:26px 28px; background:#EFE6D3; border-color:transparent}
-.who{display:flex; align-items:center; gap:14px}
-.avatar{width:52px; height:52px; border-radius:16px; background:var(--berry); color:var(--icy); display:grid; place-items:center; font-weight:800; font-size:1.25rem; flex:none}
-.who b{display:block; font-size:1.12rem; color:var(--berry)}
-.who span{color:var(--charcoal); font-size:.92rem}
-.status{display:inline-flex; align-items:center; gap:9px; padding:6px 13px 6px 11px; border:1px solid rgba(47,74,58,.25); border-radius:999px; font-size:.85rem; color:var(--charcoal); background:rgba(255,255,255,.6); margin-top:18px; width:fit-content}
-.status b{color:var(--berry); font-weight:600}
-.status i{width:8px; height:8px; border-radius:50%; background:var(--berry); animation:ping 2.4s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(47,74,58,.5)}80%,100%{box-shadow:0 0 0 8px rgba(47,74,58,0)}}
-.intro h1{font-size:clamp(2.2rem,3.9vw,3.7rem); line-height:.98; letter-spacing:-.045em; margin:0 0 14px; font-weight:800; font-variation-settings:"opsz" 96; color:var(--ink)}
-.intro h1 span{color:var(--berry)}
-.intro p{color:var(--ink); margin:0; max-width:46ch; font-size:1rem}
-.intro p strong{color:var(--berry); font-weight:700}
-.actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px}
-.btn{display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:999px; font:inherit; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; border:1.5px solid transparent; transition:transform .15s, background .15s}
-.btn:active{transform:scale(.97)}
-.btn.primary,.btn.ink{background:var(--berry); color:var(--on)}
-.btn.primary:hover,.btn.ink:hover{background:#223829}
-.btn.line,.btn.outline{border-color:var(--berry); color:var(--berry)}
-.btn.line:hover,.btn.outline:hover{background:rgba(47,74,58,.08)}
+/* header: a station-name sign */
+.bar{position:sticky; top:0; z-index:30; background:var(--ink); color:#fff}
+.bar .wrap{display:flex; align-items:center; gap:20px; height:60px}
+.station{display:inline-flex; align-items:baseline; gap:12px; text-decoration:none; padding:6px 14px; border:1.5px solid rgba(255,255,255,.45); border-radius:6px}
+.station b{font-weight:800; font-stretch:112%; letter-spacing:.02em; text-transform:uppercase; font-size:1.02rem}
+.station span{font-size:.85rem; color:rgba(255,255,255,.78)}
+.nav{display:flex; gap:2px; margin-left:auto}
+.nav a{text-decoration:none; color:rgba(255,255,255,.82); font-size:.95rem; font-weight:600; padding:9px 13px; border-radius:8px; transition:color .15s, background-color .15s}
+.nav a:hover{color:#fff; background:rgba(255,255,255,.12)}
+.nav a.cur{color:var(--c1)}
+.bar .btn{background:var(--c1); color:var(--ink)}
+.bar .btn:hover{background:#FFDD47}
+.bar :focus-visible,.contact :focus-visible{outline-color:var(--c1)}
 
-/* project tiles */
-.p{all:unset; box-sizing:border-box; position:relative; overflow:hidden; background:var(--tile); border:1px solid var(--edge); box-shadow:0 1px 2px rgba(94,90,82,.07), 0 6px 18px rgba(94,90,82,.06); border-radius:24px; min-width:0; min-height:0; cursor:pointer; display:flex; flex-direction:column; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease}
-.p::before{content:""; position:absolute; top:0; left:0; right:0; height:5px; background:var(--c, var(--berry))}
-.p:hover{transform:translateY(-3px); border-color:var(--edge-2); box-shadow:0 12px 28px rgba(47,74,58,.16)}
-.p:focus-visible{outline:2px solid var(--berry); outline-offset:3px}
-.kind{display:block; padding:22px 60px 0 18px; font-size:.78rem; font-weight:700; letter-spacing:.02em; color:var(--muted)}
-.pb{padding:12px 18px 16px; flex:none; margin-top:auto}
-.pb h3{margin:0; font-size:1.05rem; line-height:1.2; letter-spacing:-.01em; color:var(--berry)}
-.pb .win{margin:4px 0 0; color:var(--muted); font-size:.85rem; line-height:1.35}
-.arrow{position:absolute; top:14px; right:14px; width:30px; height:30px; border-radius:50%; background:rgba(47,74,58,.1); display:grid; place-items:center; z-index:2; transition:background .2s, transform .2s}
-.arrow svg{width:14px; height:14px}
-.arrow path{stroke:var(--berry)}
-.p:hover .arrow{background:var(--berry); transform:rotate(-45deg)}
-.p:hover .arrow path{stroke:var(--on)}
+/* roundel: the line badge */
+.rd{--d:34px; flex:none; width:var(--d); height:var(--d); border-radius:50%; display:grid; place-items:center; background:var(--pc); color:var(--pc-ink); font-weight:800; font-size:calc(var(--d) * .52); line-height:1; font-variant-numeric:tabular-nums; font-stretch:100%}
 
-.juriq{grid-column:6/10; grid-row:1/3}
-.juriq .pb{padding:16px 22px 22px}
-.juriq h3{font-size:1.6rem; letter-spacing:-.02em}
-.juriq .tagline{color:var(--muted); margin:6px 0 16px; font-size:.95rem; max-width:40ch}
-.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
-.kpis div{background:rgba(211,224,201,.35); border:1px solid var(--edge); border-radius:12px; padding:9px 11px}
-.kpis b{display:block; font-size:1.08rem; letter-spacing:-.02em; color:var(--berry)}
-.kpis span{display:block; color:var(--muted); font-size:.74rem; line-height:1.3}
-.feat{position:absolute; top:20px; left:22px; z-index:2; font-size:.76rem; font-weight:700; background:var(--berry); color:var(--on); padding:4px 11px; border-radius:999px}
+/* hero: intro band + the board */
+.hero{padding:clamp(16px,2.2vh,26px) 0 clamp(8px,2vw,24px)}
+.intro .status{grid-column:1/-1; justify-self:start}
+.intro{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:20px clamp(24px,5vw,72px); align-items:end; margin-bottom:clamp(14px,2vh,22px)}
+.status{display:inline-flex; flex-wrap:wrap; align-items:center; gap:6px 14px; padding:12px 22px 12px 18px; border-radius:10px; font-size:clamp(1rem,1.2vw,1.12rem); font-weight:600; line-height:1.25; color:rgba(255,255,255,.92); background:var(--ink);
+  /* enamel sign: navy plate with a thin white keyline set inside the edge */
+  box-shadow:inset 0 0 0 3px var(--ink), inset 0 0 0 4.5px rgba(255,255,255,.42), 0 14px 22px -14px rgba(27,36,82,.7)}
+.status b{color:#fff; font-weight:800; font-stretch:108%; letter-spacing:-.005em}
+.status .go{color:var(--c1); font-weight:800}
+.status .sep{width:1.5px; height:1.15em; background:rgba(255,255,255,.4); flex:none}
+.status i{width:12px; height:12px; border-radius:50%; background:#5BE08F; flex:none; animation:live 2.4s var(--ease) infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(91,224,143,.65)}70%,100%{box-shadow:0 0 0 9px rgba(91,224,143,0)}}
+h1{font-size:clamp(2.2rem,4vw,3.5rem); line-height:1.02; letter-spacing:-.03em; font-weight:800; margin:0; text-wrap:balance}
+h1 mark{background:var(--c1); color:var(--ink); padding:0 .14em; margin:0 -.04em; border-radius:8px; box-decoration-break:clone; -webkit-box-decoration-break:clone}
+.lede{font-size:1.06rem; color:var(--muted); max-width:46ch; margin:0}
+.lede strong{color:var(--ink); font-weight:700}
+.actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; align-items:center}
+.keys{display:inline-flex; align-items:center; gap:6px; margin-left:6px; font-size:.88rem; color:var(--muted)}
+.keys .rd{--d:20px}
 
-.p-resp{grid-column:6/8; grid-row:3}
-.p-plant{grid-column:8/10; grid-row:3}
-.p-mentora{grid-column:4/6; grid-row:4}
-.p-trends{grid-column:6/8; grid-row:4}
-.p-smart{grid-column:8/10; grid-row:4}
+.board{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:12px}
+.board-note{margin:14px 0 0; color:var(--muted); font-size:.92rem; max-width:70ch; text-wrap:balance}
 
-/* experience */
-.exp{grid-column:10/13; grid-row:1/3; display:flex; flex-direction:column}
-.jobs{list-style:none; margin:0 0 14px; padding:0 0 0 16px; border-left:2px solid var(--edge-2); display:flex; flex-direction:column; gap:14px; overflow:auto}
-.jobs li{position:relative}
-.jobs li::before{content:""; position:absolute; left:-22px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--berry)}
-.jobs li:last-child::before{background:var(--taupe)}
-.jobs b{display:block; font-size:.98rem; color:var(--berry)}
-.jobs small{color:var(--muted); font-size:.8rem; display:block; margin-bottom:4px}
-.jobs p{margin:0; color:var(--ink); font-size:.86rem; line-height:1.45}
-.seek{display:none; margin-top:auto; padding:12px 14px; border-radius:14px; background:rgba(196,122,88,.22); border:1px solid rgba(196,122,88,.7); font-size:.86rem; line-height:1.45; color:var(--ink)}
-.seek b{color:var(--berry)}
+/* a line = one project. White bevelled tile, glossy 3D token top right */
+.line{all:unset; box-sizing:border-box; position:relative; grid-column:span 2; display:grid; grid-template-columns:34px minmax(0,1fr) clamp(104px,9.2vw,134px); grid-template-rows:1fr auto; column-gap:10px; min-height:150px; padding:14px 18px 12px; border-radius:10px; background:#fff; color:var(--ink); cursor:pointer;
+  box-shadow:inset 0 0 0 1px var(--grout), inset 0 1.5px 0 #fff, inset 0 -3px 0 rgba(27,36,82,.05), 0 12px 22px -16px rgba(27,36,82,.45);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  animation:rise .7s var(--ease) both; animation-delay:calc(var(--i) * 70ms + 80ms)}
+.line.w3{grid-column:span 3}
+.line:hover,.line:focus-visible{transform:translateY(-4px); box-shadow:inset 0 0 0 2.5px var(--pc), inset 0 -3px 0 rgba(27,36,82,.05), 0 22px 30px -18px rgba(27,36,82,.55)}
+.line:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+.line .hd{grid-column:1; grid-row:1; display:flex; align-items:flex-start; padding-top:1px}
+.line .ft{grid-column:1 / 3; grid-row:2; display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; margin-top:8px}
+.line .kind{font-size:.78rem; font-weight:700; color:var(--muted); background:var(--ground); padding:2px 10px; border-radius:999px; white-space:nowrap; box-shadow:inset 0 0 0 1px var(--grout)}
+.line.feat .kind{background:rgba(27,36,82,.12); color:var(--ink); box-shadow:none}
+svg.ar{width:16px; height:16px; vertical-align:-3px; flex:none}
+svg.ar.flip{transform:rotate(180deg)}
+svg.ar.up{transform:rotate(-90deg)}
+.line .tok{grid-column:3; grid-row:1 / -1; align-self:center; justify-self:stretch; height:clamp(112px,10.6vw,152px); pointer-events:none; margin-right:-10px}
+.line.w3{grid-template-columns:34px minmax(0,1fr) clamp(150px,15vw,210px)}
+.line .txt{grid-column:2; grid-row:1; align-self:start; display:grid; gap:2px}
+.line .name{font-size:clamp(1.1rem,1.45vw,1.3rem); font-weight:800; line-height:1.12; letter-spacing:-.02em; font-stretch:108%}
+.line .win{font-size:.95rem; color:var(--muted); line-height:1.4}
+.line .view{font-weight:700; font-size:.92rem; white-space:nowrap}
+.line .view svg{transition:transform .3s var(--ease)}
+.line:hover .view svg,.line:focus-visible .view svg{transform:translateX(5px)}
+@keyframes rise{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
 
-/* about */
-.about{grid-column:10/13; grid-row:3/5; display:flex; flex-direction:column; gap:12px; overflow:auto}
-.about h4{margin:0 0 6px; font-size:.86rem; color:var(--berry); font-weight:700}
+/* featured line: Juriq, the full-width yellow line */
+.line.feat{grid-column:1/-1; grid-template-columns:minmax(0,1fr) clamp(150px,16vw,220px) minmax(250px,23vw); grid-template-rows:auto auto auto 1fr; column-gap:clamp(12px,2vw,28px); min-height:188px; padding:16px 22px; background:var(--c1);
+  box-shadow:inset 0 0 0 1px rgba(27,36,82,.16), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -4px 0 rgba(27,36,82,.08), 0 18px 30px -18px rgba(27,36,82,.6)}
+.line.feat:hover,.line.feat:focus-visible{box-shadow:inset 0 0 0 3px var(--ink), 0 26px 36px -18px rgba(27,36,82,.65)}
+.line.feat .rd{background:var(--ink); color:var(--c1); --d:40px}
+.line.feat .hd{grid-column:1; grid-row:1}
+.line.feat .hd{gap:12px}
+.line.feat .tok{grid-column:2; grid-row:1 / -1; align-self:stretch; height:auto; min-height:120px}
+.line.feat .txt{grid-column:1; grid-row:2; margin-top:6px}
+.line.feat .name{font-size:clamp(2.3rem,3.9vw,3.3rem); letter-spacing:-.04em; line-height:.98}
+.line.feat .win{color:var(--ink); font-size:1rem; max-width:46ch}
+.line.feat .ft{grid-column:1; grid-row:3; align-self:end}
+.kpis{grid-column:3; grid-row:1 / -1; align-self:stretch; display:grid; align-content:center; padding:4px 16px; background:var(--ink); color:#fff; border-radius:8px}
+.kpis > span{display:flex; justify-content:space-between; align-items:baseline; gap:14px; padding:7px 0; border-bottom:1px solid rgba(255,255,255,.2)}
+.kpis > span:last-child{border-bottom:none}
+.kpis b{font-size:clamp(1.2rem,1.9vw,1.55rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; white-space:nowrap; font-variant-numeric:tabular-nums}
+.kpis small{font-size:.84rem; color:rgba(255,255,255,.82); text-align:end; line-height:1.25}
+
+/* WebGL canvas: tokens are drawn here and pinned over the slots in each tile */
+#gl{position:fixed; inset:0; width:100%; height:100%; z-index:5; pointer-events:none}
+.no-gl .tok{display:none}
+.no-gl .line,.no-gl .line.w3{grid-template-columns:34px minmax(0,1fr)}
+.no-gl .line.feat{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.no-gl .line.feat .kpis{grid-column:2}
+.no-gl .line.feat .win{max-width:none}
+.no-gl .line .tok{display:none}
+
+/* sections */
+section.block{padding:clamp(40px,6vw,72px) 0 0}
+.head{margin-bottom:22px}
+.head h2{font-size:clamp(1.8rem,3.4vw,2.6rem); line-height:1.08; letter-spacing:-.03em; margin:0; font-weight:800; display:flex; align-items:center; gap:16px}
+.head h2::after{content:""; flex:1 1 auto; max-width:160px; height:6px; border-radius:3px; background:var(--ink); opacity:.9}
+.tile{background:#fff; border-radius:10px; box-shadow:inset 0 0 0 1px var(--grout), inset 0 1.5px 0 #fff, inset 0 -3px 0 rgba(27,36,82,.05), 0 12px 22px -16px rgba(27,36,82,.4)}
+
+.jobs{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+.jobs li{display:grid; grid-template-columns:150px 1fr 1.5fr; gap:24px; padding:20px 24px; align-items:start}
+.jobs .when{justify-self:start; background:var(--ink); color:#fff; font-weight:700; font-size:.88rem; padding:3px 12px; border-radius:999px}
+.jobs h3{margin:0; font-size:1.15rem; letter-spacing:-.01em; line-height:1.3}
+.jobs p{margin:0; color:var(--muted)}
+.jobs p strong{color:var(--ink); font-weight:700}
+.seek{margin:12px 0 0; padding:16px 22px; border-radius:10px; background:var(--c1); color:var(--ink); box-shadow:inset 0 2px 0 rgba(255,255,255,.5), inset 0 -3px 0 rgba(27,36,82,.08)}
+
+.about{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.about > div{padding:22px 24px}
+.about h3{margin:0 0 14px; font-size:1.05rem; font-weight:800; letter-spacing:-.01em; display:flex; align-items:center; gap:10px}
+.about h3::before{content:""; width:18px; height:18px; border-radius:50%; background:var(--dot); flex:none}
+.about > div:nth-child(1){--dot:var(--c3)}.about > div:nth-child(2){--dot:var(--c4)}.about > div:nth-child(3){--dot:var(--c5)}
 .about ul{list-style:none; margin:0; padding:0}
-.about li{font-size:.86rem; line-height:1.35; margin:0 0 6px}
-.about li span{color:var(--muted)}
-.langs{display:flex; flex-wrap:wrap; gap:6px}
-.langs span{font-size:.78rem; padding:3px 10px; border-radius:999px; border:1px solid var(--edge-2); background:rgba(211,224,201,.35)}
-.langs span em{font-style:normal; color:var(--muted)}
+.about li{margin:0 0 12px; line-height:1.4; font-weight:600}
+.about li span{display:block; color:var(--muted); font-size:.92rem; font-weight:400}
+.langs{display:flex; flex-wrap:wrap; gap:8px}
+.langs span{padding:5px 14px; border-radius:999px; background:var(--ground); box-shadow:inset 0 0 0 1px var(--grout); font-size:.95rem; font-weight:600}
+.langs em{font-style:normal; color:var(--muted); font-weight:400; font-size:.85rem; margin-inline-start:4px}
 
-/* contact */
-.contact{grid-column:1/4; grid-row:4; display:flex; flex-direction:column; justify-content:space-between; background:var(--berry); color:var(--on); border:none}
-.contact .label{color:rgba(253,251,246,.7)}
-.contact h2{margin:0; font-size:clamp(1.25rem,1.7vw,1.6rem); letter-spacing:-.025em; line-height:1.1}
-.socials{display:flex; gap:8px; flex-wrap:wrap}
-.socials a{display:inline-flex; align-items:center; gap:7px; text-decoration:none; font-weight:700; font-size:.86rem; padding:8px 12px; border-radius:999px; background:var(--icy); color:var(--berry); transition:background .15s}
-.socials a:hover{background:var(--on)}
-.socials a.ghost{background:rgba(253,251,246,.14); color:var(--on)}
-.socials svg{width:15px; height:15px}
+/* contact: the terminus */
+.contact{margin-top:clamp(52px,7vw,88px); padding:clamp(44px,6vw,72px) 0 28px; background:var(--ink); color:#fff}
+.route{display:flex; align-items:center; margin-bottom:28px}
+.route .rd{--d:26px; position:relative; box-shadow:0 0 0 4px var(--ink)}
+.route i{flex:1 1 0; max-width:64px; height:4px; background:rgba(255,255,255,.35)}
+.contact h2{font-size:clamp(2rem,4.4vw,3.2rem); line-height:1.04; letter-spacing:-.035em; margin:0 0 20px; font-weight:800; max-width:18ch}
+.mail{display:inline-block; font-size:clamp(1.15rem,2.4vw,1.6rem); font-weight:700; color:var(--c1); text-decoration:none; border-bottom:3px solid currentColor; padding-bottom:2px; overflow-wrap:anywhere}
+.mail:hover{color:#fff}
+.socials{display:flex; gap:10px; flex-wrap:wrap; margin-top:28px}
+.contact .btn.primary{background:var(--c1); color:var(--ink)}
+.contact .btn.primary:hover{background:#FFDD47}
+.contact .btn.ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.6)}
+.contact .btn.ghost:hover{background:#fff; color:var(--ink); border-color:#fff}
+.foot{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-top:52px; padding-top:18px; border-top:1px solid rgba(255,255,255,.28); font-size:.9rem; color:rgba(255,255,255,.85)}
+.foot a{display:inline-flex; align-items:center; min-height:44px}
 
-@media (min-width:1101px) and (min-height:1000px){ .seek{display:block} }
-/* ---------- short laptop screens: tighten so everything still fits ---------- */
-@media (min-width:1101px) and (max-height:860px){
-  .bento{gap:10px; padding:10px}
-  .pad{padding:15px 18px}
-  .label{margin-bottom:8px}
-  .seek{display:none}
-  .jobs{gap:10px}
-  .jobs p{font-size:.8rem; line-height:1.38}
-  .about{gap:8px}
-  .about h4{margin-bottom:3px; font-size:.8rem}
-  .about li{font-size:.8rem; margin-bottom:3px; line-height:1.3}
-  .about li.opt{display:none}
-  .contact h2{font-size:1.2rem}
-  .socials{gap:6px}
-  .socials a{padding:6px 11px; font-size:.82rem}
-  .socials a.ghost{display:none}
-  .intro{padding:22px 24px}
-  .intro h1{font-size:clamp(2rem,3.5vw,3.2rem)}
-  .intro p{font-size:.95rem}
-  .juriq .pb{padding:12px 20px 18px}
-  .juriq .tagline{margin-bottom:10px}
-  .pb{padding:10px 16px 13px}
-  .kind{padding-top:20px}
+/* responsive */
+@media (max-height:840px) and (min-width:1001px){
+  .hero{padding-top:14px}
+  h1{font-size:clamp(2.1rem,3.6vw,3.2rem)}
+  .line{min-height:132px; padding:12px 16px 10px}
+  .line .name{font-size:1.2rem}
+  .line.feat{min-height:170px; padding:14px 20px}
+  .line.feat .name{font-size:clamp(2rem,3.6vw,3rem)}
+  .kpis > span{padding:6px 0}
+  .board{gap:12px}
 }
-/* ---------- smaller screens: scrollable stacked bento ---------- */
-@media (max-width:1100px), (max-height:640px){
-  .seek{display:block}
-  .bento{height:auto; min-height:0; grid-template-columns:repeat(6,1fr); grid-template-rows:none; grid-auto-rows:minmax(170px,auto)}
-  .intro{grid-column:1/-1; grid-row:auto; min-height:430px}
-  .juriq{grid-column:1/-1; grid-row:auto; min-height:300px}
-  .exp{grid-column:1/4; grid-row:auto}
-  .about{grid-column:4/7; grid-row:auto}
-  .p-resp,.p-plant,.p-trends,.p-smart,.p-mentora{grid-column:span 3; grid-row:auto; min-height:170px}
-  .p-mentora{grid-column:1/-1}
-  .contact{grid-column:1/-1; grid-row:auto; min-height:180px; gap:16px}
-  .intro{order:1} .juriq{order:2} .p-resp{order:3} .p-plant{order:4} .p-trends{order:5} .p-smart{order:6} .p-mentora{order:7}
-  .exp{order:8} .about{order:9} .contact{order:10}
-  .intro h1{margin-top:22px}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .line,.line.w3{grid-column:span 1}
+  .line.w3:last-of-type{grid-column:1/-1}
+  .line.feat{grid-column:1/-1; grid-template-columns:minmax(0,1fr) clamp(130px,22vw,190px)}
+  .line.feat .tok{grid-row:1 / span 3}
+  .no-gl .line.feat{grid-template-columns:minmax(0,1fr)}
+  .no-gl .line.feat .kpis{grid-column:1}
+  .kpis{grid-column:1/-1; grid-row:auto; margin-top:12px}
+  .jobs li{grid-template-columns:1fr 1.5fr}
+  .jobs .when{grid-column:1/-1}
+  .about{grid-template-columns:1fr 1fr}
+  .about > div:last-child{grid-column:1/-1}
 }
 @media (max-width:640px){
-  .bento{grid-template-columns:1fr; padding:10px; gap:10px}
-  .intro,.juriq,.exp,.about,.contact,.p-resp,.p-plant,.p-trends,.p-smart,.p-mentora{grid-column:1/-1}
-  .intro{min-height:0; padding:22px}
-  .kpis{grid-template-columns:1fr 1fr 1fr; gap:6px}
-  .kpis b{font-size:.9rem; white-space:nowrap}
-  .kpis div{padding:8px}
+  .nav,.station span{display:none}
+  .bar .btn{margin-left:auto}
+  .board{grid-template-columns:1fr}
+  .line,.line.w3,.line.w3:last-of-type{grid-column:1/-1}
+  .line{min-height:140px}
+  .jobs li{grid-template-columns:1fr; gap:8px; padding:18px}
+  .about{grid-template-columns:1fr}
+  .actions .btn,.socials .btn{flex:1 1 auto}
+  .status .sep{display:none}
+  .status{gap:4px 12px}
+  .keys{display:none}
 }
 
-/* ---------- modal (project page) ---------- */
-.modal{position:fixed; inset:0; z-index:50; display:none}
-.modal.on{display:block}
-.scrim{position:absolute; inset:0; background:rgba(47,45,42,.45); backdrop-filter:blur(5px); opacity:0; transition:opacity .25s}
-.modal.on .scrim{opacity:1}
-.sheet{position:absolute; top:calc(env(safe-area-inset-top,0px) + 24px); bottom:24px; left:50%; width:min(980px, calc(100% - 32px)); transform:translate(-50%,24px); opacity:0; transition:transform .3s ease, opacity .3s ease; background:var(--paper); border:1px solid var(--edge); border-radius:26px; overflow:auto; overscroll-behavior:contain; box-shadow:0 30px 80px rgba(47,45,42,.35); font-size:16.5px; line-height:1.6}
-.modal.on .sheet{transform:translate(-50%,0); opacity:1}
-@media (max-width:640px){ .sheet{top:env(safe-area-inset-top,0px); bottom:0; width:100%; border-radius:0; padding-bottom:env(safe-area-inset-bottom,0px)} }
-.m-top{position:sticky; top:0; z-index:3; height:0; pointer-events:none}
-.m-top button{position:absolute; top:14px; right:14px; pointer-events:auto; font:inherit; font-weight:700; font-size:.9rem; border:none; border-radius:999px; padding:9px 16px; background:var(--berry); color:var(--on); cursor:pointer}
-.m-bar{height:8px; background:var(--c)}
-.m-body{padding:44px clamp(20px,5vw,56px) 48px}
-.m-when{color:var(--muted); font-size:.93rem; margin:0 0 6px}
-.m-body h2{font-size:clamp(1.7rem,3.6vw,2.5rem); margin:0 0 10px; letter-spacing:-.03em; line-height:1.08; color:var(--berry)}
-.m-hook{font-size:1.1rem; color:var(--muted); margin:0 0 22px; max-width:60ch}
-.m-links{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px}
+/* ---------- project dialog ---------- */
+dialog.sheet{width:min(920px, calc(100% - 32px)); max-width:none; height:calc(100% - 48px); max-height:none; margin:24px auto; padding:0; border:none; border-radius:14px; background:var(--ground); color:var(--ink); overflow:auto; overscroll-behavior:contain; font-size:17px; line-height:1.6; box-shadow:0 30px 80px rgba(27,36,82,.4)}
+dialog.sheet::backdrop{background:rgba(27,36,82,.62)}
+dialog.sheet[open]{animation:sheetin .35s var(--ease)}
+@keyframes sheetin{from{opacity:0; transform:translateY(18px)}to{opacity:1; transform:none}}
+@media (max-width:640px){ dialog.sheet{width:100%; height:100%; margin:0; border-radius:0} }
+.m-top{position:sticky; top:0; z-index:3; height:0}
+.m-top button svg{width:14px; height:14px; vertical-align:-2px}
+.m-top button{position:absolute; top:14px; right:14px; font:inherit; font-weight:700; font-size:.92rem; border:2px solid var(--ink); border-radius:10px; min-height:44px; padding:0 18px; background:#fff; color:var(--ink); cursor:pointer}
+.m-top button:hover{background:var(--ink); color:#fff}
+.m-band{background:var(--pc); color:var(--pc-ink); padding:56px clamp(20px,5vw,56px) 28px}
+.m-id{display:flex; align-items:center; gap:14px; margin-bottom:14px}
+.m-id .rd{--d:52px; background:var(--pc-ink); color:var(--pc)}
+.m-when{font-weight:700; font-size:.95rem; margin:0}
+.m-band h2{font-size:clamp(2rem,4.4vw,3.2rem); margin:0 0 10px; letter-spacing:-.035em; line-height:1.02; max-width:20ch; font-weight:800}
+.m-hook{font-size:1.08rem; margin:0; max-width:60ch}
+.m-body{padding:28px clamp(20px,5vw,56px) 44px}
+.m-links{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px}
 .m-links:empty{display:none}
-.metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:0 0 38px}
-.metric{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px 18px}
-.metric b{display:block; font-size:clamp(1.4rem,2.8vw,1.9rem); letter-spacing:-.03em; line-height:1.1; color:var(--berry)}
-.metric span{color:var(--muted); font-size:.9rem; line-height:1.4; display:block; margin-top:6px}
+.metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:0 0 36px}
+.metric{background:#fff; border-radius:10px; padding:16px 18px; box-shadow:inset 0 0 0 1px var(--grout), inset 0 -3px 0 color-mix(in srgb, var(--pc) 70%, transparent)}
+.metric b{display:block; font-size:clamp(1.4rem,2.6vw,1.8rem); letter-spacing:-.025em; line-height:1.1; font-weight:800}
+.metric span{color:var(--muted); font-size:.93rem; line-height:1.4; display:block; margin-top:6px}
 .m-cols{display:grid; grid-template-columns:1.1fr .9fr; gap:44px}
 @media (max-width:780px){ .m-cols{grid-template-columns:1fr; gap:32px} }
-.m-body h4{font-size:1.08rem; margin:0 0 12px; color:var(--berry)}
+.m-body h3{font-size:1.05rem; font-weight:800; margin:0 0 12px; display:flex; align-items:center; gap:12px}
 .m-body p{margin:0 0 14px; max-width:62ch}
-.m-body ul.built{margin:0; padding-left:20px}
-.m-body ul.built li{margin:0 0 9px}
+ul.built{margin:0; padding-inline-start:20px}
+ul.built li{margin:0 0 9px}
+ul.built li::marker{color:var(--ink)}
 .flow{list-style:none; counter-reset:s; margin:0; padding:0; position:relative}
-.flow::before{content:""; position:absolute; left:15px; top:16px; bottom:16px; width:2px; background:var(--line)}
+.flow::before{content:""; position:absolute; left:15px; top:16px; bottom:16px; width:4px; background:var(--grout)}
 .flow li{counter-increment:s; position:relative; padding:4px 0 16px 48px}
-.flow li::before{content:counter(s); position:absolute; left:0; top:2px; width:32px; height:32px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:.9rem; background:var(--surface); border:2px solid var(--line); color:var(--muted); transition:all .3s}
-.flow li.on::before{background:var(--berry); border-color:var(--berry); color:var(--on); transform:scale(1.1)}
-.flow li.done::before{background:var(--charcoal); border-color:var(--charcoal); color:var(--on)}
+.flow li::before{content:counter(s); position:absolute; left:0; top:2px; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:.88rem; background:#fff; border:2px solid var(--grout); color:var(--muted); transition:all .3s var(--ease)}
+.flow li.on::before{background:var(--pc); border-color:var(--pc); color:var(--pc-ink); transform:scale(1.12)}
+.flow li.done::before{border-color:var(--pc); color:var(--ink)}
 .flow b{display:block}
-.flow span{color:var(--muted); font-size:.93rem; line-height:1.45; display:block}
-.replay{font:inherit; font-size:.88rem; font-weight:700; color:var(--link); background:none; border:none; padding:0; cursor:pointer; margin-left:8px}
-.stackchips{display:flex; gap:8px; flex-wrap:wrap; margin-top:28px}
-.stackchips span{font-size:.85rem; font-weight:600; padding:5px 12px; border-radius:999px; background:var(--surface); border:1px solid var(--line)}
-.m-nav{display:flex; justify-content:space-between; gap:12px; margin-top:40px; padding-top:22px; border-top:1px solid var(--line)}
-.m-nav button{font:inherit; background:none; border:none; cursor:pointer; color:var(--ink); text-align:left; padding:0; max-width:48%}
-.m-nav button:last-child{text-align:right; margin-left:auto}
+.flow span{color:var(--muted); font-size:.95rem; line-height:1.45; display:block}
+.replay{font:inherit; font-size:.8rem; font-weight:700; color:var(--ink); background:#fff; border:2px solid var(--ink); border-radius:999px; padding:2px 12px; min-height:30px; cursor:pointer}
+.replay:hover{background:var(--ink); color:#fff}
+.stackchips{display:flex; gap:8px; flex-wrap:wrap; margin-top:32px}
+.stackchips span{font-size:.86rem; font-weight:600; padding:5px 12px; border-radius:999px; background:#fff; box-shadow:inset 0 0 0 1px var(--grout)}
+.m-nav{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:40px; padding-top:24px; border-top:2px solid var(--grout)}
+.m-nav button{font:inherit; background:#fff; border:none; box-shadow:inset 0 0 0 1px var(--grout); border-radius:10px; cursor:pointer; color:var(--ink); text-align:start; padding:14px 18px; min-height:44px; transition:box-shadow .2s}
+.m-nav button:hover{box-shadow:inset 0 0 0 2.5px var(--ink)}
+.m-nav button:last-child{text-align:end}
 .m-nav small{display:block; color:var(--muted); font-size:.85rem}
+.m-nav strong{font-size:1.05rem}
 
-@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important; animation:none!important}
+}
 </style>
 </head>
 <body>
-<main class="bento">
+<canvas id="gl" aria-hidden="true"></canvas>
 
-  <section class="t intro" aria-label="About Isra">
-    <div>
-      <div class="who"><div class="avatar" aria-hidden="true">IB</div><div><b>Isra Brini</b><span>AI Engineer, INSAT Tunis</span></div></div>
-      <span class="status"><i></i><span><b>Open to a 6-month internship</b> from January 2027, in Paris</span></span>
+<header class="bar" id="top">
+  <div class="wrap">
+    <a class="station" href="#main" aria-label="Isra Brini, AI Engineer, back to top"><b>Isra Brini</b><span>AI Engineer</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn sm" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download CV</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="work" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="intro">
+        <span class="status"><i aria-hidden="true"></i><b>Open to a 6-month internship</b><span class="sep" aria-hidden="true"></span><span class="go">Willing to relocate</span></span>
+        <div>
+          <h1 id="hero-title">I build AI agents <mark>that do real work.</mark></h1>
+        </div>
+        <div>
+          <p class="lede">AI engineer at INSAT Tunis. At <strong>Neoxam</strong>, I deployed an agent-based tool that migrates entire test suites on its own, and taught a RAG assistant to cite its sources.</p>
+          <div class="actions">
+            <a class="btn primary" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download CV</a>
+            <a class="btn ghost" href="mailto:isra.brini@gmail.com" data-track="email_click">Email me</a>
+            <span class="keys" aria-hidden="true">Press <span class="rd" style="--pc:var(--ink);--pc-ink:#fff">1</span> to <span class="rd" style="--pc:var(--ink);--pc-ink:#fff">6</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="board" id="board">
+        <button class="line feat" data-open="juriq" style="--i:0;--pc:var(--c1);--pc-ink:var(--ink)" aria-label="Open featured project 1: Juriq">
+          <span class="hd"><span class="rd" aria-hidden="true">1</span></span>
+          <span class="txt"><span class="name">Juriq</span><span class="win">AI agents and a constraint solver that schedule thesis defenses, fairer than by hand.</span></span>
+          <span class="ft"><span class="view">Read the case study <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="kind">Featured project</span></span>
+          <span class="tok" data-token="juriq" aria-hidden="true"></span>
+          <span class="kpis">
+            <span><b>4.59 → 2.63</b><small>Workload spread</small></span>
+            <span><b>60 → 72.7%</b><small>Expertise match</small></span>
+            <span><b>5 → 1</b><small>Overloaded professors</small></span>
+          </span>
+        </button>
+        <button class="line" data-open="respiratory" style="--i:1;--pc:var(--c2);--pc-ink:#fff" aria-label="Open project 2: Respiratory Sound Classification">
+          <span class="hd"><span class="rd" aria-hidden="true">2</span></span>
+          <span class="txt"><span class="name">Respiratory sounds</span><span class="win">Beat a published deep-learning baseline</span></span>
+          <span class="ft"><span class="view">View project <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="kind">Deep learning</span></span>
+          <span class="tok" data-token="respiratory" aria-hidden="true"></span>
+        </button>
+        <button class="line" data-open="plants" style="--i:2;--pc:var(--c3);--pc-ink:#fff" aria-label="Open project 3: Plant Disease Detection">
+          <span class="hd"><span class="rd" aria-hidden="true">3</span></span>
+          <span class="txt"><span class="name">Plant disease detection</span><span class="win">Diagnoses a leaf and shows why</span></span>
+          <span class="ft"><span class="view">View project <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="kind">Computer vision</span></span>
+          <span class="tok" data-token="plants" aria-hidden="true"></span>
+        </button>
+        <button class="line" data-open="smartsight" style="--i:3;--pc:var(--c4);--pc-ink:#fff" aria-label="Open project 4: SmartSight">
+          <span class="hd"><span class="rd" aria-hidden="true">4</span></span>
+          <span class="txt"><span class="name">SmartSight</span><span class="win">Glasses that guide visually impaired people</span></span>
+          <span class="ft"><span class="view">View project <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="kind">Edge AI</span></span>
+          <span class="tok" data-token="smartsight" aria-hidden="true"></span>
+        </button>
+        <button class="line w3" data-open="trends" style="--i:4;--pc:var(--c5);--pc-ink:var(--ink)" aria-label="Open project 5: Social Media Trend Analyzer">
+          <span class="hd"><span class="rd" aria-hidden="true">5</span></span>
+          <span class="txt"><span class="name">Trend analyzer</span><span class="win">Live trends across Twitch, YouTube and Reddit</span></span>
+          <span class="ft"><span class="view">View project <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="kind">Big data</span></span>
+          <span class="tok" data-token="trends" aria-hidden="true"></span>
+        </button>
+        <button class="line w3" data-open="mentora" style="--i:5;--pc:var(--c6);--pc-ink:#fff" aria-label="Open project 6: Mentora">
+          <span class="hd"><span class="rd" aria-hidden="true">6</span></span>
+          <span class="txt"><span class="name">Mentora</span><span class="win">A learning platform with a local AI tutor</span></span>
+          <span class="ft"><span class="view">View project <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="kind">Full-stack and LLMs</span></span>
+          <span class="tok" data-token="mentora" aria-hidden="true"></span>
+        </button>
+      </div>
+      <p class="board-note">Six projects in agents, deep learning, computer vision and data. Open any card for the full story.</p>
     </div>
-    <div>
-      <h1>I build AI agents <span>that do real work.</span></h1>
-      <p>At <strong>Neoxam</strong>, I deployed an <strong>agent-based tool</strong> that migrates entire test suites on its own, and taught a RAG assistant to <strong>cite its sources</strong>. My projects beat a hand-made schedule and a published research baseline.</p>
-      <div class="actions">
-        <a class="btn primary" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download my CV</a>
-        <a class="btn line" href="mailto:isra.brini@gmail.com" data-track="email_click">Email me</a>
+  </section>
+
+  <section class="block" id="experience" aria-labelledby="exp-title">
+    <div class="wrap">
+      <div class="head"><h2 id="exp-title">Experience at Neoxam, Tunis</h2></div>
+      <ol class="jobs">
+        <li class="tile"><span class="when" style="background:var(--c1);color:var(--ink)">Summer 2026</span><h3>Software Engineering Intern</h3>
+          <p>Built and deployed an <strong>AI skill that migrates test suites</strong> from Puppeteer to Playwright, with sub-agents for large files and a memory of validated migrations.</p></li>
+        <li class="tile"><span class="when" style="background:var(--c2);color:#fff">Summer 2025</span><h3>Software Engineering Intern</h3>
+          <p>Improved an internal <strong>RAG assistant</strong> and added citations, so every answer points to its source documents.</p></li>
+      </ol>
+      <p class="seek"><strong>Looking for:</strong> an AI or ML Engineer internship, 6 months from January or February 2027, in Paris. My school provides the internship agreement.</p>
+    </div>
+  </section>
+
+  <section class="block" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="head"><h2 id="about-title">Background</h2></div>
+      <div class="about">
+        <div class="tile"><h3>Education</h3><ul>
+          <li>Software Engineering degree<span>INSAT, 2024 to 2027</span></li>
+          <li>Preparatory cycle, Math, Physics, CS<span>INSAT, 2022 to 2024</span></li>
+          <li>Computer Vision for Industrial Inspection<span>NVIDIA certification</span></li></ul></div>
+        <div class="tile"><h3>Beyond class</h3><ul>
+          <li>Vice President, Data Overflow<span>AI bootcamp</span></li>
+          <li>Participant Relations Lead<span>National AI Summit</span></li>
+          <li>Team Coordinator<span>Securinets cybersecurity club</span></li></ul></div>
+        <div class="tile"><h3>Languages</h3><div class="langs">
+          <span>Arabic<em>native</em></span><span>English<em>C2</em></span><span>French<em>B2</em></span><span>Korean<em>A2</em></span></div></div>
       </div>
     </div>
   </section>
 
-  <button class="t p juriq" data-open="juriq" style="--c:#2F4A3A" aria-label="Open project: Juriq">
-    <span class="feat">Featured project</span>
-    <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <div class="pb">
-      <h3>Juriq</h3>
-      <p class="tagline">AI agents and a constraint solver that schedule thesis defenses, fairer than by hand.</p>
-      <div class="kpis">
-        <div><b>4.59 → 2.63</b><span>Workload spread</span></div>
-        <div><b>60 → 72.7%</b><span>Expertise match</span></div>
-        <div><b>5 → 1</b><span>Overloaded professors</span></div>
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="route" aria-hidden="true">
+        <span class="rd" style="--pc:var(--c1);--pc-ink:var(--ink)"></span><i></i><span class="rd" style="--pc:var(--c2)"></span><i></i><span class="rd" style="--pc:var(--c3)"></span><i></i><span class="rd" style="--pc:var(--c4)"></span><i></i><span class="rd" style="--pc:var(--c5)"></span><i></i><span class="rd" style="--pc:var(--c6)"></span>
       </div>
-    </div>
-  </button>
-
-  <section class="t pad exp" aria-label="Experience">
-    <p class="label">Experience <span>Neoxam, Tunis</span></p>
-    <ol class="jobs">
-      <li><b>Software Engineering Intern</b><small>Summer 2026</small>
-        <p>Built and deployed an AI skill that migrates test suites from Puppeteer to Playwright, with sub-agents for large files and a memory of validated migrations.</p></li>
-      <li><b>Software Engineering Intern</b><small>Summer 2025</small>
-        <p>Improved an internal RAG assistant and added citations, so every answer points to its source documents.</p></li>
-    </ol>
-    <p class="seek"><b>Looking for</b> an AI or ML Engineer internship, 6 months from January or February 2027, in Paris. My school provides the internship agreement.</p>
-  </section>
-
-  <button class="t p p-resp" data-open="respiratory" style="--c:#5E5A52" aria-label="Open project: Respiratory Sound Classification">
-    <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <span class="kind">Deep learning</span>
-    <div class="pb"><h3>Respiratory sounds</h3><p class="win">Beat a published deep-learning baseline</p></div>
-  </button>
-
-  <button class="t p p-plant" data-open="plants" style="--c:#C47A58" aria-label="Open project: Plant Disease Detection">
-    <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <span class="kind">Computer vision</span>
-    <div class="pb"><h3>Plant disease detection</h3><p class="win">Diagnoses a leaf and shows why</p></div>
-  </button>
-
-  <section class="t pad about" aria-label="About">
-    <div><h4>Education</h4><ul>
-      <li>Software Engineering degree <span>INSAT, 2024 to 2027</span></li>
-      <li>Preparatory cycle, Math, Physics, CS <span>INSAT, 2022 to 2024</span></li>
-      <li class="opt">Computer Vision for Industrial Inspection <span>NVIDIA</span></li></ul></div>
-    <div><h4>Beyond class</h4><ul>
-      <li>Vice President, Data Overflow <span>AI bootcamp</span></li>
-      <li>Participant Relations Lead <span>National AI Summit</span></li>
-      <li>Team Coordinator <span>Securinets cybersecurity club</span></li></ul></div>
-    <div><h4>Languages</h4><div class="langs"><span>Arabic <em>native</em></span><span>English <em>C2</em></span><span>French <em>B2</em></span><span>Korean <em>A2</em></span></div></div>
-  </section>
-
-  <section class="t pad contact" aria-label="Contact">
-    <div><p class="label">Contact</p><h2>Got something to build? Say hi.</h2></div>
-    <div class="socials">
-      <a href="mailto:isra.brini@gmail.com" data-track="email_click"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
-      <a href="https://linkedin.com/in/IsraBrini" target="_blank" rel="noopener" data-track="linkedin_click"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"/></svg>LinkedIn</a>
-      <a href="https://github.com/issrabrini" target="_blank" rel="noopener" data-track="github_click"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
-      <a class="ghost" href="tel:+21627077002">+216 27 077 002</a>
+      <h2 id="contact-title">Got something to build? Say hi.</h2>
+      <a class="mail" href="mailto:isra.brini@gmail.com" data-track="email_click">isra.brini@gmail.com</a>
+      <div class="socials">
+        <a class="btn primary" href="cv/Isra_Brini_CV.pdf" data-track="cv_download" download>Download CV</a>
+        <a class="btn ghost" href="https://linkedin.com/in/IsraBrini" target="_blank" rel="noopener" data-track="linkedin_click"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"/></svg>LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/issrabrini" target="_blank" rel="noopener" data-track="github_click"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
+        <a class="btn ghost" href="tel:+21627077002">+216 27 077 002</a>
+      </div>
+      <div class="foot"><span>© 2026 Isra Brini</span><a href="#top">Back to top <svg class="ar up" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     </div>
   </section>
-
-  <button class="t p p-mentora" data-open="mentora" style="--c:#2F4A3A" aria-label="Open project: Mentora">
-    <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <span class="kind">Full-stack and LLMs</span>
-    <div class="pb"><h3>Mentora</h3><p class="win">A learning platform with a local AI tutor</p></div>
-  </button>
-
-  <button class="t p p-trends" data-open="trends" style="--c:#5E5A52" aria-label="Open project: Social Media Trend Analyzer">
-    <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <span class="kind">Big data</span>
-    <div class="pb"><h3>Trend analyzer</h3><p class="win">Live trends across Twitch, YouTube and Reddit</p></div>
-  </button>
-
-  <button class="t p p-smart" data-open="smartsight" style="--c:#C47A58" aria-label="Open project: SmartSight">
-    <span class="arrow"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <span class="kind">Edge AI</span>
-    <div class="pb"><h3>SmartSight</h3><p class="win">Glasses that guide visually impaired people</p></div>
-  </button>
-
 </main>
 
-<div class="modal" id="modal" aria-hidden="true">
-  <div class="scrim" data-close></div>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-title" id="sheet"></div>
-</div>
+<dialog class="sheet" id="sheet" aria-labelledby="m-title"></dialog>
 
 <script>
 /* ==========================================================
@@ -344,7 +435,7 @@ const TRACK_URL = "";
 
 /* ---------- project content ---------- */
 const PROJECTS = [
- { id:"juriq", color:"#2F4A3A", featured:true, cats:["agents","web"],
+ { id:"juriq", featured:true, cats:["agents","web"],
    title:"Juriq", sub:"Scheduling thesis-defense juries with AI agents",
    when:"February to June 2026", win:"Fairer than the schedule made by hand",
    hook:"Administrators describe changes in plain language. LLM agents and a constraint solver turn them into a valid schedule.",
@@ -355,7 +446,7 @@ const PROJECTS = [
    flowTitle:"One request, five steps",
    flow:[["An administrator types a request","“Dr. Mansour can’t attend on Tuesday morning.”"],["Translator agent (LLM)","Turns the sentence into a structured constraint."],["Orchestrator","Decides whether to patch the schedule or re-solve it."],["CP-SAT solver","Finds a schedule that meets every hard rule."],["Reflector agent","Scores fairness and expertise, and flags what to improve."]],
    stack:["Python","LangGraph","LLMs","OR-Tools CP-SAT","FastAPI","PostgreSQL","Redis","React","Docker"] },
- { id:"respiratory", color:"#5E5A52", cats:["dl"],
+ { id:"respiratory", cats:["dl"],
    title:"Respiratory Sound Classification", sub:"Detecting lung problems from breathing sounds",
    when:"April to May 2026", win:"Outperformed the published baseline",
    hook:"I reproduced a published deep-learning method on breathing recordings, then redesigned it to beat it.",
@@ -366,7 +457,7 @@ const PROJECTS = [
    flowTitle:"How the research went",
    flow:[["Reproduce","Rebuilt the published baseline and its numbers."],["Adapt","Fine-tuned the transformer and added augmentation."],["Diagnose","Found why a single output head hit a ceiling."],["Redesign","Two specialized heads: detect, then classify."]],
    stack:["Python","PyTorch","Hugging Face Transformers","SpecAugment","SAM optimizer","Focal Loss","librosa"] },
- { id:"plants", color:"#C47A58", cats:["dl","cv"],
+ { id:"plants", cats:["dl","cv"],
    title:"Plant Disease Detection", sub:"Diagnosing plant diseases from a photo of a leaf",
    when:"", win:"Shows why it made each prediction",
    hook:"Upload a leaf photo and the app names the likely disease, says how sure it is, and highlights where it looked.",
@@ -377,18 +468,7 @@ const PROJECTS = [
    flowTitle:"From photo to diagnosis",
    flow:[["Upload","A photo of a single leaf."],["Preprocess","Same resizing and normalization as in evaluation."],["Classify","The fine-tuned model predicts the disease."],["Explain","Grad-CAM highlights the regions it relied on."]],
    stack:["Python","PyTorch","Grad-CAM","Streamlit"] },
- { id:"trends", color:"#5E5A52", cats:["data"],
-   title:"Social Media Trend Analyzer", sub:"Spotting what’s trending across Twitch, YouTube and Reddit",
-   when:"April to June 2026", win:"Live trends from three platforms in one view",
-   hook:"A distributed pipeline that watches three platforms at once and flags topics as they spike.",
-   tags:["Kafka","Spark","Streaming","Big data"],
-   problem:"A topic can explode on Twitch before anyone notices it on Reddit. Catching it early means watching every platform at once, and each one speaks a different data format.",
-   built:["A Kafka backbone with one topic per platform, unifying three very different payloads into one event format.","Spark Structured Streaming jobs that aggregate keywords over 10-minute windows, detect spikes with Z-scores and score sentiment.","Spark batch jobs that compute historical baselines over millions of records stored in HDFS, with MongoDB for raw data and PostgreSQL for results."],
-   metrics:[["3 → 1","Platforms unified into a single event format"],["10 min","Windows for spike and sentiment detection"],["Millions","Past records behind each baseline"]],
-   flowTitle:"From post to trend",
-   flow:[["Ingest","Producers pull from the Twitch, YouTube and Reddit APIs."],["Normalize","Every message becomes the same event format in Kafka."],["Stream","Spark aggregates, detects spikes and scores sentiment."],["Compare","Batch baselines tell a real spike from a normal day."],["Show","A live dashboard compares platforms side by side."]],
-   stack:["Python","Apache Kafka","PySpark","Hadoop HDFS","MongoDB","PostgreSQL","Docker Compose","Streamlit"] },
- { id:"smartsight", color:"#C47A58", cats:["cv","web"],
+ { id:"smartsight", cats:["cv","web"],
    title:"SmartSight", sub:"Glasses that guide visually impaired people",
    when:"February to June 2025", win:"Validated in real walking trials",
    hook:"Wearable glasses that spot obstacles in real time and tell the wearer where to go, by voice or vibration.",
@@ -399,7 +479,18 @@ const PROJECTS = [
    flowTitle:"From camera to guidance",
    flow:[["See","The camera on the glasses captures the scene."],["Detect","YOLOv8 Nano finds obstacles on the device."],["Judge distance","Box size and depth cues estimate how close they are."],["Guide","The app speaks or vibrates the right instruction."]],
    stack:["Python","OpenCV","YOLOv8","MiDaS","Raspberry Pi","MQTT","React Native","TypeScript"] },
- { id:"mentora", color:"#2F4A3A", cats:["agents","web"],
+ { id:"trends", cats:["data"],
+   title:"Social Media Trend Analyzer", sub:"Spotting what’s trending across Twitch, YouTube and Reddit",
+   when:"April to June 2026", win:"Live trends from three platforms in one view",
+   hook:"A distributed pipeline that watches three platforms at once and flags topics as they spike.",
+   tags:["Kafka","Spark","Streaming","Big data"],
+   problem:"A topic can explode on Twitch before anyone notices it on Reddit. Catching it early means watching every platform at once, and each one speaks a different data format.",
+   built:["A Kafka backbone with one topic per platform, unifying three very different payloads into one event format.","Spark Structured Streaming jobs that aggregate keywords over 10-minute windows, detect spikes with Z-scores and score sentiment.","Spark batch jobs that compute historical baselines over millions of records stored in HDFS, with MongoDB for raw data and PostgreSQL for results."],
+   metrics:[["3 → 1","Platforms unified into a single event format"],["10 min","Windows for spike and sentiment detection"],["Millions","Past records behind each baseline"]],
+   flowTitle:"From post to trend",
+   flow:[["Ingest","Producers pull from the Twitch, YouTube and Reddit APIs."],["Normalize","Every message becomes the same event format in Kafka."],["Stream","Spark aggregates, detects spikes and scores sentiment."],["Compare","Batch baselines tell a real spike from a normal day."],["Show","A live dashboard compares platforms side by side."]],
+   stack:["Python","Apache Kafka","PySpark","Hadoop HDFS","MongoDB","PostgreSQL","Docker Compose","Streamlit"] },
+ { id:"mentora", cats:["agents","web"],
    title:"Mentora", sub:"Learning web frameworks with an AI tutor",
    when:"June 2025", win:"An AI tutor running fully on local hardware",
    hook:"A learning platform with progressive paths, exercises, quizzes and badges, plus an AI assistant that answers learners’ questions.",
@@ -445,48 +536,63 @@ const PROJECTS = [
   });
 })();
 
-
-/* ---------- tiles ---------- */
-const esc = s => s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click", ()=>openProject(b.dataset.open, true)));
-/* ---------- project detail ---------- */
-const modal = document.getElementById("modal"), sheet = document.getElementById("sheet");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- nav: current section ---------- */
+const navLinks = [...document.querySelectorAll(".nav a")];
+const navIO = new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  navLinks.forEach(a=>{ const on = a.hash === "#" + e.target.id; a.classList.toggle("cur", on); on ? a.setAttribute("aria-current","true") : a.removeAttribute("aria-current"); });
+}), { rootMargin:"-45% 0px -50% 0px" });
+["work","experience","about","contact"].forEach(id=>navIO.observe(document.getElementById(id)));
+
+/* ---------- line colours (also read by the dialog) ---------- */
+const LINE_COLOR = {
+  juriq:["#FFCD00","#1B2452"], respiratory:["#1F66B3","#FFFFFF"], plants:["#247A4D","#FFFFFF"],
+  smartsight:["#C04191","#FFFFFF"], trends:["#F0801F","#1B2452"], mentora:["#7B54C2","#FFFFFF"],
+};
+
+/* ---------- project detail ---------- */
+const esc = s => s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sheet = document.getElementById("sheet");
 let lastFocus = null, flowTimers = [];
 const LBL = { github:"Code on GitHub", demo:"Live demo", video:"Watch the demo" };
+document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click", ()=>openProject(b.dataset.open, true)));
 
 function openProject(id, push){
   const i = PROJECTS.findIndex(p=>p.id===id); if(i<0) return;
   const p = PROJECTS[i], prev = PROJECTS[(i+PROJECTS.length-1)%PROJECTS.length], next = PROJECTS[(i+1)%PROJECTS.length];
   const l = LINKS[id] || {};
-  const links = Object.keys(LBL).filter(k=>l[k]).map((k,j)=>`<a class="btn ${j===0?'ink':'outline'}" href="${l[k]}" target="_blank" rel="noopener" data-track="project_link" data-detail="${id}:${k}">${LBL[k]}</a>`).join("");
-  const img = IMAGES[id] ? `<img src="${IMAGES[id]}" alt="${esc(p.title)} screenshot" style="width:100%;border-radius:16px;border:1px solid var(--line);margin:0 0 36px">` : "";
+  const [pc, pci] = LINE_COLOR[id] || LINE_COLOR.juriq;
+  const links = Object.keys(LBL).filter(k=>l[k]).map((k,j)=>`<a class="btn ${j===0?'primary':'ghost'}" href="${l[k]}" target="_blank" rel="noopener" data-track="project_link" data-detail="${id}:${k}">${LBL[k]}</a>`).join("");
+  const img = IMAGES[id] ? `<img src="${IMAGES[id]}" alt="${esc(p.title)} screenshot" style="width:100%;border-radius:10px;border:1px solid var(--grout);margin:0 0 36px">` : "";
+  sheet.style.setProperty("--pc", pc); sheet.style.setProperty("--pc-ink", pci);
   sheet.innerHTML = `
-    <div class="m-top"><span></span><button type="button" data-close aria-label="Close project">Close</button></div>
-    <div class="m-bar" style="--c:${p.color}"></div>
-    <div class="m-body"><div class="m-title">
-      ${p.when ? `<p class="m-when">${esc(p.when)}</p>` : ""}
-      <h2 id="m-title">${esc(p.title)}: ${esc(p.sub.charAt(0).toLowerCase()+p.sub.slice(1))}</h2>
-      <p class="m-hook">${esc(p.hook)}</p></div>
+    <div class="m-top"><button type="button" data-close aria-label="Close project">Close <svg class="x" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <div class="m-band">
+      <div class="m-id"><span class="rd" aria-hidden="true">${i+1}</span>${p.when ? `<p class="m-when">${esc(p.when)}</p>` : ""}</div>
+      <h2 id="m-title">${esc(p.title)}</h2>
+      <p class="m-hook">${esc(p.hook)}</p>
+    </div>
+    <div class="m-body">
       <div class="m-links">${links}</div>
       ${img}
       <div class="metrics">${p.metrics.map(m=>`<div class="metric"><b>${esc(m[0])}</b><span>${esc(m[1])}</span></div>`).join("")}</div>
       <div class="m-cols">
-        <div><h4>The problem</h4><p>${esc(p.problem)}</p><h4 style="margin-top:28px">What I built</h4>
+        <div><h3>The problem</h3><p>${esc(p.problem)}</p><h3 style="margin-top:28px">What I built</h3>
           <ul class="built">${p.built.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
-        <div><h4>${esc(p.flowTitle)}<button class="replay" type="button" id="replay">Replay</button></h4>
+        <div><h3>${esc(p.flowTitle)}<button class="replay" type="button" id="replay">Replay</button></h3>
           <ol class="flow" id="flow">${p.flow.map(f=>`<li><b>${esc(f[0])}</b><span>${esc(f[1])}</span></li>`).join("")}</ol></div>
       </div>
-      <div class="stackchips">${p.stack.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
-      <div class="m-nav">
-        <button type="button" data-go="${prev.id}"><small>Previous project</small><strong>${esc(prev.title)}</strong></button>
-        <button type="button" data-go="${next.id}"><small>Next project</small><strong>${esc(next.title)}</strong></button>
-      </div>
+      <div class="stackchips" aria-label="Tech stack">${p.stack.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+      <nav class="m-nav" aria-label="More projects">
+        <button type="button" data-go="${prev.id}"><small><svg class="ar flip" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Previous</small><strong>${esc(prev.title)}</strong></button>
+        <button type="button" data-go="${next.id}"><small>Next <svg class="ar" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></small><strong>${esc(next.title)}</strong></button>
+      </nav>
     </div>`;
-  if(!modal.classList.contains("on")){
+  if(!sheet.open){
     lastFocus = document.activeElement;
-    modal.style.display = "block"; requestAnimationFrame(()=>modal.classList.add("on"));
-    modal.setAttribute("aria-hidden","false"); document.body.classList.add("locked");
+    sheet.showModal(); document.body.classList.add("locked");
   }
   sheet.scrollTop = 0;
   sheet.querySelector("[data-close]").focus({preventScroll:true});
@@ -496,14 +602,19 @@ function openProject(id, push){
   if(push){ history.pushState({p:id}, "", "#" + id); }
   track("project_open", id);
 }
+let closingFromPop = false;
 function closeProject(fromPop){
-  if(!modal.classList.contains("on")) return;
-  modal.classList.remove("on"); modal.setAttribute("aria-hidden","true"); document.body.classList.remove("locked");
-  setTimeout(()=>{ modal.style.display = ""; }, reduce ? 0 : 260);
-  flowTimers.forEach(clearTimeout);
-  if(!fromPop) history.replaceState(null, "", location.pathname);
-  if(lastFocus) lastFocus.focus({preventScroll:true});
+  if(!sheet.open) return;
+  closingFromPop = fromPop;
+  sheet.close();
 }
+sheet.addEventListener("close", ()=>{
+  document.body.classList.remove("locked");
+  flowTimers.forEach(clearTimeout);
+  if(!closingFromPop) history.replaceState(null, "", location.pathname);
+  closingFromPop = false;
+  if(lastFocus && document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+});
 function playFlow(){
   flowTimers.forEach(clearTimeout); flowTimers = [];
   const steps = [...sheet.querySelectorAll("#flow li")];
@@ -512,16 +623,11 @@ function playFlow(){
   steps.forEach((s,i)=>flowTimers.push(setTimeout(()=>{ if(i) steps[i-1].className="done"; s.className="on"; }, 350+i*650)));
   flowTimers.push(setTimeout(()=>{ steps[steps.length-1].className="done"; }, 350+steps.length*650));
 }
-modal.addEventListener("click", e=>{ if(e.target.closest("[data-close]")) closeProject(false); });
-document.addEventListener("keydown", e=>{
-  if(!modal.classList.contains("on")) return;
-  if(e.key === "Escape") closeProject(false);
-  if(e.key === "Tab"){
-    const f = [...sheet.querySelectorAll("a,button")].filter(x=>x.offsetParent);
-    if(!f.length) return;
-    if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
-    else if(!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
-  }
+sheet.addEventListener("click", e=>{
+  if(e.target.closest("[data-close]")) return closeProject(false);
+  if(e.target !== sheet) return;
+  const r = sheet.getBoundingClientRect();
+  if(e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeProject(false);
 });
 addEventListener("popstate", ()=>{
   const id = location.hash.slice(1);
@@ -529,7 +635,183 @@ addEventListener("popstate", ()=>{
 });
 addEventListener("load", ()=>{ const id = location.hash.slice(1); if(PROJECTS.some(p=>p.id===id)) openProject(id, false); });
 
+/* keys: 1 to 6 open a project; arrows page through projects inside the dialog */
+addEventListener("keydown", e=>{
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  const t = e.target; if(t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+  if(/^[1-6]$/.test(e.key) && !sheet.open){ e.preventDefault(); const p = PROJECTS[+e.key - 1]; if(p) openProject(p.id, true); return; }
+  if(sheet.open && (e.key === "ArrowLeft" || e.key === "ArrowRight")){
+    const cur = sheet.querySelector("[data-go]"); if(!cur) return;
+    const btns = sheet.querySelectorAll("[data-go]");
+    (e.key === "ArrowLeft" ? btns[0] : btns[1]).click();
+  }
+});
+</script>
 
+<!-- 3D tokens: one glossy resin object per project, drawn on a single fixed canvas and pinned over the slot in each tile.
+     If WebGL or the CDN is unavailable the page simply drops the tokens and stays fully usable. -->
+<script type="module">
+const root = document.documentElement;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canvas = document.getElementById("gl");
+const sheetEl = document.getElementById("sheet");
+const fail = () => root.classList.add("no-gl");
+
+let THREE, RBG, ENV;
+try{
+  const [t, g, e] = await Promise.all([
+    import("three"),
+    import("three/addons/geometries/RoundedBoxGeometry.js"),
+    import("three/addons/environments/RoomEnvironment.js"),
+  ]);
+  THREE = t; RBG = g.RoundedBoxGeometry; ENV = e.RoomEnvironment;
+}catch(err){ fail(); }
+
+if(THREE){ try{
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, powerPreference:"high-performance" });
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new ENV(), 0.04).texture;
+  const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(-300, 500, 700); scene.add(key);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+
+  const cam = new THREE.PerspectiveCamera(30, 1, 10, 6000);
+  let W = 1, H = 1;
+  function resize(){
+    W = canvas.clientWidth || innerWidth; H = canvas.clientHeight || innerHeight;
+    renderer.setSize(W, H, false);
+    cam.aspect = W / H;
+    cam.position.z = (H / 2) / Math.tan(THREE.MathUtils.degToRad(15));   // 1 unit = 1 css pixel on the z=0 plane
+    cam.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(canvas); resize();
+
+  /* ----- materials: glossy resin, lit by a studio environment ----- */
+  const N = 0x1B2452;
+  const resin = (color, o = {}) => new THREE.MeshPhysicalMaterial({ color, roughness:.24, metalness:0, clearcoat:1, clearcoatRoughness:.1, envMapIntensity:1.05, ...o });
+  const rb = (w, h, d, r) => new RBG(w, h, d, 5, r);
+  const mesh = (geo, mat, x = 0, y = 0, z = 0) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); return m; };
+
+  /* ----- one object per project, each with a meaning ----- */
+  const BUILD = {
+    juriq(){            // scheduling blocks being fitted together
+      const g = new THREE.Group();
+      g.add(mesh(rb(.56,.56,.56,.1), resin(N)));
+      g.add(mesh(rb(.38,.38,.38,.08), resin(0xFFFFFF), .4, .32, .1));
+      g.add(mesh(rb(.32,.32,.32,.07), resin(0x1F66B3), -.36, -.32, -.04));
+      return [g, .38, -.62, 1.12];
+    },
+    respiratory(){      // ripples of a breathing sound
+      const g = new THREE.Group();
+      [[.16,0x1B2452,0],[.3,0x1F66B3,.05],[.44,0x1B2452,.1]].forEach(([r,c,z])=> g.add(mesh(new THREE.TorusGeometry(r,.05,20,72), resin(c), 0, 0, z)));
+      g.add(mesh(new THREE.SphereGeometry(.08,32,24), resin(0xFFFFFF), 0, 0, .02));
+      return [g, .5, -.5, 1.06];
+    },
+    plants(){           // a leaf, with its midrib
+      const g = new THREE.Group();
+      const s = new THREE.Shape(); s.moveTo(0,-.5); s.bezierCurveTo(.55,-.3,.5,.28,0,.58); s.bezierCurveTo(-.5,.28,-.55,-.3,0,-.5);
+      const geo = new THREE.ExtrudeGeometry(s, { depth:.07, bevelEnabled:true, bevelThickness:.06, bevelSize:.05, bevelSegments:8, curveSegments:36 });
+      geo.center(); g.add(mesh(geo, resin(0x247A4D)));
+      g.add(mesh(rb(.03,.86,.03,.012), resin(0xC9EBD3), 0, .02, .12));
+      const stem = mesh(new THREE.CylinderGeometry(.03,.034,.26,16), resin(0x1B2452), 0, -.6, 0); g.add(stem);
+      g.rotation.z = -.42;
+      const wrap = new THREE.Group(); wrap.add(g); return [wrap, .3, -.35];
+    },
+    smartsight(){       // the glasses themselves
+      const g = new THREE.Group(); const f = resin(0xC04191);
+      [-.29,.29].forEach(x=>{
+        g.add(mesh(new THREE.TorusGeometry(.22,.05,20,64), f, x, 0, 0));
+        g.add(mesh(new THREE.CircleGeometry(.215,48), resin(0x1B2452,{ transparent:true, opacity:.55, roughness:.05 }), x, 0, 0));
+        g.add(mesh(new THREE.CylinderGeometry(.032,.032,.56,16).rotateX(Math.PI/2), f, x * 1.62, 0, -.28));
+      });
+      const bridge = mesh(new THREE.CylinderGeometry(.03,.03,.14,16).rotateZ(Math.PI/2), f, 0, .06, 0); g.add(bridge);
+      return [g, .3, -.6, .86];
+    },
+    trends(){           // layers of streaming data
+      const g = new THREE.Group();
+      [[-.24,0xF0801F,-.06],[0,0xF8AA5E,0],[.24,0xFFFFFF,.06]].forEach(([y,c,x])=> g.add(mesh(rb(.92,.13,.92,.05), resin(c), x, y, 0)));
+      return [g, .62, -.72, 1.08];
+    },
+    mentora(){          // steps a learner climbs
+      const g = new THREE.Group();
+      [[-.34,.3,0xB7A1EA],[0,.6,0x7B54C2],[.34,.9,0x4B2F8F]].forEach(([x,h,c])=> g.add(mesh(rb(.34,h,.34,.07), resin(c), x, h/2 - .45, 0)));
+      g.add(mesh(new THREE.SphereGeometry(.12,32,24), resin(0xFFFFFF), .34, .57, 0));
+      return [g, .42, -.62, 1.08];
+    },
+  };
+
+  /* soft contact shadow, a radial blob under each token */
+  const sc = document.createElement("canvas"); sc.width = sc.height = 128;
+  { const g = sc.getContext("2d"), rg = g.createRadialGradient(64,64,0,64,64,64);
+    rg.addColorStop(0,"rgba(27,36,82,.34)"); rg.addColorStop(1,"rgba(27,36,82,0)"); g.fillStyle = rg; g.fillRect(0,0,128,128); }
+  const shadowTex = new THREE.CanvasTexture(sc);
+  const shadowGeo = new THREE.PlaneGeometry(1, 1);
+
+  const box = new THREE.Box3(), size = new THREE.Vector3(), ctr = new THREE.Vector3();
+  const items = [...document.querySelectorAll("[data-token]")].map((el, i)=>{
+    const [obj, rx, ry, boost = 1] = BUILD[el.dataset.token]();
+    obj.rotation.set(rx, ry, 0);
+    const fit = new THREE.Group(); fit.add(obj);                 // normalise to a unit box, centred
+    obj.updateMatrixWorld(true); box.setFromObject(fit); box.getSize(size); box.getCenter(ctr);
+    const k = 1 / Math.max(size.x, size.y, size.z);
+    obj.position.sub(ctr); fit.scale.setScalar(k);
+    const pivot = new THREE.Group(); pivot.add(fit); scene.add(pivot);
+    const shadow = new THREE.Mesh(shadowGeo, new THREE.MeshBasicMaterial({ map:shadowTex, transparent:true, depthWrite:false }));
+    shadow.renderOrder = -1; scene.add(shadow);
+    const card = el.closest(".line");
+    const it = { el, pivot, shadow, i, boost, lift:0, liftT:0, born:0, ph:i * 1.7, tx:0, ty:0 };
+    card.addEventListener("pointerenter", ()=>{ it.liftT = 1; });
+    card.addEventListener("pointerleave", ()=>{ it.liftT = 0; });
+    card.addEventListener("focus", ()=>{ it.liftT = 1; });
+    card.addEventListener("blur", ()=>{ it.liftT = 0; });
+    return it;
+  });
+
+  let px = innerWidth / 2, py = innerHeight / 2;
+  if(!reduced && matchMedia("(hover:hover)").matches) addEventListener("pointermove", e=>{ px = e.clientX; py = e.clientY; }, { passive:true });
+
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const easeOut = p => 1 - Math.pow(1 - p, 4);
+  const start = performance.now() + 350;
+  let last = performance.now();
+  root.classList.add("gl-on");
+
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(document.hidden || sheetEl.open) return;
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    const t = now / 1000;
+    for(const it of items){
+      const r = it.el.getBoundingClientRect();
+      const vis = r.bottom > -80 && r.top < H + 80 && r.width > 0;
+      it.pivot.visible = it.shadow.visible = vis;
+      if(!vis) continue;
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const S = Math.min(r.width, r.height) * .9;
+      it.lift += (it.liftT - it.lift) * (1 - Math.exp(-dt * 9));
+      const p = reduced ? 1 : clamp((now - start - it.i * 110) / 1000, 0, 1);
+      const e = easeOut(p);
+      const bob = reduced ? 0 : Math.sin(t * 1.3 + it.ph) * 3;
+      const drop = (1 - e) * 60;
+      const lift = 10 + it.lift * 14;   // rests slightly out of its tile, rises further on hover
+      const sc = S * 1.3 * it.boost * (.35 + .65 * e) * (1 + it.lift * .1);
+      const tx = reduced ? 0 : clamp((px - cx) / (W * .5), -1, 1), ty = reduced ? 0 : clamp((py - cy) / (H * .5), -1, 1);
+      it.tx += (tx - it.tx) * (1 - Math.exp(-dt * 6)); it.ty += (ty - it.ty) * (1 - Math.exp(-dt * 6));
+      it.pivot.position.set(cx - W / 2, H / 2 - cy + bob + lift + drop, 0);
+      it.pivot.scale.setScalar(sc);
+      it.pivot.rotation.y = it.tx * .5 + (reduced ? 0 : Math.sin(t * .7 + it.ph) * .28) + it.lift * .35;
+      it.pivot.rotation.x = it.ty * .32;
+      const sh = it.shadow;
+      sh.position.set(cx - W / 2, H / 2 - cy - S * .55 - 4 - lift * .3, -S * .6);
+      sh.scale.set(S * 1.05 * (1 - it.lift * .12), S * .26, 1);
+      sh.material.opacity = e * (1 - it.lift * .35);
+    }
+    renderer.render(scene, cam);
+  }
+  requestAnimationFrame(frame);
+}catch(err){ console.warn("3D tokens unavailable:", err); fail(); } }
 </script>
 </body>
 </html>

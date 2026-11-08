@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T00:00:00Z",
+  "title": "Design System: Isra Brini Portfolio (Ligne Six)",
+  "extensions": {
+    "colorMeta": {
+      "enamel-navy": {"role":"primary","displayName":"Enamel Navy","canonical":"#1B2452","tonalRamp":["#080B1A","#10163A","#1B2452","#2C3A7E","#4B5578","#7E88AD","#B9BFD6","#E6E8F1"]},
+      "line-1-yellow": {"role":"primary","displayName":"Line 1 Yellow","canonical":"#FFCD00","tonalRamp":["#4D3E00","#806500","#B38F00","#E6B800","#FFCD00","#FFDD47","#FFEC99","#FFF8D6"]},
+      "line-2-blue": {"role":"secondary","displayName":"Line 2 Blue","canonical":"#1F66B3","tonalRamp":["#0A2240","#0F3866","#154C8A","#1F66B3","#4A88C9","#7BA9D9","#B0CCE8","#E3EDF7"]},
+      "line-3-green": {"role":"secondary","displayName":"Line 3 Green","canonical":"#247A4D","tonalRamp":["#0B2B1B","#124028","#195A38","#247A4D","#4C9A72","#7DB898","#B3D6C4","#E4F1EA"]},
+      "line-4-magenta": {"role":"secondary","displayName":"Line 4 Magenta","canonical":"#C04191","tonalRamp":["#3F1030","#681B52","#8F2B70","#C04191","#D26BAC","#E096C5","#EEC1DD","#F9E8F2"]},
+      "line-5-orange": {"role":"secondary","displayName":"Line 5 Orange","canonical":"#F0801F","tonalRamp":["#4A2403","#7A3E0A","#B35C12","#F0801F","#F49C52","#F8B985","#FBD6B8","#FEF0E4"]},
+      "line-6-violet": {"role":"secondary","displayName":"Line 6 Violet","canonical":"#7B54C2","tonalRamp":["#251840","#3D2766","#5A3C94","#7B54C2","#977AD1","#B4A0E0","#D2C6EE","#EEE9F8"]},
+      "tile-ground": {"role":"neutral","displayName":"Tile Ground","canonical":"#F4F5F1","tonalRamp":["#2A2B28","#51524D","#7D7F77","#A9ABA2","#D9DCD4","#E8EAE4","#F4F5F1","#FFFFFF"]},
+      "grout": {"role":"neutral","displayName":"Grout","canonical":"#D9DCD4","tonalRamp":["#3A3C36","#5E6158","#82857B","#A7AAA0","#D9DCD4","#E5E7E1","#EFF0EC","#F8F9F6"]},
+      "muted-navy": {"role":"neutral","displayName":"Muted Navy","canonical":"#4B5578","tonalRamp":["#161A2B","#242B45","#343D5E","#4B5578","#6C7699","#929BB8","#BCC2D5","#E4E6EE"]}
+    },
+    "typographyMeta": {
+      "display": {"displayName":"Display","purpose":"Hero headline and the featured line name; 800 weight, tight tracking."},
+      "headline": {"displayName":"Headline","purpose":"Section titles and contact headline."},
+      "title": {"displayName":"Title","purpose":"Project names on tiles, widened to 108%."},
+      "body": {"displayName":"Body","purpose":"Copy at 17px; lede capped at 46ch."},
+      "label": {"displayName":"Label","purpose":"Category pills, dates, KPI captions."}
+    },
+    "shadows": [
+      {"name":"tile-bevel","value":"inset 0 0 0 1px #D9DCD4, inset 0 1.5px 0 #fff, inset 0 -3px 0 rgba(27,36,82,.05), 0 12px 22px -16px rgba(27,36,82,.45)","purpose":"White ceramic tiles and tile surfaces."},
+      {"name":"tile-featured","value":"inset 0 0 0 1px rgba(27,36,82,.16), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -4px 0 rgba(27,36,82,.08), 0 18px 30px -18px rgba(27,36,82,.6)","purpose":"The yellow featured line."},
+      {"name":"tile-hover","value":"inset 0 0 0 2.5px var(--pc), inset 0 -3px 0 rgba(27,36,82,.05), 0 22px 30px -18px rgba(27,36,82,.55)","purpose":"Hover and focus lift with a line-colour edge."},
+      {"name":"dialog","value":"0 30px 80px rgba(27,36,82,.4)","purpose":"Project case-study sheet."}
+    ],
+    "motion": [
+      {"name":"ease-expo-out","value":"cubic-bezier(.16, 1, .3, 1)","purpose":"All tile, button and dialog transitions."},
+      {"name":"tile-rise","value":"0.7s ease-expo-out, stagger 70ms per line from 80ms","purpose":"Board entrance; disabled under prefers-reduced-motion."},
+      {"name":"tile-lift","value":"0.35s translateY(-4px)","purpose":"Hover and focus on lines."}
+    ],
+    "breakpoints": [
+      {"name":"compact-height","value":"max-height 840px and min-width 1001px"},
+      {"name":"tablet","value":"1000px"},
+      {"name":"phone","value":"640px"}
+    ],
+    "materials": [
+      {"name":"resin","value":"MeshPhysicalMaterial roughness 0.24, metalness 0, clearcoat 1, clearcoatRoughness 0.1, envMapIntensity 1.05","purpose":"Glossy 3D project tokens; RoomEnvironment plus directional key 1.6 and ambient 0.35."}
+    ]
+  },
+  "components": [
+    {"name":"Primary Button","kind":"button","refersTo":"button-primary","description":"Navy call to action.","html":"<button class=\"ds-btn ds-btn-primary\">Email me</button>","css":".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:10px;border:2px solid transparent;font:700 1rem Archivo,Arial,sans-serif;cursor:pointer;transition:background-color .2s cubic-bezier(.16,1,.3,1),color .2s cubic-bezier(.16,1,.3,1)}.ds-btn-primary{background:#1B2452;color:#fff}.ds-btn-primary:hover{background:#2C3A7E}.ds-btn:active{transform:translateY(1px) scale(.99)}.ds-btn:focus-visible{outline:3px solid #1B2452;outline-offset:3px}"},
+    {"name":"Ghost Button","kind":"button","refersTo":"button-ghost","description":"Outlined secondary action that inverts on hover.","html":"<button class=\"ds-btn ds-btn-ghost\">Download CV</button>","css":".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:10px;border:2px solid transparent;font:700 1rem Archivo,Arial,sans-serif;cursor:pointer;transition:background-color .2s,color .2s}.ds-btn-ghost{border-color:#1B2452;color:#1B2452;background:rgba(255,255,255,.7)}.ds-btn-ghost:hover{background:#1B2452;color:#fff}.ds-btn:focus-visible{outline:3px solid #1B2452;outline-offset:3px}"},
+    {"name":"Station Sign","kind":"nav","refersTo":"station-sign","description":"Sticky navy header with boxed station name, links and a yellow CV button.","html":"<div class=\"ds-bar\"><span class=\"ds-station\"><b>Isra Brini</b><span>AI Engineer</span></span><nav class=\"ds-nav\"><a class=\"cur\" href=\"#\">Projects</a><a href=\"#\">Experience</a><a href=\"#\">About</a></nav><button class=\"ds-cv\">CV</button></div>","css":".ds-bar{display:flex;align-items:center;gap:20px;height:60px;padding:0 20px;background:#1B2452;color:#fff;font-family:Archivo,Arial,sans-serif}.ds-station{display:inline-flex;align-items:baseline;gap:12px;padding:6px 14px;border:1.5px solid rgba(255,255,255,.45);border-radius:6px}.ds-station b{font-weight:800;font-stretch:112%;letter-spacing:.02em;text-transform:uppercase;font-size:1.02rem}.ds-station span{font-size:.85rem;color:rgba(255,255,255,.78)}.ds-nav{display:flex;gap:2px;margin-left:auto}.ds-nav a{color:rgba(255,255,255,.82);text-decoration:none;font-weight:600;font-size:.95rem;padding:9px 13px;border-radius:8px}.ds-nav a:hover{color:#fff;background:rgba(255,255,255,.12)}.ds-nav a.cur{color:#FFCD00}.ds-cv{min-height:40px;padding:0 16px;border:0;border-radius:10px;background:#FFCD00;color:#1B2452;font:700 .95rem Archivo,Arial,sans-serif;cursor:pointer}.ds-cv:hover{background:#FFDD47}.ds-cv:focus-visible,.ds-nav a:focus-visible{outline:3px solid #FFCD00;outline-offset:3px}"},
+    {"name":"Roundel","kind":"custom","refersTo":"roundel","description":"Numbered line badge; background and ink come as a fixed pair.","html":"<span class=\"ds-rd\" style=\"--pc:#1F66B3;--pc-ink:#fff\">2</span> <span class=\"ds-rd\" style=\"--pc:#F0801F;--pc-ink:#1B2452\">5</span>","css":".ds-rd{--d:34px;display:inline-grid;place-items:center;width:var(--d);height:var(--d);border-radius:50%;background:var(--pc);color:var(--pc-ink);font:800 17px/1 Archivo,Arial,sans-serif;font-variant-numeric:tabular-nums}"},
+    {"name":"Line Tile","kind":"card","refersTo":"line-tile","description":"One project: roundel, name, result, category pill; line-colour edge on hover.","html":"<button class=\"ds-line\" style=\"--pc:#1F66B3;--pc-ink:#fff\"><span class=\"ds-rd\">2</span><span class=\"ds-name\">Respiratory Sound Classification</span><span class=\"ds-win\">Sensitivity 0.68 to 0.75</span><span class=\"ds-ft\"><span class=\"ds-kind\">Deep learning</span><b>View case study</b></span></button>","css":".ds-line{all:unset;box-sizing:border-box;display:grid;gap:6px;width:320px;min-height:158px;padding:14px 18px 12px;border-radius:10px;background:#fff;color:#1B2452;cursor:pointer;font-family:Archivo,Arial,sans-serif;box-shadow:inset 0 0 0 1px #D9DCD4,inset 0 1.5px 0 #fff,inset 0 -3px 0 rgba(27,36,82,.05),0 12px 22px -16px rgba(27,36,82,.45);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}.ds-line:hover,.ds-line:focus-visible{transform:translateY(-4px);box-shadow:inset 0 0 0 2.5px var(--pc),inset 0 -3px 0 rgba(27,36,82,.05),0 22px 30px -18px rgba(27,36,82,.55)}.ds-line:focus-visible{outline:3px solid #1B2452;outline-offset:3px}.ds-rd{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pc);color:var(--pc-ink);font-weight:800;font-size:17px}.ds-name{font-size:1.25rem;font-weight:800;line-height:1.12;letter-spacing:-.02em;font-stretch:108%}.ds-win{font-size:.95rem;color:#4B5578;line-height:1.4}.ds-ft{display:flex;justify-content:space-between;align-items:center;font-size:.92rem}.ds-kind{font-size:.78rem;font-weight:700;color:#4B5578;background:#F4F5F1;padding:2px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px #D9DCD4}"},
+    {"name":"Featured Line with KPI Panel","kind":"custom","refersTo":"line-tile-featured","description":"Full-width yellow line with inverted roundel and a navy KPI panel.","html":"<div class=\"ds-feat\"><div><span class=\"ds-rd\">1</span><div class=\"ds-fname\">Juriq</div><p>Scheduling that balances workload.</p></div><div class=\"ds-kpis\"><span><b>2.63</b><small>workload spread</small></span><span><b>72.7%</b><small>expertise match</small></span><span><b>1</b><small>overloaded professor</small></span></div></div>","css":".ds-feat{display:grid;grid-template-columns:1fr 260px;gap:24px;padding:16px 22px;border-radius:10px;background:#FFCD00;color:#1B2452;font-family:Archivo,Arial,sans-serif;box-shadow:inset 0 0 0 1px rgba(27,36,82,.16),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -4px 0 rgba(27,36,82,.08),0 18px 30px -18px rgba(27,36,82,.6)}.ds-rd{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#1B2452;color:#FFCD00;font-weight:800;font-size:21px}.ds-fname{font-size:3rem;font-weight:800;letter-spacing:-.04em;line-height:.98;font-stretch:108%}.ds-kpis{display:grid;align-content:center;padding:4px 16px;background:#1B2452;color:#fff;border-radius:8px}.ds-kpis>span{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.2)}.ds-kpis>span:last-child{border-bottom:0}.ds-kpis b{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.ds-kpis small{font-size:.84rem;color:rgba(255,255,255,.82);text-align:end}"},
+    {"name":"Category Pill","kind":"chip","refersTo":"tile","description":"Quiet category tag and date pill.","html":"<span class=\"ds-pill\">Deep learning</span> <span class=\"ds-when\">Summer 2026</span>","css":".ds-pill{display:inline-block;font:700 .78rem Archivo,Arial,sans-serif;color:#4B5578;background:#F4F5F1;padding:2px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px #D9DCD4}.ds-when{display:inline-block;font:700 .88rem Archivo,Arial,sans-serif;color:#fff;background:#1B2452;padding:3px 12px;border-radius:999px}"}
+  ],
+  "narrative": {
+    "northStar": "The Tile Wall",
+    "overview": "The page is a Paris Métro tile wall and each project is a coloured line. A bevelled white running-bond ceramic ground with faint grout carries deep enamel-navy signs with white caps, six re-tuned line colours used as roundels and fills, and one glossy resin 3D token per project. The mood is public signage: legible at a glance, confident, a little playful, never decorative for its own sake. It rejects the screenshot card grid under a hero with a floating blob.\n\nDensity is high on purpose. All six projects are visible in the first viewport, each leading with a numbered roundel, a name, a result line and a quiet category tag. Colour is assigned by meaning (line = project) rather than by mood.\n\nThe first viewport stacks the intro band above a full-width board by design, so all six full-width tiles fit above the fold.",
+    "keyCharacteristics": [
+      "Tile-wall ground: pale ceramic with grout lines, bevelled white tiles.",
+      "Navy enamel signs (header, KPI panel, contact band) with white or yellow text.",
+      "Six line colours, each paired with the ink colour that passes on it.",
+      "Archivo, bold and slightly wide, as signage type.",
+      "Glossy resin 3D tokens rendered with three.js, pinned over each tile, resting partly outside it.",
+      "Soft, low, navy-tinted shadows; no hard offsets."
+    ],
+    "rules": [
+      {"name":"The Line Pairing Rule","body":"Every line colour travels with one ink colour fixed by contrast: navy on yellow and orange, white on blue, green, magenta and violet. Set per element via the --pc / --pc-ink pair; never mix.","section":"colors"},
+      {"name":"The One Line, One Project Rule","body":"A line colour means one project. Do not use a line colour as generic decoration (the exceptions in the build are the yellow highlight, CTA and seeking band, and the three about-section dots, which are accents rather than project identity).","section":"colors"},
+      {"name":"The Signage Weight Rule","body":"Names, numerals and station caps are 800; everything explanatory is 400-600. No middle-weight display.","section":"typography"},
+      {"name":"The Soft Seat Rule","body":"Shadows are blurred, negative-spread and navy-tinted. Depth beyond that belongs to the 3D tokens, not to CSS.","section":"elevation"}
+    ],
+    "dos": [
+      "Do pair each line colour with its fixed ink colour via --pc / --pc-ink.",
+      "Do keep navy #1B2452 as the only text and sign colour; use muted navy for secondary copy.",
+      "Do give new surfaces the tile bevel and soft seat shadow, and 10px corners.",
+      "Do build new 3D tokens from MeshPhysicalMaterial with the shared resin settings and the navy, white and line-colour palette.",
+      "Do keep the page usable without WebGL and honour prefers-reduced-motion (transitions and animations off).",
+      "Do keep focus visible: 3px navy outline, switching to yellow on navy bands."
+    ],
+    "donts": [
+      "Don't copy RATP line colours or marks; the six colours are re-tuned originals.",
+      "Don't use white text on yellow or orange, or navy text on blue, green, magenta or violet.",
+      "Don't replace the board with a screenshot card grid or a hero with a floating blob.",
+      "Don't use hard offset shadows, or a second typeface alongside Archivo.",
+      "Don't use a line colour as generic decoration where it should identify a project."
+    ]
+  }
+}
