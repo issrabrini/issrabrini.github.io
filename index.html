@@ -515,17 +515,41 @@ const PROJECTS = [
     ref = sessionStorage.getItem("ref") || "";
   }catch(e){ ref = params.get("ref") || ""; }
   if(params.has("ref") || params.has("me")) history.replaceState(null, "", location.pathname + location.hash);
-  window.track = function(event, detail){
+
+  const ua = navigator.userAgent || "";
+  function send(event, detail){
     if(!TRACK_URL || me) return;
     const body = JSON.stringify({ ref, event, detail: detail || "", referrer: document.referrer,
-      lang: navigator.language, ua: navigator.userAgent, page: location.pathname });
+      lang: navigator.language, ua, page: location.pathname });
     try{ fetch(TRACK_URL, { method:"POST", mode:"no-cors", keepalive:true,
       headers:{ "Content-Type":"text/plain;charset=utf-8" }, body }); }catch(e){}
-  };
-  track("visit");
-  let seen = 0, sent = false;
-  const tick = setInterval(()=>{ if(document.visibilityState==="visible") seen++;
-    if(seen >= 15 && !sent){ sent = true; track("engaged"); clearInterval(tick); } }, 1000);
+  }
+
+  // Email security scanners open every link the moment an email arrives, sometimes in a real browser.
+  // They load the page but never move the mouse, scroll or tap, so nothing counts until a person does.
+  const robot = navigator.webdriver === true ||
+    /HeadlessChrome|bot|crawl|spider|preview|scan|Lighthouse|Puppeteer|Playwright/i.test(ua);
+  let human = false, queue = [];
+  window.track = function(event, detail){ if(robot) return; if(human) send(event, detail); else queue.push([event, detail]); };
+  if(robot){ send("scan", "automated browser"); return; }
+
+  const kinds = ["pointermove","pointerdown","wheel","scroll","touchstart","keydown"];
+  function confirmHuman(e){
+    if(human) return;
+    if(e.type === "pointermove" && !(e.movementX || e.movementY)) return;
+    human = true;
+    kinds.forEach(t=>removeEventListener(t, confirmHuman, true));
+    send("visit");
+    queue.forEach(([ev, d])=>send(ev, d)); queue = [];
+    let seen = 0;
+    const tick = setInterval(()=>{ if(document.visibilityState === "visible") seen++;
+      if(seen >= 15){ send("engaged"); clearInterval(tick); } }, 1000);
+  }
+  kinds.forEach(t=>addEventListener(t, confirmHuman, { capture:true, passive:true }));
+
+  // Opened but nobody touched the page within 10 s: almost always a scanner. Logged once, no email alert.
+  setTimeout(()=>{ if(!human) send("scan", "no interaction"); }, 10000);
+
   const viewed = new Set();
   const io = new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting && !viewed.has(e.target.id)){ viewed.add(e.target.id); track("section_view", e.target.id); }
