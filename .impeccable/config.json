@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-08T19:59:05.795Z",
+        "reason": "agent: false positive on section.contact; full-bleed navy band whose content sits inside .wrap (var(--gut) side padding) with clamp(44px,6vw,72px) top padding, visibly inset at all widths in desktop and mobile captures"
+      }
+    ]
+  }
+}
